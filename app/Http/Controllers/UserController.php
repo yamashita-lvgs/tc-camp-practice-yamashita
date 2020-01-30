@@ -23,7 +23,8 @@ class UserController extends Controller
     public function index()
     {
         //サービス層のメソッドを使用する
-        $users = UserService::index();
-        return view('user.index', ['users' => $users]);
+        $users = UserService::userIndex();
+        $userActionHistories = UserService::userActionHistoryIndex();
+        return view('user.index', ['users' => $users,'userActionHistories' =>$userActionHistories]);
     }
 }

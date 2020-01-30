@@ -41,17 +41,19 @@
 <h2>ユーザー情報操作履歴</h2>
 <table>
     <tr>
-        <th>操作対象ユーザー</th>
         <th>操作日時</th>
+        <th>操作対象ユーザー</th>
         <th>操作種別</th>
         <th>操作実施ユーザー</th>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>a</td>
-        <td>a</td>
-        <td>a</td>
-    </tr>
+    @foreach($userActionHistories as $userActionHistory)
+        <tr>
+            <td>{{$userActionHistory->actioned_at}}</td>
+            <td>{{$userActionHistory->user->last_name}}</td>
+            <td>{{$userActionHistory->content_id}}</td>
+            <td>{{$userActionHistory->actioned_user_id}}</td>
+        </tr>
+    @endforeach
 </table>
 </body>
 </html>
