@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * ユーザー画面に関するクラス
+ * ユーザー情報関するクラス
  */
 class User extends Model
 {
