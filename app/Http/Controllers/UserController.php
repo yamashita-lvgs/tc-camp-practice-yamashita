@@ -18,7 +18,7 @@ class UserController extends Controller
      * 一覧画面表示
      * @return View ユーザー一覧画面
      */
-    public function index(): View
+    public function index()
     {
         $users = User::all();
         return view('user.index', ['users' => $users]);
