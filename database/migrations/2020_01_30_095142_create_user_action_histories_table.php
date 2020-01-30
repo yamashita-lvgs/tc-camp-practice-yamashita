@@ -15,7 +15,11 @@ class CreateUserActionHistoriesTable extends Migration
     {
         Schema::create('user_action_histories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            $table->unsignedInteger('actioned_user_id');
+            $table->unsignedInteger('actioning_user_id');
+            $table->unsignedInteger('content_id');
+            $table->timestamps('actioned_at');
+            $table->rememberToken();
         });
     }
 
