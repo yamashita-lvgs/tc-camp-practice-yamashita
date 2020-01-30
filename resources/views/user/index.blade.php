@@ -13,20 +13,18 @@
 <table>
     <tr>
         <th>ユーザーID</th>
-        <th>ログインID</th>
         <th>性</th>
         <th>名</th>
         <th>セイ</th>
         <th>メイ</th>
         <th>性別</th>
         <th>メールアドレス</th>
-        <th>更新</th>
-        <th>削除</th>
+        <th></th>
+        <th></th>
     </tr>
     @foreach($users as $user)
         <tr>
             <td>{{$user->id}}</td>
-            <td>{{$user->login_idid}}</td>
             <td>{{$user->last_name}}</td>
             <td>{{$user->first_name}}</td>
             <td>{{$user->last_name_kana}}</td>
