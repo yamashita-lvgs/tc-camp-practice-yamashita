@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use App\Models\User;
+use App\Service\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
+
 /**
  * ユーザーに関するコントローラークラス
- * @package App\Http\Controllersr
+ * @package App\Http\Controllers
  */
 class UserController extends Controller
 {
@@ -20,7 +22,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        //サービス層のメソッドを使用する
+        $users = UserService::index();
         return view('user.index', ['users' => $users]);
     }
 }
