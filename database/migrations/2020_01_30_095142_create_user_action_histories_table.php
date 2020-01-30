@@ -18,7 +18,7 @@ class CreateUserActionHistoriesTable extends Migration
             $table->unsignedInteger('actioned_user_id');
             $table->unsignedInteger('actioning_user_id');
             $table->unsignedInteger('content_id');
-            $table->timestamps('actioned_at');
+            $table->timestamp('actioned_at');
             $table->rememberToken();
         });
     }
