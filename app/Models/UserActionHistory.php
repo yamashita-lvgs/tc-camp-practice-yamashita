@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * ユーザー変更履歴関するクラス
+ * @property mixed content_id
  */
 class UserActionHistory extends Model
 {
@@ -21,6 +22,6 @@ class UserActionHistory extends Model
 
     public function content()
     {
-        return $this->belongsTo(Action::class, 'content_id');
+        return config('action.content')[$this->content_id];
     }
 }

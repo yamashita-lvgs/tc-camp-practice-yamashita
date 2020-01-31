@@ -38,7 +38,7 @@
         <td>{{$userActionHistory->actioned_at}}</td>
         <td>{{$userActionHistory->actioned_user->last_name}} {{$userActionHistory->actioned_user->first_name}}</td>
         <td>{{$userActionHistory->actioning_user->last_name}} {{$userActionHistory->actioning_user->first_name}}</td>
-        <td>{{$userActionHistory->content->content}}</td>
+        <td>{{$userActionHistory->content()}}</td>
       </tr>
     @endforeach
   </table>
