@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 
+use App\Models\Action;
 use App\Models\User;
 use App\Models\UserActionHistory;
 use Illuminate\Support\Facades\DB;
@@ -16,8 +17,14 @@ class UserService
         return User::all();
     }
 
+    public static function actionIndex()
+    {
+        return Action::all();
+    }
+
     public static function userActionHistoryIndex()
     {
         return UserActionHistory::all();
     }
+
 }

@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * ユーザーテーブルのモデルクラス
+ * アクションテーブルのモデルクラス
  * @package App\Models
  */
-class User extends Model
+class Action extends Model
 {
 
 }

@@ -18,4 +18,9 @@ class UserActionHistory extends Model
     {
         return $this->belongsTo(User::class, 'actioning_user_id');
     }
+
+    public function content()
+    {
+        return $this->belongsTo(Action::class, 'content_id');
+    }
 }
