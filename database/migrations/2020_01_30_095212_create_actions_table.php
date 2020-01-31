@@ -15,9 +15,10 @@ class CreateActionsTable extends Migration
     {
         Schema::create('actions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('content');
+            $table->string('content', 255)->comment("削除日");;
             $table->rememberToken();
         });
+        DB::statement("ALTER TABLE actions COMMENT '操作種別'");
     }
 
     /**

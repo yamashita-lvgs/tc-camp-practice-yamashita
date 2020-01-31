@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('deleted_at')->comment("削除日");
             $table->rememberToken();
         });
-    DB::statement("ALTER TABLE users COMMENT 'ユーザー'");
+        DB::statement("ALTER TABLE users COMMENT 'ユーザー'");
     }
 
 

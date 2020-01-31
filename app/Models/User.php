@@ -12,6 +12,6 @@ class User extends Model
 {
     public function userActionHistory()
     {
-        return $this->hasMany('App\Models\UserActionHistory');
+        return $this->hasOne('App\Models\UserActionHistory');
     }
 }

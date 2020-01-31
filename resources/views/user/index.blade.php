@@ -17,7 +17,8 @@
     </tr>
     @foreach($users as $user)
       <tr>
-        <td>{{$user->last_name." ". $user->first_name}}</td><td></td>
+        <td>{{$user->last_name." ". $user->first_name}}</td>
+        <td>ここに権限名いれる</td>
         <td>{{$user->email}}</td>
         <td><a href="users/user->id/edit">更新</a></td>
         <td><a href="users/user->id/delete">削除</a></td>
@@ -35,8 +36,8 @@
     @foreach($userActionHistories as $userActionHistory)
       <tr>
         <td>userActionHistory->actioned_at</td>
-        <td>userActionHistory->user->last_name</td>
-        <td>userActionHistory->actioned_user_id</td>
+        <td>{{$userActionHistory->actioned_user->last_name}} {{$userActionHistory->actioned_user->first_name}}</td>
+        <td>{{$userActionHistory->actioning_user->last_name}} {{$userActionHistory->actioning_user->first_name}}</td>
         <td>userActionHistory->content_id</td>
       </tr>
     @endforeach

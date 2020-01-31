@@ -9,8 +9,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserActionHistory extends Model
 {
-    public function user()
+    public function actioned_user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class, 'actioned_user_id');
+    }
+
+    public function actioning_user()
+    {
+        return $this->belongsTo(User::class, 'actioning_user_id');
     }
 }
