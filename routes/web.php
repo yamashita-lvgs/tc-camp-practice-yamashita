@@ -11,4 +11,5 @@
 |
 */
 
+// ユーザー一覧画面
 Route::get('users', 'UserController@index');

@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * ユーザー情報関するクラス
+ * ユーザーテーブルのモデルクラス
+ * @package App\Models
  */
 class User extends Model
 {

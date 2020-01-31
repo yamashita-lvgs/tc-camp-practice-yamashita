@@ -1,10 +1,14 @@
 <?php
-namespace App\Service;
+namespace App\Services;
 
-use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\UserActionHistory;
+use Illuminate\Support\Facades\DB;
 
+/**
+ * ユーザーテーブルのサービスクラス
+ * @package App\Services
+ */
 class UserService
 {
     public static function userIndex()
@@ -17,5 +21,3 @@ class UserService
         return UserActionHistory::all();
     }
 }
-
-
