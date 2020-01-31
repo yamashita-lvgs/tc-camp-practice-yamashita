@@ -12,4 +12,4 @@
 */
 
 // ユーザー一覧画面
-Route::get('users', 'UserController@index');
+Route::get('users', 'UserController@index'); // 初期表示

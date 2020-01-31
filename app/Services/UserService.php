@@ -7,19 +7,17 @@ use App\Models\UserActionHistory;
 use Illuminate\Support\Facades\DB;
 
 /**
- * ユーザーテーブルのサービスクラス
+ * ユーザーのサービスクラス
  * @package App\Services
  */
 class UserService
 {
-    public static function userIndex()
+    public static function getUser()
     {
         return User::all();
     }
-
-    public static function userActionHistoryIndex()
+    public static function getUserActionHistory()
     {
         return UserActionHistory::all();
     }
-
 }

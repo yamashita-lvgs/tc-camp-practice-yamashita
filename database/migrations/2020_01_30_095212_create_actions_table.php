@@ -11,6 +11,7 @@ class CreateActionsTable extends Migration
      *
      * @return void
      */
+    // TODO 機能開発優先のため、マイグレーションファイルは後で修正を行う。
     public function up()
     {
         Schema::create('actions', function (Blueprint $table) {

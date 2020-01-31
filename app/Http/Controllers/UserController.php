@@ -24,8 +24,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = UserService::userIndex();
-        $userActionHistories = UserService::userActionHistoryIndex();
+        $users = UserService::GetUser();
+        $userActionHistories = UserService::GetUserActionHistory();
         return view('user.index', ['users' => $users,'userActionHistories' => $userActionHistories ]);
     }
 }
