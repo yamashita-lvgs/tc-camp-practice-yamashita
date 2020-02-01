@@ -9,7 +9,7 @@
 <a href="users/create">新規ユーザー登録</a>
 <table>
     <tr>
-        <th>ID!</th>
+        <th>ID</th>
         <th>名前</th>
         <th>権限</th>
         <th>メールアドレス</th>
