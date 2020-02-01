@@ -53,3 +53,4 @@
             return redirect("/users/{$user->id}/edit")->with('message', 'ユーザー新規登録しました。');
         }
     }
+}

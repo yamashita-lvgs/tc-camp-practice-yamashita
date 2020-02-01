@@ -2,51 +2,82 @@
 <html lang="ja">
 <head>
     <title>ユーザー一覧</title>
+<!--
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
+-->
 </head>
 <body>
 <h1>ユーザー新規登録</h1>
-<form method="post">
+<table>
+    <form method="post">
+        {{ csrf_field() }}
+        <tr>
+            <th>ログインID</th>
+            <td><input type="text" name="login_id" value="{{old('login_id')}}"></td>
+            @if ($errors->has('login_id'))
+                <td>{{$errors->first('login_id')}}</td>
+            @endif
+        </tr>
+        <br>
+        <tr>
+            <th>パスワード</th>
+            <td><input type="text" name="password" value="{{old('password')}}"></td>
+            @if ($errors->has('password'))
+                <td>{{$errors->first('password')}}</td>
+            @endif
+        </tr>
+        <tr>
+            <th>権限</th>
+            <td>けんげんからむ</td>
+        </tr>
+        <br>
+        <tr>
+            <th>氏名</th>
+            <td>姓<input type="text" name="last_name" value="{{old('last_name')}}"></td>
+            @if ($errors->has('last_name'))
+                <td>{{$errors->first('last_name')}}</td>
+            @endif
 
-    {{ csrf_field() }}
-    <tr>
-        <th>ログインID:</th>
-        <td><input type="text" name="login_id" value="{{old('login_id')}}"></td>
-        @if ($errors->has('name'))
-            <td>{{$errors->first('name')}}</td>
-        @endif
-    </tr>
-    <tr>
-        <th>パスワード:</th>
-        <td><input type="text" name="password" value="{{old('password')}}"></td>
-        @if ($errors->has('name'))
-            <td>{{$errors->first('password')}}</td>
-        @endif
-    </tr>
-    <tr>
-        <th>姓:</th>
-        <td><input type="text" name="password" value="{{old('last_name')}}"></td>
-        @if ($errors->has('last_name'))
-            <td>{{$errors->first('last_name')}}</td>
-        @endif
-    </tr>
-    <tr>
-        <th>姓:</th>
-        <td><input type="text" name="password" value="{{old('last_name')}}"></td>
-        @if ($errors->has('last_name'))
-            <td>{{$errors->first('last_name')}}</td>
-        @endif
-    </tr>
+            <td>名<input type="text" name="first_name" value="{{old('first_name')}}"></td>
+            @if ($errors->has('first_name'))
+                <td>{{$errors->first('first_name')}}</td>
+            @endif
+        </tr>
+        <br>
+        <tr>
+            <th>シメイ</th>
+            <td>セイ<input type="text" name="last_name_kana" value="{{old('last_name_kana')}}"></td>
+            @if ($errors->has('last_name_kana'))
+                <td>{{$errors->first('last_name_kana')}}</td>
+            @endif
 
-        $table->string('last_name',255)->comment("姓");
-        $table->string('first_name',255)->comment("名");
-        $table->string('last_name_kana',255)->comment("セイ");
-        $table->string('first_name_kana',255)->comment("メイ");
-        $table->tinyInteger('gender_id')->comment("性別");
-        $table->string('email', 255)->unique()->comment("メールアドレス");
-
-
-</form>
+            <td>メイ<input type="text" name="first_name_kana" value="{{old('first_name_kana')}}"></td>
+            @if ($errors->has('first_name_kana'))
+                <td>{{$errors->first('first_name_kana')}}</td>
+            @endif
+        </tr>
+        <br>
+        <tr>
+            <th>性別</th>
+            <td><input type="text" name="gender_id" value="{{old('gender_id')}}"></td>
+            @if ($errors->has('gender_id'))
+                <td>{{$errors->first('gender_id')}}</td>
+            @endif
+        </tr>
+        <br>
+        <tr>
+            <th>メールアドレス</th>
+            <td><input type="text" name="email" value="{{old('email')}}"></td>
+            @if ($errors->has('email'))
+                <td>{{$errors->first('email')}}</td>
+            @endif
+        </tr>
+        <tr>
+            <th></th>
+            <td><input type="submit" value="send"></td>
+        </tr>
+    </form>
+</table>
 
 </body>
 </html>
