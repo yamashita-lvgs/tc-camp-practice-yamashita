@@ -6,7 +6,6 @@
     use App\Models\User;
     use App\Models\UserActionHistory;
     use App\Services\UserService;
-    use Config\Action;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\DB;
     use Illuminate\View\View;
@@ -31,7 +30,7 @@
 
         /**
          * 新規登録画面表示
-         * @return View ユーザー新規登録画面
+         * @return ユーザー新規登録画面
          */
         public function showCreateScreen()
         {
@@ -41,15 +40,13 @@
         /**
          * 新規登録処理実行
          * @param UserRequest $request リクエスト情報
-         * @return RedirectResponse     ユーザー編集画面リダイレクト
+         * @return ユーザー一覧画面リダイレクト
          */
-        public function create(UserRequest $request): RedirectResponse
+        public function create(UserRequest $request)
         {
             $validated = $request->validated();
-            $user = DB::transaction(function () use ($validated) {
-                $createUser = User::create($validated);
-                return $createUser;
-            });
-            return redirect("/users/{$user->id}/edit")->with('message', 'ユーザー新規登録しました。');
+            $users = UserService::GetUser();
+            $userActionHistories = UserService::GetUserActionHistory();
+            return redirect("/users");
         }
 }

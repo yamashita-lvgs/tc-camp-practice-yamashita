@@ -23,7 +23,7 @@
             <td>{{ $user->id }}</td>
             <td>{{ $user->getFullName() }}</td>
             <td>権限名いれる</td>
-            <td>{{ $user->email }}</td>
+            <td>{{ $user->mail }}</td>
             <td>{{ $user->created_at }}</td>
             <td>{{ $user->updated_at }}</td>
             <td><a href="users/{{$user->id}}/edit">更新</a></td>

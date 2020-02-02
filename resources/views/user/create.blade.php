@@ -28,7 +28,14 @@
         </tr>
         <tr>
             <th>権限</th>
-            <td>けんげんからむ</td>
+            <td>
+                <select name="role_id" value="{{old('role_id')}}" required>
+                    <option value="">選択してください。</option>
+                    <option value="1">管理者</option>
+                    <option value="2">副管理者</option>
+                    <option value="3">一般</option>
+                </select>
+            </td>
         </tr>
         <br>
         <tr>
@@ -37,7 +44,6 @@
             @if ($errors->has('last_name'))
                 <td>{{$errors->first('last_name')}}</td>
             @endif
-
             <td>名<input type="text" name="first_name" value="{{old('first_name')}}"></td>
             @if ($errors->has('first_name'))
                 <td>{{$errors->first('first_name')}}</td>
@@ -50,7 +56,6 @@
             @if ($errors->has('last_name_kana'))
                 <td>{{$errors->first('last_name_kana')}}</td>
             @endif
-
             <td>メイ<input type="text" name="first_name_kana" value="{{old('first_name_kana')}}"></td>
             @if ($errors->has('first_name_kana'))
                 <td>{{$errors->first('first_name_kana')}}</td>
@@ -59,7 +64,11 @@
         <br>
         <tr>
             <th>性別</th>
-            <td><input type="text" name="gender_id" value="{{old('gender_id')}}"></td>
+            <td>
+                    <input type="radio" name="gender_id" value="1">男
+                    <input type="radio" name="gender_id" value="2">女
+                    <input type="radio" name="gender_id" value="3">その他
+            </td>
             @if ($errors->has('gender_id'))
                 <td>{{$errors->first('gender_id')}}</td>
             @endif
@@ -67,14 +76,14 @@
         <br>
         <tr>
             <th>メールアドレス</th>
-            <td><input type="text" name="email" value="{{old('email')}}"></td>
-            @if ($errors->has('email'))
-                <td>{{$errors->first('email')}}</td>
+            <td><input type="text" name="mail" value="{{old('mail')}}"></td>
+            @if ($errors->has('mail'))
+                <td>{{$errors->first('mail')}}</td>
             @endif
         </tr>
         <tr>
             <th></th>
-            <td><input type="submit" value="send"></td>
+            <td><input type="submit" value="登録"></td>
         </tr>
     </form>
 </table>
