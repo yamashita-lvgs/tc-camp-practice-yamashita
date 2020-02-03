@@ -22,6 +22,6 @@ class UserActionHistory extends Model
 
     public function content()
     {
-        return config('action.content')[$this->content_id];
+        return config('columnName. action')[$this->content_id];
     }
 }

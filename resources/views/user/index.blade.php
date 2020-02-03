@@ -10,8 +10,9 @@
 <table>
     <tr>
         <th>ID</th>
-        <th>名前</th>
         <th>権限</th>
+        <th>名前</th>
+        <th>性別</th>
         <th>メールアドレス</th>
         <th>登録日時</th>
         <th>更新日時</th>
@@ -21,12 +22,12 @@
     @foreach($users as $user)
         <tr>
             <td>{{ $user->id }}</td>
+            <td>{{ $user->role() }}</td>
             <td>{{ $user->getFullName() }}</td>
-            <td>権限名いれる</td>
-            <td>{{ $user->email }}</td>
+            <td>{{ $user->gender() }}</td>
+            <td>{{ $user->mail }}</td>
             <td>{{ $user->created_at }}</td>
-<!--updated_tat直す-->
-            <td>{{ $user->updated_tat }}</td>
+            <td>{{ $user->updated_at }}</td>
             <td><a href="users/{{$user->id}}/edit">更新</a></td>
             <td><a href="users/{{$user->id}}/delete">削除</a></td>
         </tr>
@@ -44,7 +45,7 @@
         <tr>
             <td>{{ $userActionHistory->actioned_at }}</td>
             <td>{{ $userActionHistory->content() }}</td>
-<!--フルネームにするのは履歴とユーザーどっちのモデルか？-->
+            <!--フルネームにするのは履歴とユーザーどっちのモデルか？-->
             <td>{{ $userActionHistory->actioned_user->last_name }} {{ $userActionHistory->actioned_user->first_name }}</td>
             <td>{{ $userActionHistory->actioning_user->last_name }} {{ $userActionHistory->actioning_user->first_name }}</td>
         </tr>
