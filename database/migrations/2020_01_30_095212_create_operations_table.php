@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateActionsTable extends Migration
+class CreateOperationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,12 @@ class CreateActionsTable extends Migration
     // TODO 機能開発優先のため、マイグレーションファイルは後で修正を行う。
     public function up()
     {
-        Schema::create('actions', function (Blueprint $table) {
+        Schema::create('operations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('content', 255)->comment("削除日");;
             $table->rememberToken();
         });
-        DB::statement("ALTER TABLE actions COMMENT '操作種別'");
+        DB::statement("ALTER TABLE operations COMMENT '操作種別'");
     }
 
     /**

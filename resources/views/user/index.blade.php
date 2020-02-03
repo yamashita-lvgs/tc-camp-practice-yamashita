@@ -15,7 +15,7 @@
             <th>メールアドレス</th>
             <th>登録者</th>
             <th>登録日時</th>
-            <th>登録者</th>
+            <th>更新者</th>
             <th>更新日時</th>
             <th></th>
             <th></th>
@@ -23,7 +23,7 @@
         @foreach($users as $user)
             <tr>
                 <td>{{ $user->id }}</td>
-                <td>{{ $user->getFullName() }}</td>
+                <td>{{ $user->full_name }}</td>
                 <td>権限名いれる</td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->created_user_id }}</td>
@@ -43,13 +43,12 @@
             <th>操作対象ユーザー</th>
             <th>操作実施ユーザー</th>
         </tr>
-        @foreach($userActionHistories as $userActionHistory)
+        @foreach($userOperationHistories as $userOperationHistory)
             <tr>
-                <td>{{ $userActionHistory->actioned_at }}</td>
-                <td>{{ $userActionHistory->content() }}</td>
-                <!--フルネームにするのは履歴とユーザーどっちのモデルか？-->
-                <td>{{ $userActionHistory->actioned_user->last_name }} {{ $userActionHistory->actioned_user->first_name }}</td>
-                <td>{{ $userActionHistory->actioning_user->last_name }} {{ $userActionHistory->actioning_user->first_name }}</td>
+                <td>{{ $userOperationHistory->actioned_at }}</td>
+                <td>{{ $userOperationHistory->operation}}</td>
+                <td>{{ $userOperationHistory->operated_full_name }} </td>
+                <td>{{ $userOperationHistory->operating_full_name }}</td>
             </tr>
         @endforeach
     </table>

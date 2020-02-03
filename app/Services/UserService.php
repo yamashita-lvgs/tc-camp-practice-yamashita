@@ -3,7 +3,7 @@ namespace App\Services;
 
 use App\Models\Action;
 use App\Models\User;
-use App\Models\UserActionHistory;
+use App\Models\UserOperationHistory;
 use Illuminate\Support\Facades\DB;
 
 /**

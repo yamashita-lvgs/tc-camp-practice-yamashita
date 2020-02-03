@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserActionHistoriesTable extends Migration
+class CreateUserOperationHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,15 +14,15 @@ class CreateUserActionHistoriesTable extends Migration
     // TODO 機能開発優先のため、マイグレーションファイルは後で修正を行う。
     public function up()
     {
-        Schema::create('user_action_histories', function (Blueprint $table) {
+        Schema::create('user_operation_histories', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('actioned_user_id')->comment("操作対象ユーザーID");
-            $table->unsignedInteger('actioning_user_id')->comment("操作実施ユーザーID");
-            $table->unsignedInteger('content_id')->comment("操作種別ID");
-            $table->timestamp('actioned_at')->comment("操作日時");;
+            $table->unsignedInteger('operated_user_id')->comment("操作対象ユーザーID");
+            $table->unsignedInteger('operating_user_id')->comment("操作実施ユーザーID");
+            $table->unsignedInteger('operation_id')->comment("操作種別ID");
+            $table->timestamp('operated_at')->comment("操作日時");;
             $table->rememberToken();
         });
-        DB::statement("ALTER TABLE user_action_histories COMMENT '操作履歴'");
+        DB::statement("ALTER TABLE user_operation_histories COMMENT '操作履歴'");
     }
 
     /**

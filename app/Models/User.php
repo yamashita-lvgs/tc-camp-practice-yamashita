@@ -10,13 +10,23 @@
      */
     class User extends Model
     {
-        public function getFullName()
+        public function getFullNameAttribute()
         {
             return "{$this->last_name} {$this->first_name}";
         }
 
-        public function getActionedFullName()
+        public function getOperatedFullNameAttribute()
         {
-            return "{$this->actioned_user->last_name} {$this->actioned_user->first_name}";
+            return "{$this->Operated_user->last_name} {$this->Operated_user->first_name}";
+        }
+
+        public function getOperatingFullNameAttribute()
+        {
+            return "{$this->Operating_user->last_name} {$this->Operating_user->first_name}";
+        }
+
+        public function getOperationAttribute()
+        {
+            return OPRATIONS_LIST[$this->operation_id];
         }
     }
