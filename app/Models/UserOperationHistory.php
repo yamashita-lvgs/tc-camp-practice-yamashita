@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * ユーザー変更履歴関するクラス
- * @property mixed content_id
+ * ユーザー変更履歴テーブルのモデルクラス
+ * @package App\Models
  */
-class UserActionHistory extends Model
+class UserOperationHistory extends Model
 {
     public function actioned_user()
     {

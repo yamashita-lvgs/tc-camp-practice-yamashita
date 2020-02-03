@@ -4,13 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use App\Models\User;
-use App\Models\UserActionHistory;
+use App\Models\UserOperationHistory;
 use App\Services\UserService;
 use Config\Action;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\View\View;
-
 
 /**
  * ユーザーに関するコントローラークラス
@@ -24,8 +22,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = UserService::GetUser();
-        $userActionHistories = UserService::GetUserActionHistory();
-        return view('user.index', ['users' => $users,'userActionHistories' => $userActionHistories ]);
+        $users = UserService::GetUsers();
+        $userOperationHistories = UserService::GetUserOperationHistories();
+        return view('user.index', ['users' => $users,'userOperationHistories' => $userOperationHistories ]);
     }
 }
