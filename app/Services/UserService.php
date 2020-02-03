@@ -18,7 +18,7 @@ class UserService
      */
     public static function getUsers()
     {
-        return User::all();
+        return User::all()->sortBy('id');
     }
 
     /**
@@ -27,6 +27,6 @@ class UserService
      */
     public static function getUserOperationHistories()
     {
-        return UserOperationHistory::all();
+        return UserOperationHistory::all()->sortBy('id');
     }
 }
