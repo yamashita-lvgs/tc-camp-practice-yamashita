@@ -2,12 +2,12 @@
 <html lang="ja">
     <head>
         <title>ユーザー一覧</title>
-        {{$historyCount}}
         <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     </head>
     <body>
         <h1>ユーザー一覧</h1>
         <a href="users/create">新規ユーザー登録</a>
+        <p>最大{{$historyCount}}件まで表示します。</p>
         <table>
             <tr>
                 <th>ID</th>
@@ -37,6 +37,7 @@
             @endforeach
         </table>
         <h1>ユーザー情報操作履歴</h1>
+        <p>最新の操作{{$historyCount}}件まで表示します。</p>
         <table>
             <tr>
                 <th>操作日時</th>
