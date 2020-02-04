@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->comment("ID");
             $table->string('login_id',255)->comment("ログインID");
             $table->string('password',255)->comment("パスワード");
             $table->string('last_name',255)->comment("姓");
@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('updated_at')->comment("更新日");
             $table->tinyInteger('deleted_user_id')->nullable()->comment("削除ユーザーID");
             $table->timestamp('deleted_at')->nullable()->comment("削除日");
-            $table->rememberToken();
+            $table->rememberToken()->comment("Eloquent認証ドライバー使用");
         });
         DB::statement("ALTER TABLE users COMMENT 'ユーザー'");
     }

@@ -4,7 +4,8 @@ namespace App\Services;
 use App\Models\Action;
 use App\Models\User;
 use App\Models\UserOperationHistory;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Supportt\Facades\DB;
+use Illuminate\Support\Collection;
 
 /**
  * ユーザーコントローラで用いるサービスクラス
@@ -18,7 +19,7 @@ class UserService
      */
     public static function getUsers()
     {
-        return User::all()->sortBy('id');
+        return User::orderBy('id')->get();
     }
 
     /**
@@ -27,6 +28,6 @@ class UserService
      */
     public static function getUserOperationHistories()
     {
-        return UserOperationHistory::all()->sortBy('id');
+        return UserOperationHistory::orderBy('operated_at', 'desc')->get();
     }
 }
