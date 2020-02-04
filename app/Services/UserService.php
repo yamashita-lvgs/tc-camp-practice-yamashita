@@ -19,7 +19,7 @@ class UserService
      */
     public static function getUsers()
     {
-        return User::orderBy('id')->get();
+        return User::orderBy('id')->take(config('const.HISTORY_COUNT'))->get();
     }
 
     /**
@@ -28,6 +28,6 @@ class UserService
      */
     public static function getUserOperationHistories()
     {
-        return UserOperationHistory::orderBy('operated_at', 'desc')->get();
+        return UserOperationHistory::orderBy('operated_at', 'desc')->take(config('const.HISTORY_COUNT'))->get();
     }
 }

@@ -2,6 +2,7 @@
 <html lang="ja">
     <head>
         <title>ユーザー一覧</title>
+        {{$historyCount}}
         <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     </head>
     <body>
