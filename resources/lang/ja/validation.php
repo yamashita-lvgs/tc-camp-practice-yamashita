@@ -64,6 +64,7 @@ return [
     'ipv4'                 => ':attributeには、有効なIPv4アドレスを指定してください。',
     'ipv6'                 => ':attributeには、有効なIPv6アドレスを指定してください。',
     'json'                 => ':attributeには、有効なJSON文字列を指定してください。',
+    'katakana' => ':全角カタカナで入力してください。',
     'lt'                   => [
         'numeric' => ':attributeには、:valueより小さな値を指定してください。',
         'file'    => ':attributeには、:value kBより小さなファイルを指定してください。',
@@ -87,7 +88,7 @@ return [
     'min'                  => [
         'numeric' => ':attributeには、:min以上の数字を指定してください。',
         'file'    => ':attributeには、:min kB以上のファイルを指定してください。',
-        'string'  => ':attributeは、:min文字以上で指定してください。',
+        'string'  => '::min文字以上で指定してください。',
         'array'   => ':attributeは:min個以上指定してください。',
     ],
     'not_in'               => '選択された:attributeは正しくありません。',
@@ -95,7 +96,7 @@ return [
     'numeric'              => ':attributeには、数字を指定してください。',
     'present'              => ':attributeが存在していません。',
     'regex'                => ':attributeに正しい形式を指定してください。',
-    'required'             => ':attributeは必ず指定してください。',
+    'required'             => ':必ず指定してください。',
     'required_if'          => ':otherが:valueの場合、:attributeも指定してください。',
     'required_unless'      => ':otherが:valuesでない場合、:attributeを指定してください。',
     'required_with'        => ':valuesを指定する場合は、:attributeも指定してください。',
@@ -145,6 +146,7 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+    ],
 
 ];

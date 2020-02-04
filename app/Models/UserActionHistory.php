@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserActionHistory extends Model
 {
+    use Timestamp;
+
     public function actioned_user()
     {
         return $this->belongsTo(User::class, 'actioned_user_id');
