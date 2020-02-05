@@ -1,13 +1,14 @@
 <?php
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Models\UserOperationHistory;
 use App\Services\UserService;
 use Config\Action;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 
 /**
  * ユーザーに関するコントローラークラス

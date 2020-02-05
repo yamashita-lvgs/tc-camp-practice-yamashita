@@ -16,6 +16,16 @@ class User extends Model
         return $this->belongsTo(Role::class, 'role_id');
     }
 
+    public function createdUser()
+    {
+        return $this->belongsTo(User::class, 'created_user_id');
+    }
+
+    public function updatedUser()
+    {
+        return $this->belongsTo(User::class, 'updated_user_id');
+    }
+
     /**
      * ユーザーフルネームのアトリビュート定義
      * @return ユーザーフルネーム
