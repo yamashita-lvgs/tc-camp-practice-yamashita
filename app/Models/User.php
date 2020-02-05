@@ -11,9 +11,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class User extends Model
 {
-    /**
-     *日時に関するカラムの定義
-     */
     protected $dates = [
         'created_at',
         'updated_at',
