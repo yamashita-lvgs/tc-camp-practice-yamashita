@@ -19,6 +19,8 @@ class User extends Model
         'deleted_at',
     ];
 
+    protected $guarded = [];
+
     public function role()
     {
         return $this->belongsTo(Role::class, 'role_id');
@@ -35,6 +37,15 @@ class User extends Model
     }
 
     /**
+     * 該当する性別のアトリビュート定義
+     * @return 該当する性別
+     */
+    public function getGenderAttribute()
+    {
+        return GENDER_LIST[$this->gender_id];
+    }
+
+    /**
      * ユーザーフルネームのアトリビュート定義
      * @return string ユーザーフルネーム
      */
@@ -47,24 +58,17 @@ class User extends Model
      * 全ユーザー情報取得
      * @return collection 全ユーザー情報
      */
-    public static function getUsers() :collection
+    public static function getUsers(): collection
     {
         return self::orderBy('id', 'asc')->get();
     }
+
 //////
-        protected $guarded = [];
-
-
-        public function getActionedFullName()
-        {
-            return "{$this->actioned_user->last_name} {$this->actioned_user->first_name}";
-        }
-
-        public function gender()
-        {
-            return config('columnName.gender')[$this->gender_id];
-        }
+    public function gender()
+    {
+        return config('columnName.gender')[$this->gender_id];
     }
+}
 
 
 

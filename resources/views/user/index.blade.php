@@ -10,8 +10,8 @@
         <table>
             <tr>
                 <th>ID</th>
-                <th>名前</th>
                 <th>役割</th>
+                <th>名前</th>
                 <th>メールアドレス</th>
                 <th>登録者</th>
                 <th>登録日時</th>
@@ -23,8 +23,8 @@
             @foreach($users as $user)
                 <tr>
                     <td>{{ $user->id }}</td>
-                    <td>{{ $user->full_name }}</td>
                     <td>{{ $user->role->name }}</td>
+                    <td>{{ $user->full_name }}</td>
                     <td>{{ $user->mail }}</td>
                     <td>{{ $user->created_user->full_name }}</td>
                     <td>{{ $user->created_at_screen }}</td>

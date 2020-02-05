@@ -37,12 +37,13 @@ class UserController extends Controller
          * @param UserRequest $request リクエスト情報
          * @return ユーザー一覧画面リダイレクト
          */
-        public function create(UserRequest $request)
+        public function create(UserRequest $request )
         {
             $validated = $request->validated();
             $user = UserService::InsertUser($validated);
-            $users = UserService::GetUser();
-            $userActionHistories = UserService::GetUserActionHistory();
-            return redirect("/users");
+            $users = UserService::GetUsers($user);
+//userのid取得したい。
+            $user =User::find($id);
+            return view('user.createCompletion', ['user'=> $user]);
         }
 }

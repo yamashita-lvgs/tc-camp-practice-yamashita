@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ja">
 <head>
-    <title>ユーザー一覧</title>
+    <title>ユーザー新規登録</title>
 <!--
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
 -->
@@ -27,7 +27,7 @@
             @endif
         </tr>
         <tr>
-            <th>権限</th>
+            <th>役割</th>
             <td>
                 <select name="role_id" value="{{old('role_id')}}" required>
                     <option value="">選択してください。</option>
