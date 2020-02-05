@@ -9,7 +9,6 @@
     use Illuminate\Support\Facades\DB;
     use Illuminate\View\View;
 
-
     /**
      * ユーザーに関するコントローラークラス
      * @package App\Http\Controllers
