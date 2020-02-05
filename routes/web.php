@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// ユーザー一覧画面
+Route::get('users', 'UserController@index'); // 初期表示
