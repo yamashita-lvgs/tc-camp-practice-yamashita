@@ -11,14 +11,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class User extends Model
 {
+    use ScreenDateTimeFormat;
+
     protected $dates = [
         'created_at',
         'updated_at',
         'deleted_at',
-        'operated_at',
     ];
-
-    use ScreenDateTimeFormat;
 
     public function role()
     {

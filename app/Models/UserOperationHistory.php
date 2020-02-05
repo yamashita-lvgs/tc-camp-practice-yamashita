@@ -11,14 +11,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserOperationHistory extends Model
 {
+    use ScreenDateTimeFormat;
+
     protected $dates = [
         'created_at',
         'updated_at',
         'deleted_at',
         'operated_at',
     ];
-
-    use ScreenDateTimeFormat;
 
     public function operated_user()
     {
@@ -36,7 +36,7 @@ class UserOperationHistory extends Model
      */
     public function getOperationTypeNameAttribute()
     {
-        return OPERATION_TYPE_LIST[$this->operation_id];
+        return OPERATION_TYPE_NAME_LIST[$this->operation_id];
     }
 
     /**
