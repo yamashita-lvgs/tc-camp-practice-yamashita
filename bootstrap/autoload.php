@@ -11,14 +11,16 @@
     | loading of any our classes "manually". Feels great to relax.
     |
     */
+
     require __DIR__.'/../vendor/autoload.php';
 
-    $filelist = glob(__DIR__ . '/constants/*.php');
-    foreach ($filelist as $file) {
+    $fileList = glob(__DIR__ . '/constants/*.php');
+    foreach ($fileList as $file) {
         if (is_file($file)) {
             require_once $file;
         }
     }
+
     /*
     |--------------------------------------------------------------------------
     | Include The Compiled Class File
@@ -29,7 +31,3 @@
     | by a request. The Artisan "optimize" is used to create this file.
     |
     */
-    $compiledPath = __DIR__.'/cache/compiled.php';
-    if (file_exists($compiledPath)) {
-        require $compiledPath;
-    }

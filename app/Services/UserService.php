@@ -8,23 +8,23 @@ use Illuminate\Supportt\Facades\DB;
 use Illuminate\Support\Collection;
 
 /**
- * ユーザーコントローラで用いるサービスクラス
+ * ユーザーのサービスクラス
  * @package App\Services
  */
 class UserService
 {
     /**
-     * ユーザー一覧画面表示
-     * @return 全ユーザー
+     * 全ユーザー情報取得
+     * @return 全ユーザー情報
      */
     public static function getUsers()
     {
-        return User::orderBy('id')->take(config('const.HISTORY_COUNT'))->get();
+        return User::orderBy('id')->get();
     }
 
     /**
-     * ユーザー一覧画面表示
-     * @return 全ユーザー情報操作履歴
+     * ユーザー操作履歴取得
+     * @return 直近10件の情報操作履歴
      */
     public static function getUserOperationHistories()
     {

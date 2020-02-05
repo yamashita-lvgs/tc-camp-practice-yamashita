@@ -4,23 +4,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * ユーザー変更履歴テーブルのモデルクラス
+ * ユーザー操作履歴テーブルのモデルクラス
  * @package App\Models
  */
 class UserOperationHistory extends Model
 {
-    public function actioned_user()
+    public function operated_user()
     {
-        return $this->belongsTo(User::class, 'actioned_user_id');
+        return $this->belongsTo(User::class, 'operated_user_id');
     }
 
-    public function actioning_user()
+    public function operating_user()
     {
-        return $this->belongsTo(User::class, 'actioning_user_id');
+        return $this->belongsTo(User::class, 'operating_user_id');
     }
 
-    public function content()
+    /**
+     * 全操作項目の取得
+     * @return 全操作項目
+     */
+    public function getOperationNameAttribute()
     {
-        return config('action.content')[$this->content_id];
+        return OPERATIONS_TYPE[$this->operation_id];
     }
 }

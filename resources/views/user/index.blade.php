@@ -12,7 +12,7 @@
             <tr>
                 <th>ID</th>
                 <th>名前</th>
-                <th>権限</th>
+                <th>役割</th>
                 <th>メールアドレス</th>
                 <th>登録者</th>
                 <th>登録日時</th>
@@ -25,12 +25,12 @@
                 <tr>
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->full_name }}</td>
-                    <td>権限名いれる</td>
-                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->role->name}}</td>
+                    <td>{{ $user->mail }}</td>
                     <td>{{ $user->created_user_id }}</td>
-                    <td>{{ $user->created_at }}</td>
+                    <td>{{ $user->updated_at_screen }}</td>
                     <td>{{ $user->updated_user_id }}</td>
-                    <td>{{ $user->updated_at }}</td>
+                    <td>{{ $user->updated_at_screen }}</td>
                     <td><a href="users/{{$user->id}}/edit">更新</a></td>
                     <td><a href="users/{{$user->id}}/delete">削除</a></td>
                 </tr>
@@ -47,10 +47,10 @@
             </tr>
             @foreach($userOperationHistories as $userOperationHistory)
                 <tr>
-                    <td>{{ $userOperationHistory->actioned_at }}</td>
-                    <td>{{ $userOperationHistory->operation}}</td>
-                    <td>{{ $userOperationHistory->operated_full_name }} </td>
-                    <td>{{ $userOperationHistory->operating_full_name }}</td>
+                    <td>{{ $userOperationHistory->operating_user->updated_at_screen }}</td>
+                    <td>{{ $userOperationHistory->operation_name}}</td>
+                    <td>{{ $userOperationHistory->operating_user->full_name }} </td>
+                    <td>{{ $userOperationHistory->operated_user->full_name }}</td>
                 </tr>
             @endforeach
         </table>
