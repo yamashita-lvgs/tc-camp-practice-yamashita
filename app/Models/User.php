@@ -42,6 +42,6 @@ class User extends Model
      */
     public static function getUsers()
     {
-        return self::orderBy('name', 'asc')->get();
+        return self::orderBy('id', 'asc')->get();
     }
 }

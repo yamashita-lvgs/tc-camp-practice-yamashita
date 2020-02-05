@@ -47,7 +47,7 @@
             </tr>
             @foreach($latestUserOperationHistories as $latestUserOperationHistory)
                 <tr>
-                    <td>{{ $latestUserOperationHistory->operated_at }}</td>
+                    <td>{{ $latestUserOperationHistory->operated_at_screen }}</td>
                     <td>{{ $latestUserOperationHistory->operation_name}}</td>
                     <td>{{ $latestUserOperationHistory->operating_user->full_name }} </td>
                     <td>{{ $latestUserOperationHistory->operated_user->full_name }}</td>

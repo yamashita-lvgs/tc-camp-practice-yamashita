@@ -22,8 +22,8 @@ class UserService
     }
 
     /**
-     * ユーザー操作履歴取得
-     * @return 情報操作履歴
+     * 最新のユーザー情報操作履歴取得
+     * @return 最新のユーザー情報操作履歴
      */
     public static function getLatestUserOperationHistories()
     {
