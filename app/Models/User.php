@@ -1,8 +1,9 @@
 <?php
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Traits\TimestampScreen;
+use Illuminate\Database\Eloquent\Model;
+
 /**
  * ユーザーテーブルのモデルクラス
  * @package App\Models
@@ -28,11 +29,19 @@ class User extends Model
 
     /**
      * ユーザーフルネームのアトリビュート定義
-     * @return ユーザーフルネーム
+     * @return string ユーザーフルネーム
      */
-    public function getFullNameAttribute()
+    public function getFullNameAttribute() :string
     {
         return "{$this->last_name} {$this->first_name}";
     }
 
+    /**
+     * 全ユーザー情報取得
+     * @return 全ユーザー情報
+     */
+    public static function getUsers()
+    {
+        return self::orderBy('name', 'asc')->get();
+    }
 }

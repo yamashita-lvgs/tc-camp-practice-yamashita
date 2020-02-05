@@ -5,10 +5,9 @@ use App\Models\Action;
 use App\Models\User;
 use App\Models\UserOperationHistory;
 use Illuminate\Supportt\Facades\DB;
-use Illuminate\Support\Collection;
 
 /**
- * ユーザーのサービスクラス
+ * ユーザー情報と一覧とユーザー情報操作履歴のサービスクラス
  * @package App\Services
  */
 class UserService
@@ -19,15 +18,16 @@ class UserService
      */
     public static function getUsers()
     {
-        return User::orderBy('id')->get();
+        return User::getUsers();
     }
 
     /**
      * ユーザー操作履歴取得
-     * @return 直近10件の情報操作履歴
+     * @return 情報操作履歴
      */
-    public static function getUserOperationHistories()
+    public static function getLatestUserOperationHistories()
     {
-        return UserOperationHistory::orderBy('operated_at', 'desc')->take(config('const.HISTORY_COUNT'))->get();
+        return UserOperationHistory::getLatestUserOperationHistories();
     }
 }
+

@@ -45,14 +45,15 @@
                 <th>操作対象ユーザー</th>
                 <th>操作実施ユーザー</th>
             </tr>
-            @foreach($userOperationHistories as $userOperationHistory)
+            @foreach($latestUserOperationHistories as $latestUserOperationHistory)
                 <tr>
-                    <td>{{ $userOperationHistory->operating_user->updated_at_screen }}</td>
-                    <td>{{ $userOperationHistory->operation_name}}</td>
-                    <td>{{ $userOperationHistory->operating_user->full_name }} </td>
-                    <td>{{ $userOperationHistory->operated_user->full_name }}</td>
+                    <td>{{ $latestUserOperationHistory->operated_at }}</td>
+                    <td>{{ $latestUserOperationHistory->operation_name}}</td>
+                    <td>{{ $latestUserOperationHistory->operating_user->full_name }} </td>
+                    <td>{{ $latestUserOperationHistory->operated_user->full_name }}</td>
                 </tr>
             @endforeach
         </table>
     </body>
 </html>
+
