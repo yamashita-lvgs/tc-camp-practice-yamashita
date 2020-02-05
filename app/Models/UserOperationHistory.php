@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-use App\Traits\ScreenDateTimeFormatList;
+use App\Traits\ScreenDateTimeFormat;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,11 +11,17 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserOperationHistory extends Model
 {
+    /**
+     *日時に関するカラムの定義
+     */
     protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
         'operated_at',
     ];
 
-    use ScreenDateTimeFormatList;
+    use ScreenDateTimeFormat;
 
     public function operated_user()
     {
@@ -28,21 +34,12 @@ class UserOperationHistory extends Model
     }
 
     /**
-     * 該当する操作項目の取得
+     * 該当する操作項目のアトリビュート定義
      * @return 該当する操作項目
      */
     public function getOperationTypeNameAttribute()
     {
         return OPERATION_TYPE_LIST[$this->operation_id];
-    }
-
-    /**
-     * 最新のユーザー操作履歴取得
-     * @return collection 最新のユーザー情報操作履歴
-     */
-    public static function getLatestUserOperationHistories() :collection
-    {
-        return self::orderBy('operated_at', 'desc')->take(config('const.HISTORY_COUNT'))->get();
     }
 
     /**
@@ -52,5 +49,14 @@ class UserOperationHistory extends Model
     public function getOperatedAtScreenAttribute() :string
     {
         return $this->operated_at->format(SCREEN_DATE_TIME_FORMAT);
+    }
+
+    /**
+     * 最新のユーザー操作履歴取得
+     * @return collection 最新のユーザー情報操作履歴
+     */
+    public static function getLatestUserOperationHistories() :collection
+    {
+        return self::orderBy('operated_at', 'desc')->take(config('const.HISTORY_COUNT'))->get();
     }
 }

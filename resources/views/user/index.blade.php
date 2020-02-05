@@ -27,7 +27,7 @@
                     <td>{{ $user->role->name }}</td>
                     <td>{{ $user->mail }}</td>
                     <td>{{ $user->created_user->full_name }}</td>
-                    <td>{{ $user->updated_at_screen }}</td>
+                    <td>{{ $user->created_at_screen }}</td>
                     <td>{{ $user->updated_user->full_name }}</td>
                     <td>{{ $user->updated_at_screen }}</td>
                     <td><a href="users/{{ $user->id }}/edit">更新</a></td>

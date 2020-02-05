@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Supportt\Facades\DB;
 
 /**
- * ユーザー情報と一覧とユーザー情報操作履歴のサービスクラス
+ * ユーザー情報のサービスクラス
  * @package App\Services
  */
 class UserService

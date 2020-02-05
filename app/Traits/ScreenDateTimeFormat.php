@@ -1,12 +1,10 @@
 <?php
 namespace App\Traits;
 
-use Illuminate\Database\Eloquent\Model;
-
 /**
- * 年月日時間表示に関するトレイト
+ * 画面表示の日時に関するトレイト
  */
-trait ScreenDateTimeFormatList
+trait ScreenDateTimeFormat
 {
     /**
      * 画面表示用登録日時のアトリビュート定義

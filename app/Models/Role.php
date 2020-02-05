@@ -9,5 +9,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Role extends Model
 {
-
+    /**
+     *日時に関するカラムの定義
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+        'operated_at',
+    ];
 }
