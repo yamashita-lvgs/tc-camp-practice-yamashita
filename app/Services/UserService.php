@@ -2,28 +2,37 @@
 
     namespace App\Services;
 
-    use App\Http\Requests\UserRequest;
-    use App\Models\Action;
-    use App\Models\User;
-    use App\Models\UserActionHistory;
-    use Illuminate\Http\Request;
-    use Illuminate\Support\Facades\DB;
+use App\Models\Action;
+use App\Models\User;
+use App\Models\UserOperationHistory;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Supportt\Facades\DB;
+
+
+/**
+ * ユーザー情報のサービスクラス
+ * @package App\Services
+ */
+class UserService
+{
+    /**
+     * 全ユーザー情報取得
+     * @return collection 全ユーザー情報
+     */
+    public static function getUsers() :collection
+    {
+        return User::getUsers();
+    }
 
     /**
-     * ユーザーのサービスクラス
-     * @package App\Services
+     * 最新のユーザー情報操作履歴取得
+     * @return collection 最新のユーザー情報操作履歴
      */
-    class UserService
+    public static function getLatestUserOperationHistories() :collection
     {
-        public static function getUser()
-        {
-            return User::all();
-        }
-
-        public static function getUserActionHistory()
-        {
-            return UserActionHistory::all();
-        }
+        return UserOperationHistory::getLatestUserOperationHistories();
+    }
+  
 
         public static function insertUser($validated)
         {
@@ -31,5 +40,6 @@
                 $createUser = User::create($validated);
                 return $createUser;
             });
-        }
-    }
+}
+
+

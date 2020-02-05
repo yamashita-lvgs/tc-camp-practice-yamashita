@@ -1,30 +1,27 @@
 <?php
-    namespace App\Http\Controllers;
+namespace App\Http\Controllers;
 
-    use App\Http\Requests\UserRequest;
-    use App\Models\User;
-    use App\Models\UserActionHistory;
-    use App\Services\UserService;
-    use Illuminate\Http\Request;
-    use Illuminate\Support\Facades\DB;
-    use Illuminate\View\View;
+use App\Http\Requests\UserRequest;
+use App\Services\UserService;
+use Config\Action;
 
+/**
+ * ユーザーに関するコントローラークラス
+ * @package App\Http\Controllers
+ */
+class UserController extends Controller
+{
     /**
-     * ユーザーに関するコントローラークラス
-     * @package App\Http\Controllers
+     * ユーザー一覧画面表示
+     * @return ユーザー一覧
      */
-    class UserController extends Controller
+    public function index()
     {
-        /**
-         * ユーザー一覧画面表示
-         * @return ユーザー一覧画面
-         */
-        public function index()
-        {
-            $users = UserService::GetUser();
-            $userActionHistories = UserService::GetUserActionHistory();
-            return view('user.index', ['users' => $users, 'userActionHistories' => $userActionHistories]);
-        }
+        $users = UserService::getUsers();
+        $latestUserOperationHistories = UserService::getLatestUserOperationHistories();
+        $historyCount = config('const.HISTORY_COUNT');
+        return view('user.index', compact('users', 'latestUserOperationHistories', 'historyCount'));
+    }
 
         /**
          * 新規登録画面表示
