@@ -2,12 +2,11 @@
 <html lang="ja">
     <head>
         <title>ユーザー一覧</title>
-        <link rel="stylesheet" href="{{asset('css/styles.css')}}">
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     </head>
     <body>
         <h1>ユーザー一覧</h1>
         <a href="users/create">新規ユーザー登録</a>
-        <p>最大{{$historyCount}}件まで表示します。</p>
         <table>
             <tr>
                 <th>ID</th>
@@ -25,19 +24,19 @@
                 <tr>
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->full_name }}</td>
-                    <td>{{ $user->role->name}}</td>
+                    <td>{{ $user->role->name }}</td>
                     <td>{{ $user->mail }}</td>
-                    <td>{{ $user->createdUser->full_name }}</td>
+                    <td>{{ $user->created_user->full_name }}</td>
                     <td>{{ $user->updated_at_screen }}</td>
-                    <td>{{ $user->updatedUser->full_name }}</td>
+                    <td>{{ $user->updated_user->full_name }}</td>
                     <td>{{ $user->updated_at_screen }}</td>
-                    <td><a href="users/{{$user->id}}/edit">更新</a></td>
-                    <td><a href="users/{{$user->id}}/delete">削除</a></td>
+                    <td><a href="users/{{ $user->id }}/edit">更新</a></td>
+                    <td><a href="users/{{ $user->id }}/delete">削除</a></td>
                 </tr>
             @endforeach
         </table>
         <h1>ユーザー情報操作履歴</h1>
-        <p>最新の操作{{$historyCount}}件まで表示します。</p>
+        <p>最新の操作{{ $historyCount }}件まで表示します。</p>
         <table>
             <tr>
                 <th>操作日時</th>
@@ -48,8 +47,8 @@
             @foreach($latestUserOperationHistories as $latestUserOperationHistory)
                 <tr>
                     <td>{{ $latestUserOperationHistory->operated_at_screen }}</td>
-                    <td>{{ $latestUserOperationHistory->operation_name}}</td>
-                    <td>{{ $latestUserOperationHistory->operating_user->full_name }} </td>
+                    <td>{{ $latestUserOperationHistory->operation_type_name }}</td>
+                    <td>{{ $latestUserOperationHistory->operating_user->full_name }}</td>
                     <td>{{ $latestUserOperationHistory->operated_user->full_name }}</td>
                 </tr>
             @endforeach

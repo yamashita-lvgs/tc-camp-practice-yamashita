@@ -1,7 +1,8 @@
 <?php
 namespace App\Models;
 
-use App\Traits\TimestampScreen;
+use App\Traits\ScreenDateTimeFormatList;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -10,19 +11,19 @@ use Illuminate\Database\Eloquent\Model;
  */
 class User extends Model
 {
-    use TimestampScreen;
+    use ScreenDateTimeFormatList;
 
     public function role()
     {
         return $this->belongsTo(Role::class, 'role_id');
     }
 
-    public function createdUser()
+    public function created_user()
     {
         return $this->belongsTo(User::class, 'created_user_id');
     }
 
-    public function updatedUser()
+    public function updated_user()
     {
         return $this->belongsTo(User::class, 'updated_user_id');
     }
@@ -38,9 +39,9 @@ class User extends Model
 
     /**
      * 全ユーザー情報取得
-     * @return 全ユーザー情報
+     * @return collection 全ユーザー情報
      */
-    public static function getUsers()
+    public static function getUsers() :collection
     {
         return self::orderBy('id', 'asc')->get();
     }

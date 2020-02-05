@@ -1,7 +1,8 @@
 <?php
 namespace App\Models;
 
-use App\Traits\TimestampScreen;
+use App\Traits\ScreenDateTimeFormatList;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -10,14 +11,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserOperationHistory extends Model
 {
-    /**
-     * 操作日時を日付のカラムだと認識させる
-     */
     protected $dates = [
         'operated_at',
     ];
 
-    use TimestampScreen;
+    use ScreenDateTimeFormatList;
 
     public function operated_user()
     {
@@ -30,20 +28,29 @@ class UserOperationHistory extends Model
     }
 
     /**
-     * 全操作項目の取得
-     * @return 取得した全操作項目
+     * 該当する操作項目の取得
+     * @return 該当する操作項目
      */
-    public function getOperationNameAttribute()
+    public function getOperationTypeNameAttribute()
     {
         return OPERATION_TYPE_LIST[$this->operation_id];
     }
 
     /**
      * 最新のユーザー操作履歴取得
-     * @return 最新のユーザー情報操作履歴
+     * @return collection 最新のユーザー情報操作履歴
      */
-    public static function getLatestUserOperationHistories()
+    public static function getLatestUserOperationHistories() :collection
     {
         return self::orderBy('operated_at', 'desc')->take(config('const.HISTORY_COUNT'))->get();
+    }
+
+    /**
+     * 画面表示用操作日時のアトリビュート定義
+     * @return string 画面表示用操作日時
+     */
+    public function getOperatedAtScreenAttribute() :string
+    {
+        return $this->operated_at->format(SCREEN_DATE_TIME_FORMAT);
     }
 }

@@ -20,7 +20,7 @@ class UserController extends Controller
         $users = UserService::getUsers();
         $latestUserOperationHistories = UserService::getLatestUserOperationHistories();
         $historyCount = config('const.HISTORY_COUNT');
-        return view('user.index', compact('users','latestUserOperationHistories', 'historyCount'));
+        return view('user.index', compact('users', 'latestUserOperationHistories', 'historyCount'));
     }
 }
 

@@ -8,3 +8,4 @@ const OPERATION_TYPE_LIST = [
     OPERATION_TYPE_UPDATE => "更新",
     OPERATION_TYPE_DELETE => "削除",
 ];
+

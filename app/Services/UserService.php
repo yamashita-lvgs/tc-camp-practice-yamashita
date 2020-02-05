@@ -4,6 +4,7 @@ namespace App\Services;
 use App\Models\Action;
 use App\Models\User;
 use App\Models\UserOperationHistory;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Supportt\Facades\DB;
 
 /**
@@ -14,18 +15,18 @@ class UserService
 {
     /**
      * 全ユーザー情報取得
-     * @return 全ユーザー情報
+     * @return collection 全ユーザー情報
      */
-    public static function getUsers()
+    public static function getUsers() :collection
     {
         return User::getUsers();
     }
 
     /**
      * 最新のユーザー情報操作履歴取得
-     * @return 最新のユーザー情報操作履歴
+     * @return collection 最新のユーザー情報操作履歴
      */
-    public static function getLatestUserOperationHistories()
+    public static function getLatestUserOperationHistories() :collection
     {
         return UserOperationHistory::getLatestUserOperationHistories();
     }
