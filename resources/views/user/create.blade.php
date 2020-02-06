@@ -1,4 +1,4 @@
-@extends('user.app')
+@extends('user.base')
 
 @section('title', 'ユーザー新規登録')
 
