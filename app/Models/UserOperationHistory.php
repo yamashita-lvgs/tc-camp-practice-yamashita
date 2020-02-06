@@ -1,28 +1,22 @@
 <?php
 namespace App\Models;
 
+use App\Models\BaseModel;
 use App\Traits\ScreenDateTimeFormat;
-use App\Traits\UserObservable;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  * ユーザー操作履歴テーブルのモデルクラス
  * @package App\Models
  */
-class UserOperationHistory extends Model
+class UserOperationHistory extends BaseModel
 {
+    /**
+     * 日時分漢字表示のフォーマット
+     */
     use ScreenDateTimeFormat;
-    use UserObservable;
-
-    public $timestamps = false;
-
-    protected $guarded = [];
 
     protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
         'operated_at',
     ];
 
@@ -49,7 +43,7 @@ class UserOperationHistory extends Model
      * 画面表示用操作日時のアトリビュート定義
      * @return string 画面表示用操作日時
      */
-    public function getOperatedAtScreenAttribute() :string
+    public function getOperatedAtScreenAttribute(): string
     {
         return $this->operated_at->format(SCREEN_DATE_TIME_FORMAT);
     }
@@ -58,7 +52,7 @@ class UserOperationHistory extends Model
      * 最新のユーザー操作履歴取得
      * @return collection 最新のユーザー情報操作履歴
      */
-    public static function getLatestUserOperationHistories() :collection
+    public static function getLatestUserOperationHistories(): collection
     {
         return self::orderBy('operated_at', 'desc')->take(config('const.HISTORY_COUNT'))->get();
     }

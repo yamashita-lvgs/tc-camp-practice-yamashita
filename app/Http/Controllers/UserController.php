@@ -39,13 +39,12 @@ class UserController extends Controller
         /**
          * 新規登録処理実行
          * @param UserRequest $request リクエスト情報
-         * @return ユーザー一覧画面リダイレクト
+         * @return ユーザー新規登録完了画面
          */
         public function create(UserRequest $request)
         {
             $validated = $request->validated();
             $insertUser = UserService::InsertUser($validated);
-            //$users = UserService::GetUsers($user);
             $user =User::find($insertUser->id);
             return view('user.createCompletion', ['user'=> $user]);
         }

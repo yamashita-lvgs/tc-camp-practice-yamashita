@@ -1,27 +1,28 @@
 <?php
 namespace App\Models;
 
+use App\Models\BaseModel;
 use App\Traits\ScreenDateTimeFormat;
 use App\Traits\UserObservable;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  * ユーザーテーブルのモデルクラス
  * @package App\Models
  */
-class User extends Model
+class User extends BaseModel
 {
-    use UserObservable;
+    /**
+     * 日時分漢字表示のトレイト
+     */
     use ScreenDateTimeFormat;
+    /**
+     * ユーザー作成時ユーザー操作履歴更新のイベントのトレイト
+     */
+    use UserObservable;
 
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
 
-    protected $guarded = [];
+//    protected $guarded = [];
 
     public function role()
     {

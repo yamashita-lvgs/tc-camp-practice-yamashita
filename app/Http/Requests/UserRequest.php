@@ -23,7 +23,6 @@
          *
          * @return array
          */
-//https://designsupply-web.com/knowledgeside/1640/
         public function rules()
         {
             return [

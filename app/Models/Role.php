@@ -1,23 +1,18 @@
 <?php
 namespace App\Models;
 
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  * ロールテーブルのモデルクラス
  * @package App\Models
  */
-class Role extends Model
+class Role extends BaseModel
 {
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
     /**
-     * 全ユーザー情報取得
-     * @return collection 全ユーザー情報
+     * 全ロール情報取得
+     * @return collection 全ロール情報
      */
     public static function getRoles(): collection
     {

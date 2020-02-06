@@ -5,22 +5,32 @@ use App\Models\User;
 use App\Models\UserOperationHistory;
 
 /**
- * Observes the Users model
+ * ユーザーのオブザーバークラス
+ * @package App\Observers
  */
 class UserObserver
 {
+    /**
+     * ユーザーテーブルとユーザー操作履歴テーブルのカラムの紐つけ定義
+     * @return ユーザーテーブルとユーザー操作履歴テーブルのカラムの紐つけ
+     */
+    // TODO 機能開発優先のため、'operating_user_id'=> 1,にしてるが正しくは「'operating_user_id'=> $user->created_user_id,」
     private function userOperationHistoryData(User $user, int $operationsList)
     {
         return [
             'operated_user_id' => $user->id,
-            'operating_user_id'=> $user->created_user_id,
+            'operating_user_id'=> 1,
             'operation_id' => $operationsList,
             'operated_at' => now(),
         ];
     }
 
-    public function create(User $user){
+    /**
+     * ユーザーテーブルのデータ追加時と操作履歴テーブルのデータ追加
+     */
+    public function created(User $user){
+
         $attribute= $this->userOperationHistoryData($user, OPERATION_TYPE_CREATE);
-        UserOperationHistory::create($attribute);
+        (new UserOperationHistory())->fill($attribute)->save();
     }
 }

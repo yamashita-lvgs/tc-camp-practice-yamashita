@@ -41,10 +41,15 @@ class UserService
         return Role::getRoles();
     }
 
+    /**
+     * ユーザー情報登録とそのユーザー情報取得
+     * @return 追加されたユーザー情報
+     */
     public static function insertUser($validated)
     {
         $insertUser = DB::transaction(function () use ($validated) {
             $createUser = User::create($validated);
+
             return $createUser;
         });
         return $insertUser;

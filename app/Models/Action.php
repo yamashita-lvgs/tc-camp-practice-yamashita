@@ -1,14 +1,13 @@
 <?php
-
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\BaseModel;
 
 /**
  * アクションテーブルのモデルクラス
  * @package App\Models
  */
-class Action extends Model
+class Action extends BaseModel
 {
 
 }
