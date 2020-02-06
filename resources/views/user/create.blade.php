@@ -31,9 +31,9 @@
             <td>
                 <select name="role_id" value="{{old('role_id')}}" required>
                     <option value="">選択してください。</option>
-                    <option value="1">管理者</option>
-                    <option value="2">副管理者</option>
-                    <option value="3">一般</option>
+                    <option value="1">{{ $roles[0]->name }}</option>
+                    <option value="2">{{ $roles[1]->name }}</option>
+                    <option value="3">{{ $roles[2]->name }}</option>
                 </select>
             </td>
         </tr>
@@ -65,9 +65,9 @@
         <tr>
             <th>性別</th>
             <td>
-                    <input type="radio" name="gender_id" value="1">男
-                    <input type="radio" name="gender_id" value="2">女
-                    <input type="radio" name="gender_id" value="3">その他
+                    <input type="radio" name="gender_id" value="1">{{ $genders[1] }}
+                    <input type="radio" name="gender_id" value="2">{{ $genders[2] }}
+                    <input type="radio" name="gender_id" value="0">{{ $genders[0] }}
             </td>
             @if ($errors->has('gender_id'))
                 <td>{{$errors->first('gender_id')}}</td>

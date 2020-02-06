@@ -1,18 +1,14 @@
 <?php
 namespace App\Observers;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\UserOperationHistory;
 
 /**
  * Observes the Users model
  */
 class UserObserver
 {
-    /**
-     * Function will be triggerd when a user is updated
-     *
-     * @param Users $model
-     */
     private function userOperationHistoryData(User $user, int $operationsList)
     {
         return [
@@ -24,8 +20,7 @@ class UserObserver
     }
 
     public function create(User $user){
-        $attribute= $this->userOperationHistoryData($user, OPRATION_CREATE);
-        UserActionHistory::create($attribute);
+        $attribute= $this->userOperationHistoryData($user, OPERATION_TYPE_CREATE);
+        UserOperationHistory::create($attribute);
     }
 }
-

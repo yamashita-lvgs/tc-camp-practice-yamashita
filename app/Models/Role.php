@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -14,4 +15,12 @@ class Role extends Model
         'updated_at',
         'deleted_at',
     ];
+    /**
+     * 全ユーザー情報取得
+     * @return collection 全ユーザー情報
+     */
+    public static function getRoles(): collection
+    {
+        return self::all();
+    }
 }

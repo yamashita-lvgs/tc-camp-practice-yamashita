@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Role;
 use App\Models\User;
 use App\Models\UserOperationHistory;
 use Illuminate\Database\Eloquent\Collection;
@@ -31,13 +32,22 @@ class UserService
         return UserOperationHistory::getLatestUserOperationHistories();
     }
 
+    /**
+     * 全ロール情報取得
+     * @return collection 全ロール情報
+     */
+    public static function getRoles(): collection
+    {
+        return Role::getRoles();
+    }
 
     public static function insertUser($validated)
     {
-        $user = DB::transaction(function () use ($validated) {
+        $insertUser = DB::transaction(function () use ($validated) {
             $createUser = User::create($validated);
             return $createUser;
         });
+        return $insertUser;
     }
 }
 

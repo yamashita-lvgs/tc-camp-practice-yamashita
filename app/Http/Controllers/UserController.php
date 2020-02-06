@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Services\UserService;
 use Config\Action;
+use App\Models\User;
 
 /**
  * ユーザーに関するコントローラークラス
@@ -29,7 +30,10 @@ class UserController extends Controller
          */
         public function showCreateScreen()
         {
-            return view('user.create');
+            //$users = UserService::getUsers();
+            $genders = GENDER_LIST;
+            $roles = UserService::getRoles();
+            return view('user.create', ['genders'=> $genders, 'roles' => $roles]);
         }
 
         /**
@@ -37,13 +41,12 @@ class UserController extends Controller
          * @param UserRequest $request リクエスト情報
          * @return ユーザー一覧画面リダイレクト
          */
-        public function create(UserRequest $request )
+        public function create(UserRequest $request)
         {
             $validated = $request->validated();
-            $user = UserService::InsertUser($validated);
-            $users = UserService::GetUsers($user);
-//userのid取得したい。
-            $user =User::find($id);
+            $insertUser = UserService::InsertUser($validated);
+            //$users = UserService::GetUsers($user);
+            $user =User::find($insertUser->id);
             return view('user.createCompletion', ['user'=> $user]);
         }
 }

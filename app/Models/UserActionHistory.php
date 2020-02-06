@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\UserObservable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -10,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserActionHistory extends Model
 {
+
     use Timestamp;
 
     public function actioned_user()
@@ -22,6 +24,7 @@ class UserActionHistory extends Model
         return $this->belongsTo(User::class, 'actioning_user_id');
     }
 
+///
     public function content()
     {
         return config('columnName. action')[$this->content_id];

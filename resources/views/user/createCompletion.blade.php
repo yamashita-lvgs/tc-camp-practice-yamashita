@@ -2,9 +2,9 @@
 <html lang="ja">
     <head>
         <title>ユーザー新規登録完了</title>
-    <!--
-    <link rel="stylesheet" href="{{asset('css/styles.css')}}">
--->
+
+        <link rel="stylesheet" href="{{asset('css/styles.css')}}">
+
     </head>
     <body>
         <h1>ユーザー新規登録完了</h1>
@@ -21,11 +21,15 @@
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->role->name }}</td>
                 <td>{{ $user->full_name }}</td>
-                <td>カナシメイ</td>
-                <td>性別</td>
+                <td>{{ $user->full_name_kana }}</td>
+                <td>{{ $user->gender }}</td>
                 <td>{{ $user->mail }}</td>
             </tr>
         </table>
+        <br>
+        <a href="/users">
+            <button type="button">ユーザー一覧画面に戻る</button>
+        </a>
     </body>
 </html>
 

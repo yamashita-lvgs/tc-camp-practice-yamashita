@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use App\Traits\ScreenDateTimeFormat;
+use App\Traits\UserObservable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class User extends Model
 {
+    use UserObservable;
     use ScreenDateTimeFormat;
 
     protected $dates = [
@@ -46,12 +48,21 @@ class User extends Model
     }
 
     /**
-     * ユーザーフルネームのアトリビュート定義
+     * ユーザー漢字フルネームのアトリビュート定義
      * @return string ユーザーフルネーム
      */
     public function getFullNameAttribute() :string
     {
         return "{$this->last_name} {$this->first_name}";
+    }
+
+    /**
+     * ユーザーカナフルネームのアトリビュート定義
+     * @return string ユーザーフルネーム
+     */
+    public function getFullNameKanaAttribute() :string
+    {
+        return "{$this->last_name_kana} {$this->first_name_kana}";
     }
 
     /**
@@ -63,11 +74,6 @@ class User extends Model
         return self::orderBy('id', 'asc')->get();
     }
 
-//////
-    public function gender()
-    {
-        return config('columnName.gender')[$this->gender_id];
-    }
 }
 
 
