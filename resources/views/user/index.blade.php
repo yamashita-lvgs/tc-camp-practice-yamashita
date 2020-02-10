@@ -1,8 +1,7 @@
 @extends('user.base')
-
 @section('title', 'ユーザー一覧')
-
 @section('content')
+
     <h1>ユーザー一覧</h1>
     <a href="users/create">新規ユーザー登録</a>
     <table>
@@ -50,4 +49,5 @@
                 <td>{{ $latestUserOperationHistory->operated_user->full_name }}</td>
             </tr>
         @endforeach
+    </table>
 @endsection

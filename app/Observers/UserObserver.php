@@ -11,11 +11,11 @@ use App\Models\UserOperationHistory;
 class UserObserver
 {
     /**
-     * ユーザーテーブルとユーザー操作履歴テーブルのカラムの紐つけ定義
-     * @return ユーザーテーブルとユーザー操作履歴テーブルのカラムの紐つけ
+     * ユーザーテーブルとユーザー操作履歴テーブルのカラムの紐つけ
+     * @return ユーザー操作履歴テーブルのカラム
      */
     // TODO 機能開発優先のため、'operating_user_id'=> 1,にしてるが正しくは「'operating_user_id'=> $user->created_user_id,」
-    private function userOperationHistoryData(User $user, int $operationsList)
+    private function getUserOperationHistoryData(User $user, int $operationsList)
     {
         return [
             'operated_user_id' => $user->id,
@@ -29,8 +29,7 @@ class UserObserver
      * ユーザーテーブルのデータ追加時と操作履歴テーブルのデータ追加
      */
     public function created(User $user){
-
-        $attribute= $this->userOperationHistoryData($user, OPERATION_TYPE_CREATE);
-        (new UserOperationHistory())->fill($attribute)->save();
+        $attribute= $this->getUserOperationHistoryData($user, OPERATION_TYPE_CREATE);
+        UserOperationHistory::createUserOperationHistory($attribute);
     }
 }

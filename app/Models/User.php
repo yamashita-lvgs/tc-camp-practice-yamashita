@@ -1,7 +1,6 @@
 <?php
 namespace App\Models;
 
-use App\Models\BaseModel;
 use App\Traits\ScreenDateTimeFormat;
 use App\Traits\UserObservable;
 use Illuminate\Database\Eloquent\Collection;
@@ -20,9 +19,6 @@ class User extends BaseModel
      * ユーザー作成時ユーザー操作履歴更新のイベントのトレイト
      */
     use UserObservable;
-
-
-//    protected $guarded = [];
 
     public function role()
     {
@@ -54,6 +50,7 @@ class User extends BaseModel
      */
     public function getFullNameAttribute() :string
     {
+        if($this->last_name && $this->first_name )
         return "{$this->last_name} {$this->first_name}";
     }
 
@@ -63,6 +60,7 @@ class User extends BaseModel
      */
     public function getFullNameKanaAttribute() :string
     {
+        if($this->last_name_kana && $this->first_name_kana )
         return "{$this->last_name_kana} {$this->first_name_kana}";
     }
 
@@ -75,6 +73,23 @@ class User extends BaseModel
         return self::orderBy('id', 'asc')->get();
     }
 
+    /**
+     * 新規ユーザー登録
+     * @return collection 新規ユーザー情報
+     */
+    public static function createUser(array $attribute): user
+    {
+        return User::create($attribute);
+    }
+
+    /**
+     * ユーザーID取得
+     * @return user ユーザーID
+     */
+    public static function getUserId(int $userId): User
+    {
+        return User::find($userId);
+    }
 }
 
 

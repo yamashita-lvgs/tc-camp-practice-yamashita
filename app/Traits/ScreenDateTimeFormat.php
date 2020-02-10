@@ -2,7 +2,7 @@
 namespace App\Traits;
 
 /**
- * 画面表示の日時のトレイト
+ * 画面表示用の日時のトレイト
  */
 trait ScreenDateTimeFormat
 {

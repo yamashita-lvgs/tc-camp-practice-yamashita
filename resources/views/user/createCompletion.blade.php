@@ -1,8 +1,7 @@
 @extends('user.base')
-
 @section('title', 'ユーザー新規登録完了')
-
 @section('content')
+
     <h1>ユーザー新規登録完了</h1>
     <table>
         <tr>
@@ -26,4 +25,5 @@
     <a href="/users">
         <button type="button">ユーザー一覧画面に戻る</button>
     </a>
+
 @endsection

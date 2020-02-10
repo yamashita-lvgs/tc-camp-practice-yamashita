@@ -19,7 +19,6 @@ class RuleValidator
         if (mb_ereg('^[ア-ン゛゜ァ-ォャ-ョー「」、]+$', $value)) {
             return true;
         }
-
         return false;
     }
 }

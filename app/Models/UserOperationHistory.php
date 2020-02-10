@@ -1,7 +1,6 @@
 <?php
 namespace App\Models;
 
-use App\Models\BaseModel;
 use App\Traits\ScreenDateTimeFormat;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -52,8 +51,17 @@ class UserOperationHistory extends BaseModel
      * 最新のユーザー操作履歴取得
      * @return collection 最新のユーザー情報操作履歴
      */
-    public static function getLatestUserOperationHistories(): collection
+    public static function getScreenLatestUserOperationHistories(): collection
     {
         return self::orderBy('operated_at', 'desc')->take(config('const.HISTORY_COUNT'))->get();
+    }
+
+    /**
+     * ユーザー操作履歴登録
+     * @return collection ユーザー操作履歴登録情報
+     */
+    public static function createUserOperationHistory(array $attribute)
+    {
+        UserOperationHistory::create($attribute);
     }
 }

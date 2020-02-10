@@ -9,7 +9,7 @@ use App\Observers\UserObserver;
 trait UserObservable
 {
     /**
-     * ユーザーのイベント発生のトレイト
+     * UserObserverクラスをロード
      */
     public static function bootUserObservable()
     {

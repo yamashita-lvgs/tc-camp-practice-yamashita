@@ -14,5 +14,5 @@
     Route::get('users', 'UserController@index'); // 初期表示
 
 // ユーザー登録画面
-    Route::get('users/create', 'UserController@showCreateScreen'); // 初期表示
-    Route::post('users/create', 'UserController@create'); // 登録実行
+    Route::get('users/create', 'UserController@showCreate'); // 初期表示
+    Route::post('users/create', 'UserController@postCreate'); // 登録実行

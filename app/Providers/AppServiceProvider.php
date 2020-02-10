@@ -1,31 +1,30 @@
 <?php
+namespace App\Providers;
 
-    namespace App\Providers;
+use Illuminate\Support\ServiceProvider;
+use Validator;
 
-    use Illuminate\Support\ServiceProvider;
-    use Validator;
-
-    class AppServiceProvider extends ServiceProvider
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
     {
-        /**
-         * Register any application services.
-         *
-         * @return void
-         */
-        public function register()
-        {
-            //
-        }
-
-        /**
-         * Bootstrap any application services.
-         *
-         * @return void
-         */
-        public function boot()
-        {
-            Validator::extend(
-                'katakana', 'App\Http\Validators\RuleValidator@validateKatakana'
-            );
-        }
+        //
     }
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Validator::extend(
+            'katakana', 'App\Http\Validators\RuleValidator@validateKatakana'
+        );
+    }
+}

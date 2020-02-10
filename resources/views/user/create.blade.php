@@ -1,8 +1,7 @@
 @extends('user.base')
-
 @section('title', 'ユーザー新規登録')
-
 @section('content')
+
     <h1>ユーザー新規登録</h1>
     <table>
         <form method="post">
@@ -82,5 +81,6 @@
                 <td><input type="submit" value="登録"></td>
             </tr>
         </form>
+    </table>
 @endsection
 
