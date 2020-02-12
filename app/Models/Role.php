@@ -11,9 +11,9 @@ class Role extends BaseModel
 {
     /**
      * 全ロール情報取得
-     * @return collection 全ロール情報
+     * @return Collection 全ロール情報
      */
-    public static function getRoles(): collection
+    public static function getRoles(): Collection
     {
         return self::all();
     }

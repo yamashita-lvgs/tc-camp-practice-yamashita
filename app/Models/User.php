@@ -46,51 +46,45 @@ class User extends BaseModel
 
     /**
      * ユーザー漢字フルネームのアトリビュート定義
-     * @return string ユーザーフルネーム
+     * @return null|string ユーザーフルネーム
      */
-    public function getFullNameAttribute() :string
+    public function getFullNameAttribute() :?string
     {
-        if($this->last_name && $this->first_name )
-        return "{$this->last_name} {$this->first_name}";
+        return $this === null ? "" :"{$this->last_name} {$this->first_name}";
     }
-
     /**
      * ユーザーカナフルネームのアトリビュート定義
-     * @return string ユーザーフルネーム
+     * @return null|string ユーザーカナフルネーム
      */
-    public function getFullNameKanaAttribute() :string
+    public function getFullNameKanaAttribute() :?string
     {
-        if($this->last_name_kana && $this->first_name_kana )
-        return "{$this->last_name_kana} {$this->first_name_kana}";
+        return $this === null ? "" :"{$this->last_name_kana} {$this->first_name_kana}";
     }
 
     /**
      * 全ユーザー情報取得
-     * @return collection 全ユーザー情報
+     * @return Collection 全ユーザー情報
      */
-    public static function getUsers(): collection
+    public static function getUsers(): Collection
     {
         return self::orderBy('id', 'asc')->get();
     }
 
     /**
      * 新規ユーザー登録
-     * @return collection 新規ユーザー情報
+     * @return User 新規ユーザー情報
      */
-    public static function createUser(array $attribute): user
+    public static function createUser(array $attribute): User
     {
         return User::create($attribute);
     }
 
     /**
      * ユーザーID取得
-     * @return user ユーザーID
+     * @return User ユーザーID
      */
     public static function getUserId(int $userId): User
     {
-        return User::find($userId);
+        return User::findOrFail($userId);
     }
 }
-
-
-

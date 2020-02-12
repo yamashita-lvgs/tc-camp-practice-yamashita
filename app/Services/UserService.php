@@ -13,36 +13,36 @@ class UserService
 {
     /**
      * 全ユーザー情報取得
-     * @return collection 全ユーザー情報
+     * @return Collection 全ユーザー情報
      */
-    public static function getUsers(): collection
+    public static function getUsers(): Collection
     {
         return User::getUsers();
     }
 
     /**
      * 全ロール情報取得
-     * @return collection 全ロール情報
+     * @return Collection 全ロール情報
      */
-    public static function getRoles(): collection
+    public static function getRoles(): Collection
     {
         return Role::getRoles();
     }
 
     /**
      * ユーザーID取得
-     * @return user ユーザーID
+     * @return User ユーザーID
      */
-    public static function getUserId(int $userId): user
+    public static function getUserId(int $userId): User
     {
         return User::getUserId($userId);
     }
 
     /**
      * 新規登録したユーザーID取得
-     * @return user　新規登録したユーザーID
+     * @return User　新規登録したユーザーID
      */
-    public static function insertUser(array $validated): user
+    public static function insertUser(array $validated): User
     {
         $insertUser = User::createUser($validated);
         return UserService::getUserId($insertUser->id);

@@ -40,25 +40,25 @@ class UserOperationHistory extends BaseModel
 
     /**
      * 画面表示用操作日時のアトリビュート定義
-     * @return string 画面表示用操作日時
+     * @return String 画面表示用操作日時
      */
-    public function getOperatedAtScreenAttribute(): string
+    public function getOperatedAtScreenAttribute(): String
     {
         return $this->operated_at->format(SCREEN_DATE_TIME_FORMAT);
     }
 
     /**
      * 最新のユーザー操作履歴取得
-     * @return collection 最新のユーザー情報操作履歴
+     * @return Collection 最新のユーザー情報操作履歴
      */
-    public static function getScreenLatestUserOperationHistories(): collection
+    public static function getScreenLatestUserOperationHistories(): Collection
     {
         return self::orderBy('operated_at', 'desc')->take(config('const.HISTORY_COUNT'))->get();
     }
 
     /**
      * ユーザー操作履歴登録
-     * @return collection ユーザー操作履歴登録情報
+     * @param $attribute ユーザー操作履歴
      */
     public static function createUserOperationHistory(array $attribute)
     {

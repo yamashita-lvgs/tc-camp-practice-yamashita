@@ -4,10 +4,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * ベースモデル
+ * ベースモデルクラス
  * @package App\Models
  */
-class BaseModel extends Model
+abstract class BaseModel extends Model
 {
     protected $dates = [
         'created_at',

@@ -2,7 +2,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
-use App\Models\User;
 use App\Services\UserOperationHistoryService;
 use App\Services\UserService;
 use Config\Action;
@@ -21,10 +20,9 @@ class UserController extends Controller
     public function index()
     {
         $users = UserService::getUsers();
-        $latestUserOperationHistories = UserOperationHistoryService::getScreenLatestUserOperationHistories();
+        $userOperationHistories = UserOperationHistoryService::getScreenLatestUserOperationHistories();
         $historyCount = config('const.HISTORY_COUNT');
-
-        return view('user.index', compact('users', 'latestUserOperationHistories', 'historyCount'));
+        return view('user.index', compact('users', 'userOperationHistories', 'historyCount'));
     }
 
     /**
@@ -35,7 +33,6 @@ class UserController extends Controller
     {
         $genders = GENDER_LIST;
         $roles = UserService::getRoles();
-
         return view('user.create', compact('genders', 'roles'));
     }
 
