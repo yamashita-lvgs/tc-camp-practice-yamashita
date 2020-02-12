@@ -12,10 +12,10 @@ class UserObserver
 {
     /**
      * ユーザーテーブルとユーザー操作履歴テーブルのカラムの紐つけ
-     * @return ユーザー操作履歴テーブルのカラム
+     * @return array ユーザー操作履歴テーブルのカラム
      */
     // TODO 機能開発優先のため、'operating_user_id'=> 1,にしてるが正しくは「'operating_user_id'=> $user->created_user_id,」
-    private function getUserOperationHistoryData(User $user, int $operationsList)
+    private function getUserOperationHistoryData(User $user, int $operationsList) :array
     {
         return [
             'operated_user_id' => $user->id,
