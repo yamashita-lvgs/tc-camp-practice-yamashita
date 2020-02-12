@@ -29,7 +29,8 @@ class UserObserver
      * ユーザーテーブルのデータ追加時と操作履歴テーブルのデータ追加
      * @param $user 登録されたユーザー
      */
-    public function created(User $user){
+    public function created(User $user)
+    {
         $attribute= $this->getUserOperationHistoryData($user, OPERATION_TYPE_CREATE);
         UserOperationHistory::createUserOperationHistory($attribute);
     }
