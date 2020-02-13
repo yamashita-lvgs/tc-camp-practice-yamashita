@@ -37,9 +37,9 @@ class User extends BaseModel
 
     /**
      * 該当する性別のアトリビュート定義
-     * @return 該当する性別
+     * @return string 該当する性別
      */
-    public function getGenderAttribute()
+    public function getGenderAttribute() :string
     {
         return GENDER_LIST[$this->gender_id];
     }
@@ -48,7 +48,7 @@ class User extends BaseModel
      * ユーザー漢字フルネームのアトリビュート定義
      * @return null|string ユーザーフルネーム
      */
-    public function getFullNameAttribute() :?string
+    public function getFullNameAttribute(): ?string
     {
         return $this === null ? "" :"{$this->last_name} {$this->first_name}";
     }
@@ -56,7 +56,7 @@ class User extends BaseModel
      * ユーザーカナフルネームのアトリビュート定義
      * @return null|string ユーザーカナフルネーム
      */
-    public function getFullNameKanaAttribute() :?string
+    public function getFullNameKanaAttribute(): ?string
     {
         return $this === null ? "" :"{$this->last_name_kana} {$this->first_name_kana}";
     }

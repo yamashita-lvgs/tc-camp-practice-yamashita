@@ -11,10 +11,12 @@ use App\Models\UserOperationHistory;
 class UserObserver
 {
     /**
-     * ユーザーテーブルとユーザー操作履歴テーブルのカラムの紐つけ
-     * @return array ユーザー操作履歴テーブルのカラム
+     * ユーザー操作履歴登録用データを取得
+     * @param $user 登録用ユーザーテーブルのカラム
+     * @param $operationsList 登録用ユーザー操作履歴テーブルのカラム
+     * @return array ユーザー操作履歴情報
      */
-    // TODO 機能開発優先のため、'operating_user_id'=> 1,にしてるが正しくは「'operating_user_id'=> $user->created_user_id,」
+    // TODO 機能開発優先のため、'operating_user_id'=> 1にしてるが正しくは「'operating_user_id'=> $user->created_user_id」
     private function getUserOperationHistoryData(User $user, int $operationsList) :array
     {
         return [
@@ -26,8 +28,8 @@ class UserObserver
     }
 
     /**
-     * ユーザーテーブルのデータ追加時と操作履歴テーブルのデータ追加
-     * @param $user 登録されたユーザー
+     * ユーザーモデル登録イベント後処理
+     * @param $user 登録されたユーザーインスタンス
      */
     public function created(User $user)
     {

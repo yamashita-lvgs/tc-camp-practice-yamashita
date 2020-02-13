@@ -31,9 +31,9 @@ class UserService
 
     /**
      * 新規登録したユーザーID取得
-     * @return user　新規登録したユーザーID
+     * @return User　新規登録したユーザーID
      */
-    public static function insertUser(array $validated): user
+    public static function insertUser(array $validated): User
     {
         $insertUser = User::createUser($validated);
         return User::getUserId($insertUser->id);

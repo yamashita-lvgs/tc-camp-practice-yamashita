@@ -22,9 +22,9 @@ class CreateUserRequest extends FormRequest
     {
         return [
             //セキュリティー観点とユーザーが記憶できる観点踏まえて6-14英数字
-            'login_id' => 'required|halfWidthAlphaNumeric|between:6,14',
+            'login_id' => 'required|halfWidthCharacter|between:6,14',
             //IPA推奨とユーザーが記憶できる観点踏まえて8-14英数字
-            'password' => 'required|halfWidthAlphaNumeric|between:8,14',
+            'password' => 'required|halfWidthCharacter|between:8,14',
             //必須項目
             'role_id' => 'required|integer',
             //255文字まで（世界一長い人が197文字だから特に規制なし）
@@ -36,7 +36,7 @@ class CreateUserRequest extends FormRequest
             //255文字まで（世界一長い人が197文字だから特に規制なし）、カタカナ表記
             'first_name_kana' => 'required|katakana',
             //必須項目
-            'gender_id' => 'required',
+            'gender_id' => 'required|integer',
             //作成可能なアドレスは255文字以下のため規制なし、メールアドレスの形であること
             'mail' => 'required|email',
         ];
