@@ -1,4 +1,5 @@
 @extends('user.base')
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 @section('title', 'ユーザー一覧')
 

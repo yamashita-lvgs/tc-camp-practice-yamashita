@@ -8,7 +8,6 @@
         <meta name="robots" content="noindex,nofollow">
         <meta name="author" content="yamashita">
         <title>@yield('title')</title>
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
     <body>
         @section('sidebar')

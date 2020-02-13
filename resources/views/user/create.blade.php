@@ -1,5 +1,5 @@
 @extends('user.base')
-
+<link rel="stylesheet" href="{{ asset('css/user.create.css') }}">
 @section('title', 'ユーザー新規登録')
 
 @section('content')
@@ -10,7 +10,11 @@
             {{ csrf_field() }}
             <tr>
                 <th>ログインID</th>
-                <td><input type="text" name="login_id" value="{{old('login_id')}}"></td>
+                <td>
+                    <input type="text" name="login_id" value="{{old('login_id')}}">
+                    <br>
+                    <p1>(6-14文字の半角英数字記号で入力してください。)</p1>
+                </td>
                 @if ($errors->has('login_id'))
                     <td>{{$errors->first('login_id')}}</td>
                 @endif
@@ -18,7 +22,11 @@
             <br>
             <tr>
                 <th>パスワード</th>
-                <td><input type="text" name="password" value="{{old('password')}}"></td>
+                <td>
+                    <input type="text" name="password" value="{{old('password')}}">
+                    <br>
+                    <p1>(8-14文字の半角英数字記号で入力してください。)</p1>
+                </td>
                 @if ($errors->has('password'))
                     <td>{{$errors->first('password')}}</td>
                 @endif
@@ -36,24 +44,40 @@
             </tr>
             <br>
             <tr>
-                <th>氏名</th>
-                <td>姓<input type="text" name="last_name" value="{{old('last_name')}}">
+                <th>姓</th>
+                <td><input type="text" name="last_name" value="{{old('last_name')}}"></td>
                 @if ($errors->has('last_name'))
                     <td>{{$errors->first('last_name')}}</td>
                 @endif
-                名<input type="text" name="first_name" value="{{old('first_name')}}"></td>
+                </td>
+            </tr>
+            <br>
+            <tr>
+                <th>名</th>
+                <td><input type="text" name="first_name" value="{{old('first_name')}}"></td>
                 @if ($errors->has('first_name'))
                     <td>{{$errors->first('first_name')}}</td>
                 @endif
             </tr>
             <br>
             <tr>
-                <th>シメイ</th>
-                <td>セイ<input type="text" name="last_name_kana" value="{{old('last_name_kana')}}">
+                <th>セイ</th>
+                <td>
+                    <input type="text" name="last_name_kana" value="{{old('last_name_kana')}}">
+                    <br>
+                    <p1>(カタカナで入力してください。)</p1>
+                </td>
                 @if ($errors->has('last_name_kana'))
                     <td>{{$errors->first('last_name_kana')}}</td>
                 @endif
-                メイ<input type="text" name="first_name_kana" value="{{old('first_name_kana')}}"></td>
+            </tr>
+            <tr>
+                <th>メイ</th>
+                <td>
+                    <input type="text" name="first_name_kana" value="{{old('first_name_kana')}}">
+                    <br>
+                    <p1>(カタカナで入力してください。)</p1>
+                </td>
                 @if ($errors->has('first_name_kana'))
                     <td>{{$errors->first('first_name_kana')}}</td>
                 @endif

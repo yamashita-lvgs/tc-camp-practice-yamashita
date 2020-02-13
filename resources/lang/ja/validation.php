@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | バリデーション言語行
@@ -64,8 +63,6 @@ return [
     'ipv4'                 => ':attributeには、有効なIPv4アドレスを指定してください。',
     'ipv6'                 => ':attributeには、有効なIPv6アドレスを指定してください。',
     'json'                 => ':attributeには、有効なJSON文字列を指定してください。',
-    'katakana' => ':全角カタカナで入力してください。',
-    'half_width_alpha_numeric' => '半角大小英数字それぞれ1文字以上含む文字で入力してください。',
     'lt'                   => [
         'numeric' => ':attributeには、:valueより小さな値を指定してください。',
         'file'    => ':attributeには、:value kBより小さなファイルを指定してください。',
@@ -97,7 +94,7 @@ return [
     'numeric'              => ':attributeには、数字を指定してください。',
     'present'              => ':attributeが存在していません。',
     'regex'                => ':attributeに正しい形式を指定してください。',
-    'required'             => ':必ず指定してください。',
+    'required'             => ':attributeは必ず指定してください。',
     'required_if'          => ':otherが:valueの場合、:attributeも指定してください。',
     'required_unless'      => ':otherが:valuesでない場合、:attributeを指定してください。',
     'required_with'        => ':valuesを指定する場合は、:attributeも指定してください。',
@@ -119,6 +116,8 @@ return [
     'url'                  => ':attributeに正しい形式を指定してください。',
     'uuid'                 => ':attributeに有効なUUIDを指定してください。',
 
+    'half_width_character' => ':attributeは半角大小英数字記号を用いて入力してください。',
+    'katakana' => ':attributeはカタカナで入力してください。',
     /*
     |--------------------------------------------------------------------------
     | Custom バリデーション言語行
@@ -131,10 +130,10 @@ return [
     */
 
     'custom' => [
-        '属性名' => [
-            'ルール名' => 'カスタムメッセージ',
-        ],
+    '属性名' => [
+        'ルール名' => 'カスタムメッセージ',
     ],
+],
 
     /*
     |--------------------------------------------------------------------------
@@ -148,6 +147,14 @@ return [
     */
 
     'attributes' => [
-    ],
-
+        'login_id' => 'ログインID',
+        'password' => 'パスワード',
+        'role_id' => '権限',
+        'last_name' => '姓',
+        'first_name' => '名',
+        'last_name_kana' => 'セイ',
+        'first_name_kana' => 'メイ',
+        'gender_id' => '性別',
+        'mail' => 'メールアドレス',
+        ],
 ];

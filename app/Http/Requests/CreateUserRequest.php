@@ -22,9 +22,9 @@ class CreateUserRequest extends FormRequest
     {
         return [
             //セキュリティー観点とユーザーが記憶できる観点踏まえて6-14英数字
-            'login_id' => 'required|halfWidthCharacter|between:6,14',
+            'login_id' => 'required|half_width_character|between:6,14',
             //IPA推奨とユーザーが記憶できる観点踏まえて8-14英数字
-            'password' => 'required|halfWidthCharacter|between:8,14',
+            'password' => 'required|half_width_character|between:8,14',
             //必須項目
             'role_id' => 'required|integer',
             //255文字まで（世界一長い人が197文字だから特に規制なし）
