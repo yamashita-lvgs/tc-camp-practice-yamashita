@@ -1,5 +1,7 @@
 @extends('user.base')
+
 @section('title', 'ユーザー新規登録')
+
 @section('content')
 
     <h1>ユーザー新規登録</h1>

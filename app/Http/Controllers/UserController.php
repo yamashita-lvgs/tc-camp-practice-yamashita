@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\CreateUserRequest;
 use App\Services\UserOperationHistoryService;
 use App\Services\UserService;
 use Illuminate\Support\Facades\DB;
@@ -37,10 +37,10 @@ class UserController extends Controller
 
     /**
      * 新規登録処理実行
-     * @param UserRequest $request リクエスト情報
+     * @param CreateUserRequest $request リクエスト情報
      * @return ユーザー新規登録完了画面
      */
-    public function postCreate(UserRequest $request)
+    public function postCreate(CreateUserRequest $request)
     {
         $user = DB::transaction(function () use ($request) {
             return UserService::insertUser($request->validated());

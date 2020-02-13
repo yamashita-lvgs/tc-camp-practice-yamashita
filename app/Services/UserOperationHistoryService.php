@@ -19,4 +19,3 @@ class UserOperationHistoryService
         return UserOperationHistory::getScreenLatestUserOperationHistories();
     }
 }
-

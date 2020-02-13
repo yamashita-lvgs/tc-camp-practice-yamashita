@@ -65,6 +65,7 @@ return [
     'ipv6'                 => ':attributeには、有効なIPv6アドレスを指定してください。',
     'json'                 => ':attributeには、有効なJSON文字列を指定してください。',
     'katakana' => ':全角カタカナで入力してください。',
+    'half_width_alpha_numeric' => '半角大小英数字それぞれ1文字以上含む文字で入力してください。',
     'lt'                   => [
         'numeric' => ':attributeには、:valueより小さな値を指定してください。',
         'file'    => ':attributeには、:value kBより小さなファイルを指定してください。',

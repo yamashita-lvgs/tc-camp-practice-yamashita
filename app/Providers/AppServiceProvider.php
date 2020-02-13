@@ -23,8 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Validator::extend(
-            'katakana', 'App\Http\Validators\RuleValidator@validateKatakana'
-        );
+        Validator::extend('katakana', 'App\Http\Validators\RuleValidator@validateKatakana');
+        Validator::extend('halfWidthAlphaNumeric', 'App\Http\Validators\RuleValidator@validateHalfWidthAlphaNumeric');
     }
 }

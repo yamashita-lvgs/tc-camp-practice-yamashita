@@ -1,5 +1,7 @@
 @extends('user.base')
+
 @section('title', 'ユーザー一覧')
+
 @section('content')
 
     <h1>ユーザー一覧</h1>
@@ -29,6 +31,7 @@
                 <td>{{ $user->updated_at_screen }}</td>
                 <td><a href="users/{{ $user->id }}/edit">更新</a></td>
                 <td><a href="users/{{ $user->id }}/delete">削除</a></td>
+
             </tr>
         @endforeach
     </table>

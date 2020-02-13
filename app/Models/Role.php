@@ -15,6 +15,6 @@ class Role extends BaseModel
      */
     public static function getRoles(): Collection
     {
-        return self::all();
+        return Role::all();
     }
 }

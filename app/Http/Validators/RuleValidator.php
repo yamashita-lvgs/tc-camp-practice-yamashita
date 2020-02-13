@@ -21,4 +21,17 @@ class RuleValidator
         }
         return false;
     }
+    /**
+     * 半角英数字をそれぞれ1種類以上含むバリデーション
+     * @return バリデートした値
+     */
+    public function validateHalfWidthAlphaNumeric($attribute, $value, $parameters)
+    {
+        if (mb_ereg('^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[!-/\:-@\[-`\{-~])[a-zA-Z\d\!-/\:-@\[-`\{-~]+$', $value)) {
+            return true;
+        }
+        return false;
+    }
 }
+
+
