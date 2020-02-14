@@ -11,7 +11,8 @@ use Illuminate\Database\Eloquent\Collection;
 class UserOperationHistoryService
 {
     /**
-     * @return Collection 表示用最新のユーザー情報操作履歴取得
+     * 表示用最新のユーザー情報操作履歴取得
+     * @return Collection 表示用最新のユーザー情報操作履歴
      */
     public static function getScreenLatestUserOperationHistories(): Collection
     {

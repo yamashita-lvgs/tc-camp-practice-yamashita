@@ -18,4 +18,3 @@ class Role extends BaseModel
         return self::orderBy('id', 'asc')->get();
     }
 }
-

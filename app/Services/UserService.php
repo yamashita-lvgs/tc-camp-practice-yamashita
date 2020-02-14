@@ -24,7 +24,7 @@ class UserService
      * 全ロール情報取得
      * @return array 全ロール情報
      */
-    public static function getRoles(): array
+    public static function getScreenRoles(): array
     {
         return Role::getRoles()->pluck('name', 'id')->toArray();
     }

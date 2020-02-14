@@ -15,8 +15,8 @@ class RuleValidator
      * 全角カタカナのバリデーション
      * @param $attribute 検査する属性名
      * @param $value string 入力された値
-
-     * @return バリデートした値
+     * @return true 全て全角カタカナの場合
+     * @return false 全角カタカナ以外が含まれている場合
      */
     public function validateKatakana(string $attribute, string $value): string
     {
@@ -25,11 +25,14 @@ class RuleValidator
         }
         return false;
     }
+
     /**
      * 半角英数字をそれぞれ1種類以上含むバリデーション
      * @param $attribute 検査する属性名
      * @param $value 入力された値
      * @return string バリデートした値
+     * @return true 半角英数字の場合
+     * @return false 半角英数字以外が含まれている場合
      */
     public function validateHalfWidthCharacter(string $attribute, string $value): string
     {
@@ -39,5 +42,3 @@ class RuleValidator
         return false;
     }
 }
-
-

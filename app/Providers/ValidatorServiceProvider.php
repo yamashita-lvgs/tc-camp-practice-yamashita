@@ -20,7 +20,6 @@ class ValidatorServiceProvider extends ServiceProvider
         Validator::extend('halfWidthCharacter', 'App\Http\Validators\RuleValidator@validateHalfWidthCharacter');
     }
 
-
     public function register()
     {
     }
