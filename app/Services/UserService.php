@@ -22,11 +22,11 @@ class UserService
 
     /**
      * 全ロール情報取得
-     * @return Collection 全ロール情報
+     * @return array 全ロール情報
      */
-    public static function getRoles(): Collection
+    public static function getRoles(): array
     {
-        return Role::getRoles();
+        return Role::getRoles()->pluck('name', 'id')->toArray();
     }
 
     /**
@@ -39,4 +39,3 @@ class UserService
         return User::getUserId($insertUser->id);
     }
 }
-

@@ -1,13 +1,15 @@
 @extends('user.base')
-<link rel="stylesheet" href="{{ asset('css/user.create.css') }}">
+
 @section('title', 'ユーザー新規登録')
+
+@section('css', asset('css/user.create.css'))
 
 @section('content')
 
     <h1>ユーザー新規登録</h1>
     <table>
         <form method="post">
-            {{ csrf_field() }}
+            @csrf
             <tr>
                 <th>ログインID</th>
                 <td>
@@ -36,9 +38,10 @@
                 <td>
                     <select name="role_id" value="{{old('role_id')}}" required>
                         <option value="">選択してください。</option>
-                        <option value="1">{{ $roles[0]->name }}</option>
-                        <option value="2">{{ $roles[1]->name }}</option>
-                        <option value="3">{{ $roles[2]->name }}</option>
+                        @foreach($roles as $key => $value)
+                            <option value="{{ $key }}"
+                                    @if( old('role_id') == $key ) selected @endif>{{ $value }}</option>
+                        @endforeach
                     </select>
                 </td>
             </tr>
@@ -49,7 +52,6 @@
                 @if ($errors->has('last_name'))
                     <td>{{$errors->first('last_name')}}</td>
                 @endif
-                </td>
             </tr>
             <br>
             <tr>
@@ -86,9 +88,9 @@
             <tr>
                 <th>性別</th>
                 <td>
-                    <input type="radio" name="gender_id" value="1">{{ $genders[1] }}
-                    <input type="radio" name="gender_id" value="2">{{ $genders[2] }}
-                    <input type="radio" name="gender_id" value="0">{{ $genders[0] }}
+                    @foreach($genders as $key => $value)
+                        <input type="radio" name="gender_id" value="{{ $key }}">{{ $value }}
+                    @endforeach
                 </td>
                 @if ($errors->has('gender_id'))
                     <td>{{$errors->first('gender_id')}}</td>
@@ -109,4 +111,3 @@
         </form>
     </table>
 @endsection
-

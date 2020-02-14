@@ -12,8 +12,8 @@ class UserObserver
 {
     /**
      * ユーザー操作履歴登録用データを取得
-     * @param $user 登録用ユーザーテーブルのカラム
-     * @param $operationsList 登録用ユーザー操作履歴テーブルのカラム
+     * @param User $user 登録用ユーザーテーブルのカラム
+     * @param int $operationsList 登録用ユーザー操作履歴テーブルのカラム
      * @return array ユーザー操作履歴情報
      */
     // TODO 機能開発優先のため、'operating_user_id'=> 1にしてるが正しくは「'operating_user_id'=> $user->created_user_id」
@@ -29,7 +29,7 @@ class UserObserver
 
     /**
      * ユーザーモデル登録イベント後処理
-     * @param $user 登録されたユーザーインスタンス
+     * @param User $user 登録されたユーザーインスタンス
      */
     public function created(User $user)
     {

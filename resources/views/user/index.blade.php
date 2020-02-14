@@ -1,7 +1,8 @@
 @extends('user.base')
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 @section('title', 'ユーザー一覧')
+
+@section('css', asset('css/user.index.css'))
 
 @section('content')
 
@@ -32,7 +33,6 @@
                 <td>{{ $user->updated_at_screen }}</td>
                 <td><a href="users/{{ $user->id }}/edit">更新</a></td>
                 <td><a href="users/{{ $user->id }}/delete">削除</a></td>
-
             </tr>
         @endforeach
     </table>

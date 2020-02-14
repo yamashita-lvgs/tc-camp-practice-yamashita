@@ -34,9 +34,9 @@ class UserOperationHistory extends BaseModel
 
     /**
      * 該当する操作項目のアトリビュート定義
-     * @return 該当する操作項目
+     * @return string 該当する操作項目
      */
-    public function getOperationTypeNameAttribute()
+    public function getOperationTypeNameAttribute(): string
     {
         return OPERATION_TYPE_NAME_LIST[$this->operation_id];
     }
@@ -45,7 +45,7 @@ class UserOperationHistory extends BaseModel
      * 画面表示用操作日時のアトリビュート定義
      * @return String 画面表示用操作日時
      */
-    public function getOperatedAtScreenAttribute(): String
+    public function getOperatedAtScreenAttribute(): string
     {
         return $this->operated_at->format(SCREEN_DATE_TIME_FORMAT);
     }
@@ -61,7 +61,7 @@ class UserOperationHistory extends BaseModel
 
     /**
      * ユーザー操作履歴登録
-     * @param $attribute ユーザー操作履歴
+     * @param array $attribute ユーザー操作履歴
      */
     public static function createUserOperationHistory(array $attribute)
     {
