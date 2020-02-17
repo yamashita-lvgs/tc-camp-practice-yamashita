@@ -16,11 +16,14 @@ class CreateRolesTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id')->comment("ID");
-            $table->tinyInteger('sort_id')->comment("ソートID");
             $table->string('name',255)->comment("役割");
-            $table->timestamp('created_at')->comment("作成日");
-            $table->timestamp('updated_at')->comment("更新日");
-            $table->timestamp('deleted_at')->nullable()->comment("削除日");
+            $table->integer('sort')->comment("ソート");
+            $table->integer('created_user_id')->default(1)->comment("作成ユーザーID");
+            $table->timestamp('created_at')->comment("作成日時");
+            $table->integer('updated_user_id')->default(1)->comment("最終更新ユーザーID");
+            $table->timestamp('updated_at')->comment("更新日時");
+            $table->iteger('deleted_user_id')->nullable()->comment("削除ユーザーID");
+            $table->timestamp('deleted_at')->nullable()->comment("削除日時");
         });
     }
 

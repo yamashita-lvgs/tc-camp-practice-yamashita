@@ -28,9 +28,9 @@ class UserController extends Controller
      * 新規登録画面表示
      * @return ユーザー新規登録画面
      */
-    public function showCreate()
+    public function getCreate()
     {
-        $genders = GENDER_LIST;
+        $genders = GENDER_NAME_LIST;
         $roles = UserService::getScreenRoles();
         return view('user.create', compact('genders', 'roles'));
     }

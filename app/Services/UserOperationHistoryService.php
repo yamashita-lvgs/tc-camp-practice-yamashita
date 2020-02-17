@@ -16,6 +16,6 @@ class UserOperationHistoryService
      */
     public static function getScreenLatestUserOperationHistories(): Collection
     {
-        return UserOperationHistory::getScreenLatestUserOperationHistories();
+        return UserOperationHistory::getLatestUserOperationHistories();
     }
 }

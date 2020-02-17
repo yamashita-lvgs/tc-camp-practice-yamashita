@@ -30,13 +30,13 @@ class UserService
     }
 
     /**
-     * 新規登録したユーザーID取得
-     * @param $attribute 登録するユーザー情報
-     * @return User 新規登録したユーザーID
+     * 新規登録したユーザー情報取得
+     * @param $attribute 登録するユーザー情報フルネーム
+     * @return User 新規登録したユーザーインスタンス
      */
     public static function insertUser(array $attribute): User
     {
-        $insertUser = User::createUser($attribute);
+        $insertUser = User::create($attribute);
         return User::getUserId($insertUser->id);
     }
 }
