@@ -16,8 +16,8 @@ class CreateRolesTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id')->comment("ID");
-            $table->string('name',255)->comment("役割");
             $table->tinyInteger('sort_id')->comment("ソートID");
+            $table->string('name',255)->comment("役割");
             $table->timestamp('created_at')->comment("作成日");
             $table->timestamp('updated_at')->comment("更新日");
             $table->timestamp('deleted_at')->nullable()->comment("削除日");
