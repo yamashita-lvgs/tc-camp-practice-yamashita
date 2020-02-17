@@ -39,4 +39,13 @@ class UserService
         $insertUser = User::createUser($attribute);
         return User::getUserId($insertUser->id);
     }
+
+    /**
+     * 該当するユーザー情報取得
+     * @return Collection 全ユーザー情報
+     */
+    public static function getUser(int $userId): User
+    {
+        return User::getUserId($userId);
+    }
 }

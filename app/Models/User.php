@@ -4,6 +4,7 @@ namespace App\Models;
 use App\Traits\ScreenDateTimeFormat;
 use App\Traits\UserObservable;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 
 /**
  * ユーザーテーブルのモデルクラス
