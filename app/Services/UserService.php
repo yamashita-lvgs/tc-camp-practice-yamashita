@@ -31,11 +31,12 @@ class UserService
 
     /**
      * 新規登録したユーザーID取得
-     * @return User　新規登録したユーザーID
+     * @param $attribute 登録するユーザー情報
+     * @return User 新規登録したユーザーID
      */
-    public static function insertUser(array $validated): User
+    public static function insertUser(array $attribute): User
     {
-        $insertUser = User::createUser($validated);
+        $insertUser = User::createUser($attribute);
         return User::getUserId($insertUser->id);
     }
 }

@@ -17,7 +17,7 @@ class ValidatorServiceProvider extends ServiceProvider
     public function boot()
     {
         Validator::extend('katakana', 'App\Http\Validators\RuleValidator@validateKatakana');
-        Validator::extend('halfWidthCharacter', 'App\Http\Validators\RuleValidator@validateHalfWidthCharacter');
+        Validator::extend('eachIncludingHalfWidthCharacter', 'App\Http\Validators\RuleValidator@eachIncludingHalfWidthCharacter');
     }
 
     public function register()

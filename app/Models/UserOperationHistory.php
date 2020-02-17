@@ -43,7 +43,7 @@ class UserOperationHistory extends BaseModel
 
     /**
      * 画面表示用操作日時のアトリビュート定義
-     * @return String 画面表示用操作日時
+     * @return string 画面表示用操作日時
      */
     public function getOperatedAtScreenAttribute(): string
     {

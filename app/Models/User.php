@@ -72,7 +72,8 @@ class User extends BaseModel
 
     /**
      * 新規ユーザー登録
-     * @return User 新規ユーザー情報
+     * @param $attribute 登録するユーザー情報
+     * @return User 作成されたユーザーインスタンス
      */
     public static function createUser(array $attribute): User
     {
@@ -81,7 +82,8 @@ class User extends BaseModel
 
     /**
      * ユーザーID取得
-     * @return User ユーザーID
+     * @param $userId ユーザーID
+     * @return User 該当するユーザーインスタンス
      */
     public static function getUserId(int $userId): User
     {

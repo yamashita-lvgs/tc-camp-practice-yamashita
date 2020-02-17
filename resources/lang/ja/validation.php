@@ -116,7 +116,7 @@ return [
     'url'                  => ':attributeに正しい形式を指定してください。',
     'uuid'                 => ':attributeに有効なUUIDを指定してください。',
 
-    'half_width_character' => ':attributeは半角大小英数字記号を用いて入力してください。',
+    'each_including_half_width_character' => ':attributeは半角大小英数字記号を用いて入力してください。',
     'katakana' => ':attributeはカタカナで入力してください。',
     /*
     |--------------------------------------------------------------------------
