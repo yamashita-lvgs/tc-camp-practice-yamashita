@@ -3,6 +3,8 @@ namespace App\Http\Validators;
 
 use Illuminate\Support\Collection;
 use Illuminate\Validation\Validator;
+use Illuminate\Validation\Rule;
+use Illuminate\Http\Request;
 
 /**
  * 入力ルールに関するバリデーター

@@ -34,8 +34,29 @@ class UserService
      * @param $user 登録するユーザー情報
      * @return User 新規登録したユーザーインスタンス
      */
-    public static function insertUser($user) :User
+    public static function insertUser($user): User
     {
         return User::create($user);
+    }
+
+    /**
+     * 該当するユーザー情報取得
+     * @param $userId ユーザーID
+     * @return User ユーザーインスタンス
+     */
+    public static function getUser(int $userId): User
+    {
+        return User::getUserId($userId);
+    }
+
+    /**
+     * ユーザー情報更新
+     * @param $userId ユーザーID
+     * @param $user 更新するユーザー情報
+     * @return User 更新したユーザーインスタンス
+     */
+    public static function updateUser($userId, $user): User
+    {
+        return User::updateUser($userId, $user);
     }
 }

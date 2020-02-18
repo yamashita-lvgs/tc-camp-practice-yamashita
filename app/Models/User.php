@@ -4,8 +4,6 @@ namespace App\Models;
 use App\Traits\ScreenDateTimeFormat;
 use App\Traits\UserObservable;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
-
 
 /**
  * ユーザーテーブルのモデルクラス
@@ -50,7 +48,7 @@ class User extends BaseModel
      */
     public function getFullNameAttribute(): string
     {
-        return $this === null ? "" :"{$this->last_name_kana} {$this->first_name_kana}";
+        return $this === null ? "" :"{$this->last_name} {$this->first_name}";
     }
     /**
      * フルネーム（カナ）のアトリビュート定義
@@ -71,22 +69,24 @@ class User extends BaseModel
     }
 
     /**
-     * 新規ユーザー登録
-     * @param $attribute 登録するユーザー情報
-     * @return User 作成されたユーザーインスタンス
-     */
-    public static function createUser(array $attribute): User
-    {
-        return User::create($attribute);
-    }
-
-    /**
-     * ユーザーID取得
-     * @param $userId ユーザーID
+     * 該当するユーザー情報取得
+     * @param $userId 該当するユーザーID
      * @return User 該当するユーザーインスタンス
      */
     public static function getUserId(int $userId): User
     {
+        return User::findOrFail($userId);
+    }
+
+    /**
+     * ユーザー情報更新
+     * @param $userId ユーザーID
+     * @param $user 更新するユーザー情報
+     * @return User 更新したユーザーインスタンス
+     */
+    public static function updateUser($userId, $user): User
+    {
+        User::findOrFail($userId)->fill($user)->save();
         return User::findOrFail($userId);
     }
 }

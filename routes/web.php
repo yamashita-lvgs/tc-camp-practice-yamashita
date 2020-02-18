@@ -18,5 +18,6 @@ Route::get('users/create', 'UserController@getCreate'); // 初期表示
 Route::post('users/create', 'UserController@postCreate'); // 登録実行
 
 // ユーザー更新画面
-Route::get('users/{id}/edit', 'UserController@showEdit'); // 初期表示
-Route::post('users/{id}/edit', 'UserController@postEdit'); // 登録実行
+Route::get('users/{id}/update', 'UserController@getUpdate'); // 初期表示
+Route::post('users/{id}/update', 'UserController@postUpdate'); // 登録実行
+
