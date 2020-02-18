@@ -6,6 +6,7 @@ use App\Traits\UserObservable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
+
 /**
  * ユーザーテーブルのモデルクラス
  * @package App\Models
@@ -16,9 +17,7 @@ class User extends BaseModel
      * 日時分漢字表示のトレイト
      */
     use ScreenDateTimeFormat;
-    /**
-     * ユーザー作成時ユーザー操作履歴更新のイベントのトレイト
-     */
+
     use UserObservable;
 
     public function role()
@@ -37,29 +36,29 @@ class User extends BaseModel
     }
 
     /**
-     * 該当する性別のアトリビュート定義
-     * @return string 該当する性別
+     * 性別名称のアトリビュート定義
+     * @return string 性別名称
      */
-    public function getGenderAttribute() :string
+    public function getGenderNameAttribute() :string
     {
-        return GENDER_LIST[$this->gender_id];
+        return GENDER_NAME_LIST[$this->gender_id];
     }
 
     /**
-     * ユーザー漢字フルネームのアトリビュート定義
-     * @return null|string ユーザーフルネーム
+     * フルネームのアトリビュート定義
+     * @return string フルネーム
      */
-    public function getFullNameAttribute(): ?string
-    {
-        return $this === null ? "" :"{$this->last_name} {$this->first_name}";
-    }
-    /**
-     * ユーザーカナフルネームのアトリビュート定義
-     * @return null|string ユーザーカナフルネーム
-     */
-    public function getFullNameKanaAttribute(): ?string
+    public function getFullNameAttribute(): string
     {
         return $this === null ? "" :"{$this->last_name_kana} {$this->first_name_kana}";
+    }
+    /**
+     * フルネーム（カナ）のアトリビュート定義
+     * @return string フルネーム（カナ）
+     */
+    public function getFullNameKanaAttribute(): string
+    {
+        return "{$this->last_name_kana} {$this->first_name_kana}" ;
     }
 
     /**

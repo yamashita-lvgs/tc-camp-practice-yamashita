@@ -2,8 +2,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Services\UserOperationHistoryService;
 use App\Services\UserService;
 use Illuminate\Support\Facades\DB;
@@ -30,9 +28,9 @@ class UserController extends Controller
      * 新規登録画面表示
      * @return ユーザー新規登録画面
      */
-    public function showCreate()
+    public function getCreate()
     {
-        $genders = GENDER_LIST;
+        $genders = GENDER_NAME_LIST;
         $roles = UserService::getScreenRoles();
         return view('user.create', compact('genders', 'roles'));
     }
@@ -49,7 +47,7 @@ class UserController extends Controller
         });
         return view('user.createCompletion', compact('user'));
     }
-
+  
     /**
      * 編集画面表示
      * @return ユーザー編集画面
@@ -68,10 +66,4 @@ class UserController extends Controller
      * @return ユーザー新規登録完了画面
      */
     public function postEdit(CreateUserRequest $request)
-    {
-        $user = DB::transaction(function () use ($request) {
-            return UserService::insertUser($request->validated());
-        });
-        return view('user.createCompletion', compact('user'));
-    }
 }

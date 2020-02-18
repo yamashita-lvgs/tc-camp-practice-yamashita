@@ -33,8 +33,8 @@ class UserOperationHistory extends BaseModel
     }
 
     /**
-     * 該当する操作項目のアトリビュート定義
-     * @return string 該当する操作項目
+     * 操作種別名のアトリビュート定義
+     * @return string 操作種別名
      */
     public function getOperationTypeNameAttribute(): string
     {
@@ -54,7 +54,7 @@ class UserOperationHistory extends BaseModel
      * 最新のユーザー操作履歴取得
      * @return Collection 最新のユーザー情報操作履歴
      */
-    public static function getScreenLatestUserOperationHistories(): Collection
+    public static function getLatestUserOperationHistories(): Collection
     {
         return self::orderBy('operated_at', 'desc')->take(config('const.HISTORY_COUNT'))->get();
     }

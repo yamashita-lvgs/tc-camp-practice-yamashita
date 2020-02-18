@@ -7,7 +7,7 @@ const GENDER_FEMALE = 2;
 const GENDER_OTHER = 0;
 
 /** 性別名リスト */
-const GENDER_LIST = [
+const GENDER_NAME_LIST = [
     GENDER_MALE => "男性",
     GENDER_FEMALE => "女性",
     GENDER_OTHER => "その他",

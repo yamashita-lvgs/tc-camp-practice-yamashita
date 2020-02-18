@@ -11,16 +11,9 @@ use Validator;
  */
 class ValidatorServiceProvider extends ServiceProvider
 {
-    /**
-     * サービスプロバイダー読み込み後のメソッド
-     */
     public function boot()
     {
         Validator::extend('katakana', 'App\Http\Validators\RuleValidator@validateKatakana');
         Validator::extend('eachIncludingHalfWidthCharacter', 'App\Http\Validators\RuleValidator@validateEachIncludingHalfWidthCharacter');
-    }
-
-    public function register()
-    {
     }
 }

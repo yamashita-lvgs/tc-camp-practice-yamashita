@@ -4,7 +4,7 @@ namespace App\Traits;
 use App\Observers\UserObserver;
 
 /**
- * ユーザーのトレイト
+ * ユーザーモデル用のトレイト
  */
 trait UserObservable
 {

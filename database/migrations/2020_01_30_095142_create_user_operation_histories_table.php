@@ -11,7 +11,6 @@ class CreateUserOperationHistoriesTable extends Migration
      *
      * @return void
      */
-    // TODO 機能開発優先のため、マイグレーションファイルは後で修正を行う。
     public function up()
     {
         Schema::create('user_operation_histories', function (Blueprint $table) {
@@ -20,9 +19,12 @@ class CreateUserOperationHistoriesTable extends Migration
             $table->unsignedInteger('operating_user_id')->comment("操作実施ユーザーID");
             $table->unsignedInteger('operation_id')->comment("操作種別ID");
             $table->timestamp('operated_at')->comment("操作日時");
-            $table->timestamp('created_at')->comment("作成日");
-            $table->timestamp('updated_at')->comment("更新日");
-            $table->timestamp('deleted_at')->nullable()->comment("削除日");
+            $table->unsignedInteger('created_user_id')->comment("作成ユーザーID");
+            $table->timestamp('created_at')->comment("作成日時");
+            $table->unsignedInteger('updated_user_id')->comment("最終更新ユーザーID");
+            $table->timestamp('updated_at')->comment("更新日時");
+            $table->unsignedInteger('deleted_user_id')->nullable()->comment("削除ユーザーID");
+            $table->timestamp('deleted_at')->nullable()->comment("削除日時");
         });
         DB::statement("ALTER TABLE user_operation_histories COMMENT '操作履歴'");
     }
