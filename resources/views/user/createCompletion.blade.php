@@ -21,7 +21,7 @@
             <td>{{ $user->role->name }}</td>
             <td>{{ $user->full_name }}</td>
             <td>{{ $user->full_name_kana }}</td>
-            <td>{{ $user->gender }}</td>
+            <td>{{ $user->gender_name }}</td>
             <td>{{ $user->mail }}</td>
         </tr>
     </table>

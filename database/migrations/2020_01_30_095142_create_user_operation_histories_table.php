@@ -20,11 +20,11 @@ class CreateUserOperationHistoriesTable extends Migration
             $table->unsignedInteger('operating_user_id')->comment("操作実施ユーザーID");
             $table->unsignedInteger('operation_id')->comment("操作種別ID");
             $table->timestamp('operated_at')->comment("操作日時");
-            $table->integer('created_user_id')->default(1)->comment("作成ユーザーID");
+            $table->unsignedInteger('created_user_id')->default(1)->comment("作成ユーザーID");
             $table->timestamp('created_at')->comment("作成日時");
-            $table->integer('updated_user_id')->default(1)->comment("最終更新ユーザーID");
+            $table->unsignedInteger('updated_user_id')->default(1)->comment("最終更新ユーザーID");
             $table->timestamp('updated_at')->comment("更新日時");
-            $table->integer('deleted_user_id')->nullable()->comment("削除ユーザーID");
+            $table->unsignedInteger('deleted_user_id')->nullable()->comment("削除ユーザーID");
             $table->timestamp('deleted_at')->nullable()->comment("削除日時");
         });
         DB::statement("ALTER TABLE user_operation_histories COMMENT '操作履歴'");

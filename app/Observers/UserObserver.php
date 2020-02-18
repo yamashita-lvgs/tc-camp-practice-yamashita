@@ -27,6 +27,7 @@ class UserObserver
      * @return array ユーザー操作履歴情報
      */
     // TODO 機能開発優先のため、'operating_user_id'=> 1にしてるが正しくは「'operating_user_id'=> $user->created_user_id」
+    // TODO 機能開発優先のため、'operated_at'には暫定的にnow()入れています。
     private function getUserOperationHistoryData(User $user, int $operationId) :array
     {
         return [

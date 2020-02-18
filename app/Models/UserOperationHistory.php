@@ -30,8 +30,8 @@ class UserOperationHistory extends BaseModel
     }
 
     /**
-     * 該当する操作項目のアトリビュート定義
-     * @return string 操作項目名
+     * 操作種別名のアトリビュート定義
+     * @return string 操作種別名
      */
     public function getOperationTypeNameAttribute(): string
     {

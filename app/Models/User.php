@@ -31,16 +31,16 @@ class User extends BaseModel
     }
 
     /**
-     * 該当する性別のアトリビュート定義
+     * 性別名称のアトリビュート定義
      * @return string 性別名称
      */
-    public function getGenderAttribute() :string
+    public function getGenderNameAttribute() :string
     {
         return GENDER_NAME_LIST[$this->gender_id];
     }
 
     /**
-     * ユーザー漢字フルネームのアトリビュート定義
+     * フルネームのアトリビュート定義
      * @return null|string フルネーム
      */
     public function getFullNameAttribute(): ?string
@@ -48,7 +48,7 @@ class User extends BaseModel
         return "{$this->last_name} {$this->first_name}";
     }
     /**
-     * ユーザーカナフルネームのアトリビュート定義
+     * フルネーム（カナ）のアトリビュート定義
      * @return null|string フルネーム（カナ）
      */
     public function getFullNameKanaAttribute(): ?string
@@ -63,15 +63,5 @@ class User extends BaseModel
     public static function getUsers(): Collection
     {
         return self::orderBy('id', 'asc')->get();
-    }
-
-    /**
-     * ユーザーID取得
-     * @param $userId ユーザーID
-     * @return User 該当するユーザーインスタンス
-     */
-    public static function getUserId(int $userId): User
-    {
-        return User::findOrFail($userId);
     }
 }
