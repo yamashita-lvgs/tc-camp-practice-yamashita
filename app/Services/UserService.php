@@ -1,11 +1,9 @@
 <?php
 namespace App\Services;
 
-use App\Models\Action;
+use App\Models\Role;
 use App\Models\User;
-use App\Models\UserOperationHistory;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Supportt\Facades\DB;
 
 /**
  * ユーザー情報のサービスクラス
@@ -15,20 +13,29 @@ class UserService
 {
     /**
      * 全ユーザー情報取得
-     * @return collection 全ユーザー情報
+     * @return Collection 全ユーザー情報
      */
-    public static function getUsers() :collection
+    public static function getUsers(): Collection
     {
         return User::getUsers();
     }
 
     /**
-     * 最新のユーザー情報操作履歴取得
-     * @return collection 最新のユーザー情報操作履歴
+     * 全ロール情報取得
+     * @return array 全ロール情報
      */
-    public static function getLatestUserOperationHistories() :collection
+    public static function getScreenRoles(): array
     {
-        return UserOperationHistory::getLatestUserOperationHistories();
+        return Role::getRoles()->pluck('name', 'id')->toArray();
+    }
+
+    /**
+     * ユーザー情報登録
+     * @param $user 登録するユーザー情報
+     * @return User 新規登録したユーザーインスタンス
+     */
+    public static function insertUser($user) :User
+    {
+        return User::create($user);
     }
 }
-

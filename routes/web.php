@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,3 +12,7 @@
 
 // ユーザー一覧画面
 Route::get('users', 'UserController@index'); // 初期表示
+
+// ユーザー登録画面
+Route::get('users/create', 'UserController@getCreate'); // 初期表示
+Route::post('users/create', 'UserController@postCreate'); // 登録実行

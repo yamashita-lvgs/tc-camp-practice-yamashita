@@ -21,7 +21,7 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-require __DIR__.'/../bootstrap/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +34,13 @@ require __DIR__.'/../bootstrap/autoload.php';
 | the responses back to the browser and delight our users.
 |
 */
+
+$fileList = glob(__DIR__.'/../bootstrap/constants/*.php');
+foreach ($fileList as $file) {
+    if (is_file($file)) {
+        require_once $file;
+    }
+}
 
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
