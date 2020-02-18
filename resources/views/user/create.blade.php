@@ -53,6 +53,13 @@
                         @endforeach
                     </select>
                 </td>
+                <td>
+                    @if($errors->has('role_id'))
+                        @foreach($errors->get('role_id') as $message)
+                            {{ $message }}<br>
+                        @endforeach
+                    @endif
+                </td>
             </tr>
             <br>
             <tr>
