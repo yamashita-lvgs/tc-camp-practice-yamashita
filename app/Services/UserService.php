@@ -30,7 +30,7 @@ class UserService
     }
 
     /**
-     * 新規登録したユーザー情報取得
+     * ユーザー情報登録
      * @param $user 登録するユーザー情報
      * @return User 新規登録したユーザーインスタンス
      */

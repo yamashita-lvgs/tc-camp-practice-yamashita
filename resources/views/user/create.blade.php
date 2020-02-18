@@ -22,7 +22,7 @@
                 <td>
                     @if($errors->has('login_id'))
                         @foreach($errors->get('login_id') as $message)
-                            {{ $message }}
+                            {{ $message }}<br>
                         @endforeach
                     @endif
                 </td>
@@ -38,7 +38,7 @@
                 <td>
                     @if($errors->has('password'))
                         @foreach($errors->get('password') as $message)
-                            {{ $message }}
+                            {{ $message }}<br>
                         @endforeach
                     @endif
                 </td>
@@ -61,7 +61,7 @@
                 <td>
                     @if($errors->has('last_name'))
                         @foreach($errors->get('last_name') as $message)
-                            {{ $message }}
+                            {{ $message }}<br>
                         @endforeach
                     @endif
                 </td>
@@ -74,7 +74,7 @@
                 <td>
                     @if($errors->has('first_name'))
                         @foreach($errors->get('first_name') as $message)
-                            {{ $message }}
+                            {{ $message }}<br>
                         @endforeach
                     @endif
                 </td>
@@ -90,7 +90,7 @@
                 <td>
                     @if($errors->has('last_name_kana'))
                         @foreach($errors->get('last_name_kana') as $message)
-                            {{ $message }}
+                            {{ $message }}<br>
                         @endforeach
                     @endif
                 </td>
@@ -105,7 +105,7 @@
                 <td>
                     @if($errors->has('first_name_kana'))
                         @foreach($errors->get('first_name_kana') as $message)
-                            {{ $message }}
+                            {{ $message }}<br>
                         @endforeach
                     @endif
                 </td>
@@ -121,7 +121,7 @@
                 <td>
                     @if($errors->has('gender_id'))
                         @foreach($errors->get('gender_id') as $message)
-                            {{ $message }}
+                            {{ $message }}<br>
                         @endforeach
                     @endif
                 </td>
@@ -133,7 +133,7 @@
                 <td>
                     @if($errors->has('mail'))
                         @foreach($errors->get('mail') as $message)
-                            {{ $message }}
+                            {{ $message }}<br>
                         @endforeach
                     @endif
                 </td>

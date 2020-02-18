@@ -41,17 +41,17 @@ class User extends BaseModel
 
     /**
      * フルネームのアトリビュート定義
-     * @return null|string フルネーム
+     * @return string フルネーム
      */
-    public function getFullNameAttribute(): ?string
+    public function getFullNameAttribute(): string
     {
         return "{$this->last_name} {$this->first_name}";
     }
     /**
      * フルネーム（カナ）のアトリビュート定義
-     * @return null|string フルネーム（カナ）
+     * @return string フルネーム（カナ）
      */
-    public function getFullNameKanaAttribute(): ?string
+    public function getFullNameKanaAttribute(): string
     {
         return "{$this->last_name_kana} {$this->first_name_kana}" ;
     }
