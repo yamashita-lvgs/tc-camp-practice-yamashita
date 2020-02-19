@@ -46,8 +46,8 @@ class UserController extends Controller
         $user = DB::transaction(function () use ($request) {
             return UserService::insertUser($request->validated());
         });
-        session()->flash('message', 'ユーザー新規登録完了');
-        return view('user.completion', compact('user'));
+        $message = 'ユーザー登録完了';
+        return view('user.completion', compact('user', 'message'));
     }
 
     /**
@@ -74,7 +74,7 @@ class UserController extends Controller
         $user = DB::transaction(function () use ($request, $userId) {
             return UserService::updateUser($userId, $request->validated());
         });
-        session()->flash('message', 'ユーザー更新完了');
-        return view('user.completion', compact('user'));
+        $message = 'ユーザー更新完了';
+        return view('user.completion', compact('user', 'message'));
     }
 }

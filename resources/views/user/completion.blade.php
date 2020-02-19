@@ -1,10 +1,10 @@
 @extends('layouts.userBase')
 
-@section('title', session('message'))
+@section('title', $message )
 
 @section('content')
 
-    <h1>{{ session('message') }}</h1>
+    <h1>{{ $message }}</h1>
     <table>
         <tr>
             <th>ユーザーID</th>
