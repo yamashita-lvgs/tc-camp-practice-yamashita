@@ -78,3 +78,4 @@ class UserController extends Controller
         return view('user.completion', compact('user'));
     }
 }
+
