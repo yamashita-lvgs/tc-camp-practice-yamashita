@@ -7,7 +7,7 @@ use Illuminate\Validation\Rule;
  * ユーザーに関するリクエストクラス
  * @package App\Http\Requests
  */
-class UpdateUserUserRequest extends BaseUserRequest
+class UpdateUserRequest extends BaseUserRequest
 {
     /**
      * ユーザー更新のバリデーションルール

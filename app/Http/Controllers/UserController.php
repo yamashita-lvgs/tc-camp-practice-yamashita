@@ -1,8 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateUserUserRequest;
-use App\Http\Requests\UpdateUserUserRequest;
+use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Services\UserOperationHistoryService;
 use App\Services\UserService;
 use Illuminate\Support\Facades\DB;
@@ -38,10 +38,10 @@ class UserController extends Controller
 
     /**
      * 新規登録処理実行
-     * @param UpdateUserUserRequest $request リクエスト情報
+     * @param UpdateUserRequest $request リクエスト情報
      * @return ユーザー新規登録完了画面
      */
-    public function postCreate(CreateUserUserRequest $request)
+    public function postCreate(CreateUserRequest $request)
     {
         $user = DB::transaction(function () use ($request) {
             return UserService::insertUser($request->validated());
@@ -65,11 +65,11 @@ class UserController extends Controller
 
     /**
      * 更新処理実行
-     * @param UpdateUserUserRequest $request リクエスト情報
+     * @param UpdateUserRequest $request リクエスト情報
      * @param int $userId ユーザーID
      * @return ユーザー更新完了画面
      */
-    public function postUpdate(UpdateUserUserRequest $request, int $userId)
+    public function postUpdate(UpdateUserRequest $request, int $userId)
     {
         $user = DB::transaction(function () use ($request, $userId) {
             return UserService::updateUser($userId, $request->validated());
