@@ -49,8 +49,8 @@
             <tr>
                 <td>{{ $userOperationHistory->operated_at_screen }}</td>
                 <td>{{ $userOperationHistory->operation_type_name }}</td>
-                <td>{{ $userOperationHistory->operating_user->full_name }}</td>
                 <td>{{ $userOperationHistory->operated_user->full_name }}</td>
+                <td>{{ $userOperationHistory->operating_user->full_name }}</td>
             </tr>
         @endforeach
     </table>
