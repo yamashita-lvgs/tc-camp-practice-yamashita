@@ -88,7 +88,6 @@ class UserController extends Controller
         DB::transaction(function () use ($userId)
         {
             return UserService::deleteUser($userId);
-            //$user = User::find($userId)->delete();
         });
         return redirect("/users");
     }

@@ -4,6 +4,7 @@ namespace App\Models;
 use App\Traits\ScreenDateTimeFormat;
 use App\Traits\UserObservable;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * ユーザーテーブルのモデルクラス
@@ -14,6 +15,8 @@ class User extends BaseModel
     use ScreenDateTimeFormat;
 
     use UserObservable;
+
+    use SoftDeletes;
 
     public function role()
     {
@@ -85,5 +88,16 @@ class User extends BaseModel
     {
         User::findOrFail($userId)->fill($attribute)->save();
         return User::findOrFail($userId);
+    }
+
+    /**
+     * ユーザー情報削除
+     * @param int $userId ユーザーID
+     * @return User 削除したユーザーインスタンス
+     */
+    public static function deleteUser(int $userId)
+    {
+        User::find($userId)->delete();
+        return self::orderBy('id', 'asc')->get();
     }
 }
