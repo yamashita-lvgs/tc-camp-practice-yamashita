@@ -4,10 +4,10 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * ベースリクエストクラス
+ * ユーザーに関するベースリクエストクラス
  * @package App\Http\Requests
  */
-abstract class BaseRequest extends FormRequest
+abstract class BaseUserRequest extends FormRequest
 {
     /**
      * ユーザーに関するのバリデーションルール

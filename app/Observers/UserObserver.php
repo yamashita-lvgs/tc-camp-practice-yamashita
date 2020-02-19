@@ -44,7 +44,7 @@ class UserObserver
             'operated_user_id' => $user->id,
             'operating_user_id'=> 1,
             'operation_id' => $operationId,
-            'operated_at' => $user->updated_at,
+            'operated_at' => now(),
             'created_user_id' => $user->id,
             'created_at' => $user->created_at,
             'updated_user_id' => $user->id,

@@ -1,8 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateUserRequest;
-use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\CreateUserUserRequest;
+use App\Http\Requests\UpdateUserUserRequest;
 use App\Services\UserOperationHistoryService;
 use App\Services\UserService;
 use Illuminate\Support\Facades\DB;
@@ -38,16 +38,16 @@ class UserController extends Controller
 
     /**
      * 新規登録処理実行
-     * @param UpdateUserRequest $request リクエスト情報
+     * @param UpdateUserUserRequest $request リクエスト情報
      * @return ユーザー新規登録完了画面
      */
-    public function postCreate(CreateUserRequest $request)
+    public function postCreate(CreateUserUserRequest $request)
     {
         $user = DB::transaction(function () use ($request) {
             return UserService::insertUser($request->validated());
         });
         session()->flash('message', 'ユーザー新規登録完了');
-        return view('user.completion', compact('user'))->with('message', 'ユーザー新規登録完了');
+        return view('user.completion', compact('user'));
     }
 
     /**
@@ -60,17 +60,16 @@ class UserController extends Controller
         $genders = GENDER_NAME_LIST;
         $roles = UserService::getScreenRoles();
         $user = UserService::getUserById($userId);
-
         return view('user.update', compact('user', 'genders', 'roles'));
     }
 
     /**
      * 更新処理実行
-     * @param UpdateUserRequest $request リクエスト情報
+     * @param UpdateUserUserRequest $request リクエスト情報
      * @param int $userId ユーザーID
      * @return ユーザー更新完了画面
      */
-    public function postUpdate(UpdateUserRequest $request, int $userId)
+    public function postUpdate(UpdateUserUserRequest $request, int $userId)
     {
         $user = DB::transaction(function () use ($request, $userId) {
             return UserService::updateUser($userId, $request->validated());

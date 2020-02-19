@@ -20,11 +20,7 @@
                     <p1>※半角記号は[-,!,/]など正規表現の文字が使用できます。</p1>
                 </td>
                 <td>
-                    @if($errors->has('login_id'))
-                        @foreach($errors->get('login_id') as $message)
-                            {{ $message }}<br>
-                        @endforeach
-                    @endif
+                    @include('layouts.error', ['value' => 'login_id'])
                 </td>
             </tr>
             <br>
@@ -36,11 +32,7 @@
                     <p1>半角英数字記号を各1回以上用いて、8-14文字で入力して下さい。</p1>
                 </td>
                 <td>
-                    @if($errors->has('password'))
-                        @foreach($errors->get('password') as $message)
-                            {{ $message }}<br>
-                        @endforeach
-                    @endif
+                        @include('layouts.error', ['value' => 'password'])
                 </td>
             </tr>
             <tr>
@@ -54,11 +46,7 @@
                     </select>
                 </td>
                 <td>
-                    @if($errors->has('role_id'))
-                        @foreach($errors->get('role_id') as $message)
-                            {{ $message }}<br>
-                        @endforeach
-                    @endif
+                    @include('layouts.error', ['value' => 'role_id'])
                 </td>
             </tr>
             <br>
@@ -66,11 +54,7 @@
                 <th>姓</th>
                 <td><input type="text" name="last_name" value="{{ old('last_name') }}"></td>
                 <td>
-                    @if($errors->has('last_name'))
-                        @foreach($errors->get('last_name') as $message)
-                            {{ $message }}<br>
-                        @endforeach
-                    @endif
+                    @include('layouts.error', ['value' => 'last_name'])
                 </td>
             </tr>
             <br>
@@ -78,11 +62,7 @@
                 <th>名</th>
                 <td><input type="text" name="first_name" value="{{ old('first_name') }}"></td>
                 <td>
-                    @if($errors->has('first_name'))
-                        @foreach($errors->get('first_name') as $message)
-                            {{ $message }}<br>
-                        @endforeach
-                    @endif
+                    @include('layouts.error', ['value' => 'first_name'])
                 </td>
             </tr>
             <br>
@@ -94,11 +74,7 @@
                     <p1>(カタカナで入力してください。)</p1>
                 </td>
                 <td>
-                    @if($errors->has('last_name_kana'))
-                        @foreach($errors->get('last_name_kana') as $message)
-                            {{ $message }}<br>
-                        @endforeach
-                    @endif
+                    @include('layouts.error', ['value' => 'last_name_kana'])
                 </td>
             </tr>
             <tr>
@@ -109,11 +85,7 @@
                     <p1>(カタカナで入力してください。)</p1>
                 </td>
                 <td>
-                    @if($errors->has('first_name_kana'))
-                        @foreach($errors->get('first_name_kana') as $message)
-                            {{ $message }}<br>
-                        @endforeach
-                    @endif
+                    @include('layouts.error', ['value' => 'first_name_kana'])
                 </td>
             </tr>
             <br>
@@ -125,11 +97,7 @@
                     @endforeach
                 </td>
                 <td>
-                    @if($errors->has('gender_id'))
-                        @foreach($errors->get('gender_id') as $message)
-                            {{ $message }}<br>
-                        @endforeach
-                    @endif
+                    @include('layouts.error', ['value' => 'gender_id'])
                 </td>
             </tr>
             <br>
@@ -137,11 +105,7 @@
                 <th>メールアドレス</th>
                 <td><input type="text" name="mail" value="{{ old('mail') }}"></td>
                 <td>
-                    @if($errors->has('mail'))
-                        @foreach($errors->get('mail') as $message)
-                            {{ $message }}<br>
-                        @endforeach
-                    @endif
+                    @include('layouts.error', ['value' => 'mail'])
                 </td>
             </tr>
             <tr>

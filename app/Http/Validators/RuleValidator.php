@@ -27,7 +27,6 @@ class RuleValidator
      */
     public function validateEachIncludingHalfWidthCharacter(string $attribute, string $value): bool
     {
-        return mb_ereg('^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[!-/\:-@\[-`\{-~])[a-zA-Z\d\!-/\:-@\[-`\{-~]+$',
-            $value);
+        return mb_ereg('^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[!-/\:-@\[-`\{-~])[a-zA-Z\d\!-/\:-@\[-`\{-~]+$', $value);
     }
 }
