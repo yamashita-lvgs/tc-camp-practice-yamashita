@@ -41,8 +41,7 @@
                     <select name="role_id" value="{{ old('role_id') }}" required>
                         <option value="">選択してください。</option>
                         @foreach($roles as $key => $value)
-                            <option value="{{ $key }}"
-                                    @if( old('role_id') == $key ) selected @endif>{{ $value }}</option>
+                            <option value="{{ $key }}" @if( old('role_id') == $key ) selected @endif>{{ $value }}</option>
                         @endforeach
                     </select>
                 </td>

@@ -15,8 +15,8 @@ class CreateRolesTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id')->comment("ID");
-            $table->unsignedInteger('sort')->comment("ソート");
             $table->string('name',255)->comment("役割");
+            $table->unsignedInteger('sort')->comment("ソート");
             $table->unsignedInteger('created_user_id')->comment("作成ユーザーID");
             $table->timestamp('created_at')->comment("作成日時");
             $table->unsignedInteger('updated_user_id')->comment("最終更新ユーザーID");
