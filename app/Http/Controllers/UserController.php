@@ -1,7 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Services\UserOperationHistoryService;
 use App\Services\UserService;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +22,6 @@ class UserController extends Controller
         $users = UserService::getUsers();
         $userOperationHistories = UserOperationHistoryService::getScreenLatestUserOperationHistories();
         $historyCount = config('const.HISTORY_COUNT');
-
         return view('user.index', compact('users', 'userOperationHistories', 'historyCount'));
     }
 
@@ -33,22 +33,21 @@ class UserController extends Controller
     {
         $genders = GENDER_NAME_LIST;
         $roles = UserService::getScreenRoles();
-
         return view('user.create', compact('genders', 'roles'));
     }
 
     /**
      * 新規登録処理実行
-     * @param UserRequest $request リクエスト情報
+     * @param UpdateUserRequest $request リクエスト情報
      * @return ユーザー新規登録完了画面
      */
-    public function postCreate(UserRequest $request)
+    public function postCreate(CreateUserRequest $request)
     {
         $user = DB::transaction(function () use ($request) {
             return UserService::insertUser($request->validated());
         });
-
-        return view('user.createCompletion', compact('user'));
+        session()->flash('message', 'ユーザー新規登録完了');
+        return view('user.completion', compact('user'))->with('message', 'ユーザー新規登録完了');
     }
 
     /**
@@ -58,24 +57,25 @@ class UserController extends Controller
      */
     public function getUpdate(int $userId)
     {
-        $user = UserService::getUser($userId);
         $genders = GENDER_NAME_LIST;
         $roles = UserService::getScreenRoles();
+        $user = UserService::getUserById($userId);
+
         return view('user.update', compact('user', 'genders', 'roles'));
     }
 
     /**
      * 更新処理実行
-     * @param UserRequest $request リクエスト情報
+     * @param UpdateUserRequest $request リクエスト情報
      * @param int $userId ユーザーID
      * @return ユーザー更新完了画面
      */
-    public function postUpdate(UserRequest $request, int $userId)
+    public function postUpdate(UpdateUserRequest $request, int $userId)
     {
-//        dd(2);
         $user = DB::transaction(function () use ($request, $userId) {
             return UserService::updateUser($userId, $request->validated());
         });
-        return view('user.updateCompletion', compact('user'));
+        session()->flash('message', 'ユーザー更新完了');
+        return view('user.completion', compact('user'));
     }
 }

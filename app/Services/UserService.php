@@ -40,23 +40,23 @@ class UserService
     }
 
     /**
-     * 該当するユーザー情報取得
+     * 指定されたIDのユーザー情報取得
      * @param $userId ユーザーID
      * @return User ユーザーインスタンス
      */
-    public static function getUser(int $userId): User
+    public static function getUserById(int $userId): User
     {
-        return User::getUserId($userId);
+        return User::getUserById($userId);
     }
 
     /**
      * ユーザー情報更新
      * @param $userId ユーザーID
-     * @param $user 更新するユーザー情報
+     * @param $attribute 更新するユーザー情報
      * @return User 更新したユーザーインスタンス
      */
-    public static function updateUser($userId, $user): User
+    public static function updateUser($userId, $attribute): User
     {
-        return User::updateUser($userId, $user);
+        return User::updateUser($userId, $attribute);
     }
 }

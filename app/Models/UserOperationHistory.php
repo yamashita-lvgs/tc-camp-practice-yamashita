@@ -10,9 +10,6 @@ use Illuminate\Database\Eloquent\Collection;
  */
 class UserOperationHistory extends BaseModel
 {
-    /**
-     * 日時分漢字表示のフォーマット
-     */
     use ScreenDateTimeFormat;
 
     protected $dates = [
@@ -57,14 +54,5 @@ class UserOperationHistory extends BaseModel
     public static function getLatestUserOperationHistories(): Collection
     {
         return self::orderBy('operated_at', 'desc')->take(config('const.HISTORY_COUNT'))->get();
-    }
-
-    /**
-     * ユーザー操作履歴登録
-     * @param array $attribute ユーザー操作履歴
-     */
-    public static function createUserOperationHistory(array $attribute)
-    {
-        UserOperationHistory::create($attribute);
     }
 }

@@ -1,11 +1,6 @@
 <?php
 namespace App\Http\Validators;
 
-use Illuminate\Support\Collection;
-use Illuminate\Validation\Validator;
-use Illuminate\Validation\Rule;
-use Illuminate\Http\Request;
-
 /**
  * 入力ルールに関するバリデーター
  * @package App\Http\Validators
@@ -32,6 +27,7 @@ class RuleValidator
      */
     public function validateEachIncludingHalfWidthCharacter(string $attribute, string $value): bool
     {
-        return mb_ereg('^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[!-/\:-@\[-`\{-~])[a-zA-Z\d\!-/\:-@\[-`\{-~]+$', $value);
+        return mb_ereg('^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[!-/\:-@\[-`\{-~])[a-zA-Z\d\!-/\:-@\[-`\{-~]+$',
+            $value);
     }
 }

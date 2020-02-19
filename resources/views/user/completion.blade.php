@@ -1,10 +1,10 @@
 @extends('user.base')
 
-@section('title', 'ユーザー更新完了')
+@section('title', session('message'))
 
 @section('content')
 
-    <h1>ユーザー更新完了</h1>
+    <h1>{{ session('message') }}</h1>
     <table>
         <tr>
             <th>ユーザーID</th>

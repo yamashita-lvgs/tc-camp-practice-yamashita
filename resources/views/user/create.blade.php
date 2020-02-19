@@ -2,7 +2,7 @@
 
 @section('title', 'ユーザー新規登録')
 
-@section('css', asset('css/user.create.css'))
+@section('css', asset('css/user.insert.css'))
 
 @section('content')
 

@@ -11,9 +11,6 @@ use Illuminate\Database\Eloquent\Collection;
  */
 class User extends BaseModel
 {
-    /**
-     * 日時分漢字表示のトレイト
-     */
     use ScreenDateTimeFormat;
 
     use UserObservable;
@@ -48,7 +45,7 @@ class User extends BaseModel
      */
     public function getFullNameAttribute(): string
     {
-        return $this === null ? "" :"{$this->last_name} {$this->first_name}";
+        return "{$this->last_name} {$this->first_name}";
     }
     /**
      * フルネーム（カナ）のアトリビュート定義
@@ -69,24 +66,24 @@ class User extends BaseModel
     }
 
     /**
-     * 該当するユーザー情報取得
+     * 指定されたIDのユーザー情報取得
      * @param $userId 該当するユーザーID
      * @return User 該当するユーザーインスタンス
      */
-    public static function getUserId(int $userId): User
+    public static function getUserById(int $userId): User
     {
         return User::findOrFail($userId);
     }
 
     /**
      * ユーザー情報更新
-     * @param $userId ユーザーID
-     * @param $user 更新するユーザー情報
+     * @param int $userId ユーザーID
+     * @param array $attribute 更新するユーザー情報
      * @return User 更新したユーザーインスタンス
      */
-    public static function updateUser($userId, $user): User
+    public static function updateUser(int $userId, array $attribute): User
     {
-        User::findOrFail($userId)->fill($user)->save();
+        User::findOrFail($userId)->fill($attribute)->save();
         return User::findOrFail($userId);
     }
 }

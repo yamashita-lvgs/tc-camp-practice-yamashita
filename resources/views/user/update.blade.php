@@ -2,7 +2,7 @@
 
 @section('title', 'ユーザー更新')
 
-@section('css', asset('css/user.create.css'))
+@section('css', asset('css/user.insert.css'))
 
 @section('content')
 
@@ -10,11 +10,11 @@
     <table>
         <form method="post">
             @csrf
-            <input type="hidden" name="id" value="{{ $user->id }}">
+            <input type="hidden" name="id" value="{{ old('id') }}">
             <tr>
                 <th>ログインID</th>
                 <td>
-                    <input type="text" name="login_id" value="{{ $user->login_id }}">
+                    <input type="text" name="login_id" value="{{ old('login_id', $user->login_id) }}">
                     <br>
                     <p1>半角英数字記号を各1回以上用いて、6-14文字で入力して下さい。</p1>
                     <br>
@@ -32,7 +32,7 @@
             <tr>
                 <th>パスワード</th>
                 <td>
-                    <input type="password" name="password" value="{{ $user->password }}">
+                    <input type="password" name="password">
                     <br>
                     <p1>半角英数字記号を各1回以上用いて、8-14文字で入力して下さい。</p1>
                 </td>
@@ -47,7 +47,7 @@
             <tr>
                 <th>役割</th>
                 <td>
-                    <select name="role_id" value="{{ 'role_id' }}" required>
+                    <select name="role_id" value="{{old('role_id')}}" required>
                         @foreach($roles as $key => $value)
                             <option value="{{ $key }}"
                                     @if( old('role_id', $user->role->id) == $key ) selected @endif>{{ $value }}</option>
@@ -65,7 +65,7 @@
             <br>
             <tr>
                 <th>姓</th>
-                <td><input type="text" name="last_name" value="{{ $user->last_name }}"></td>
+                <td><input type="text" name="last_name" value="{{ old('last_name', $user->last_name) }}"></td>
                 <td>
                     @if($errors->has('last_name'))
                         @foreach($errors->get('last_name') as $message)
@@ -77,7 +77,7 @@
             <br>
             <tr>
                 <th>名</th>
-                <td><input type="text" name="first_name" value="{{ $user->first_name }}"></td>
+                <td><input type="text" name="first_name" value="{{ old('first_name', $user->first_name) }}"></td>
                 <td>
                     @if($errors->has('first_name'))
                         @foreach($errors->get('first_name') as $message)
@@ -90,7 +90,7 @@
             <tr>
                 <th>姓（カナ）</th>
                 <td>
-                    <input type="text" name="last_name_kana" value="{{ $user->last_name_kana }}">
+                    <input type="text" name="last_name_kana" value="{{old('last_name_kana', $user->last_name_kana)}}">
                     <br>
                     <p1>(カタカナで入力してください。)</p1>
                 </td>
@@ -105,7 +105,7 @@
             <tr>
                 <th>名（カナ）</th>
                 <td>
-                    <input type="text" name="first_name_kana" value="{{ $user->first_name_kana }}">
+                    <input type="text" name="first_name_kana" value="{{old('first_name_kana', $user->first_name_kana)}}">
                     <br>
                     <p1>(カタカナで入力してください。)</p1>
                 </td>
@@ -121,11 +121,10 @@
             <tr>
                 <th>性別</th>
                 <td>
-                    @if( old('gender_id') == $key ) selected @endif
-                    @foreach($genders as $key => $value)
+                    @foreach($genders as $key => $gender)
                         <input type="radio" name="gender_id" value="{{ $key }}"
                                @if (old('gender_id', "$user->gender_id") == $key) checked="checked" @endif>
-                        {{ $value }}
+                        {{ $gender }}
                     @endforeach
                 </td>
                 <td>
@@ -139,7 +138,7 @@
             <br>
             <tr>
                 <th>メールアドレス</th>
-                <td><input type="text" name="mail" value="{{$user->mail}}"></td>
+                <td><input type="text" name="mail" value="{{old('mail',$user->mail)}}"></td>
                 <td>
                     @if($errors->has('mail'))
                         @foreach($errors->get('mail') as $message)
