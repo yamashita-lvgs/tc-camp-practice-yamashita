@@ -1,4 +1,4 @@
-@extends('user.base')
+@extends('layouts.userBase')
 
 @section('title', 'ユーザー更新')
 
@@ -81,7 +81,8 @@
             <tr>
                 <th>名（カナ）</th>
                 <td>
-                    <input type="text" name="first_name_kana" value="{{old('first_name_kana', $user->first_name_kana)}}">
+                    <input type="text" name="first_name_kana"
+                           value="{{old('first_name_kana', $user->first_name_kana)}}">
                     <br>
                     <p1>(カタカナで入力してください。)</p1>
                 </td>

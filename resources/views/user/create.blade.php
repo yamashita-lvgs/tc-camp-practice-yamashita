@@ -1,4 +1,4 @@
-@extends('user.base')
+@extends('layouts.userBase')
 
 @section('title', 'ユーザー新規登録')
 
@@ -32,7 +32,7 @@
                     <p1>半角英数字記号を各1回以上用いて、8-14文字で入力して下さい。</p1>
                 </td>
                 <td>
-                        @include('layouts.error', ['value' => 'password'])
+                    @include('layouts.error', ['value' => 'password'])
                 </td>
             </tr>
             <tr>
@@ -41,7 +41,8 @@
                     <select name="role_id" value="{{ old('role_id') }}" required>
                         <option value="">選択してください。</option>
                         @foreach($roles as $key => $value)
-                            <option value="{{ $key }}" @if( old('role_id') == $key ) selected @endif>{{ $value }}</option>
+                            <option value="{{ $key }}"
+                                    @if( old('role_id') == $key ) selected @endif>{{ $value }}</option>
                         @endforeach
                     </select>
                 </td>
