@@ -5,6 +5,7 @@ use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Services\UserOperationHistoryService;
 use App\Services\UserService;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -31,14 +32,16 @@ class UserController extends Controller
      */
     public function getCreate()
     {
+        $user = new User();
         $genders = GENDER_NAME_LIST;
         $roles = UserService::getScreenRoles();
-        return view('user.create', compact('genders', 'roles'));
+        $message = '登録';
+        return view('user.insert', compact('genders', 'roles', 'user', 'message'));
     }
 
     /**
      * 新規登録処理実行
-     * @param UpdateUserRequest $request リクエスト情報
+     * @param CreateUserRequest $request リクエスト情報
      * @return ユーザー新規登録完了画面
      */
     public function postCreate(CreateUserRequest $request)
@@ -46,7 +49,7 @@ class UserController extends Controller
         $user = DB::transaction(function () use ($request) {
             return UserService::insertUser($request->validated());
         });
-        $message = 'ユーザー登録完了';
+        $message = '登録';
         return view('user.completion', compact('user', 'message'));
     }
 
@@ -59,8 +62,8 @@ class UserController extends Controller
     {
         $genders = GENDER_NAME_LIST;
         $roles = UserService::getScreenRoles();
-        $user = UserService::getUserById($userId);
-        return view('user.update', compact('user', 'genders', 'roles'));
+        $user = UserService::getUser($userId);
+        return view('user.insert', compact('user', 'genders', 'roles'));
     }
 
     /**
@@ -74,7 +77,7 @@ class UserController extends Controller
         $user = DB::transaction(function () use ($request, $userId) {
             return UserService::updateUser($userId, $request->validated());
         });
-        $message = 'ユーザー更新完了';
+        $message = '更新';
         return view('user.completion', compact('user', 'message'));
     }
 }

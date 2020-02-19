@@ -4,15 +4,11 @@ namespace App\Http\Requests;
 use Illuminate\Validation\Rule;
 
 /**
- * ユーザーに関するリクエストクラス
+ * ユーザー更新に関するリクエストクラス
  * @package App\Http\Requests
  */
 class UpdateUserRequest extends BaseUserRequest
 {
-    /**
-     * ユーザー更新のバリデーションルール
-     * @return バリデートした値
-     */
     public function rules()
     {
         $user = $this->route()->parameters['id'];

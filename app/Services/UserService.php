@@ -44,9 +44,9 @@ class UserService
      * @param $userId ユーザーID
      * @return User ユーザーインスタンス
      */
-    public static function getUserById(int $userId): User
+    public static function getUser(int $userId): User
     {
-        return User::getUserById($userId);
+        return User:: findOrFail($userId);
     }
 
     /**

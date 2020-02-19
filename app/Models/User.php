@@ -66,16 +66,6 @@ class User extends BaseModel
     }
 
     /**
-     * 指定されたIDのユーザー情報取得
-     * @param $userId 該当するユーザーID
-     * @return User 該当するユーザーインスタンス
-     */
-    public static function getUserById(int $userId): User
-    {
-        return User::findOrFail($userId);
-    }
-
-    /**
      * ユーザー情報更新
      * @param int $userId ユーザーID
      * @param array $attribute 更新するユーザー情報

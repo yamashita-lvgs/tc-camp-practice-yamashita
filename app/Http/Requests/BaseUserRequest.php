@@ -9,10 +9,6 @@ use Illuminate\Foundation\Http\FormRequest;
  */
 abstract class BaseUserRequest extends FormRequest
 {
-    /**
-     * ユーザーに関するのバリデーションルール
-     * @return バリデートした値
-     */
     public function rules()
     {
         return [

@@ -4,15 +4,11 @@ namespace App\Http\Requests;
 use Illuminate\Validation\Rule;
 
 /**
- * ユーザーに関するリクエストクラス
+ * ユーザー登録に関するリクエストクラス
  * @package App\Http\Requests
  */
 class CreateUserRequest extends BaseUserRequest
 {
-    /**
-     * ユーザー登録のバリデーションルール
-     * @return バリデートした値
-     */
     public function rules()
     {
         $rules = parent::rules();
