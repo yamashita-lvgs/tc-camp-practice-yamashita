@@ -1,9 +1,6 @@
 <?php
 namespace App\Http\Validators;
 
-use Illuminate\Support\Collection;
-use Illuminate\Validation\Validator;
-
 /**
  * 入力ルールに関するバリデーター
  * @package App\Http\Validators

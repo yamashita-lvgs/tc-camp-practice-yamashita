@@ -1,4 +1,4 @@
-@extends('user.base')
+@extends('layouts.userBase')
 
 @section('title', 'ユーザー一覧')
 
@@ -31,7 +31,7 @@
                 <td>{{ $user->created_at_screen }}</td>
                 <td>{{ $user->updated_user->full_name }}</td>
                 <td>{{ $user->updated_at_screen }}</td>
-                <td><a href="users/{{ $user->id }}/edit">更新</a></td>
+                <td><a href="users/{{ $user->id }}/update">更新</a></td>
                 <td><a href="users/{{ $user->id }}/delete">削除</a></td>
             </tr>
         @endforeach

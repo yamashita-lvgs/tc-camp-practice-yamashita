@@ -47,6 +47,7 @@ class User extends BaseModel
     {
         return "{$this->last_name} {$this->first_name}";
     }
+
     /**
      * フルネーム（カナ）のアトリビュート定義
      * @return string フルネーム（カナ）
@@ -57,11 +58,32 @@ class User extends BaseModel
     }
 
     /**
+     * パスワード暗号化のアトリビュート定義
+     * @param string $password パスワード
+     */
+    public function setPasswordAttribute($password)
+    {
+       $this->attributes['password'] = encrypt($password);
+    }
+
+    /**
      * 全ユーザー情報取得
      * @return Collection 全ユーザー情報
      */
     public static function getUsers(): Collection
     {
         return self::orderBy('id', 'asc')->get();
+    }
+
+    /**
+     * ユーザー情報更新
+     * @param int $userId ユーザーID
+     * @param array $attribute 更新するユーザー情報
+     * @return User 更新したユーザーインスタンス
+     */
+    public static function updateUser(int $userId, array $attribute): User
+    {
+        User::findOrFail($userId)->fill($attribute)->save();
+        return User::findOrFail($userId);
     }
 }
