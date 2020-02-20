@@ -3,9 +3,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\User;
 use App\Services\UserOperationHistoryService;
 use App\Services\UserService;
-use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -78,13 +78,13 @@ class UserController extends Controller
         $user = DB::transaction(function () use ($request, $userId) {
             return UserService::updateUser($userId, $request->validated());
         });
-        $message = '更新した';
+        $message = '更新';
         return view('user.completion', compact('user', 'message'));
     }
 
     /**
      * 論理削除処理実行
-     * @param  int $userId      ユーザーID
+     * @param int $userId ユーザーID
      * @return ユーザー一覧画面リダイレクト
      */
     public function delete(int $userId)

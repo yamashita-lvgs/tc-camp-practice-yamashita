@@ -95,7 +95,7 @@ class User extends BaseModel
      * @param int $userId ユーザーID
      * @return User 削除したユーザーインスタンス
      */
-    public static function deleteUser(int $userId)
+    public static function deleteUser(int $userId): User
     {
         User::find($userId)->delete();
         return self::orderBy('id', 'asc')->get();
