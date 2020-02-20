@@ -1,12 +1,12 @@
 @extends('layouts.userBase')
 
-@section('title', 'ユーザー情報入力')
+@section('title', 'ユーザー'.$message )
 
-@section('css', asset('css/user.insert.css'))
+@section('css', asset('css/user.form.css'))
 
 @section('content')
 
-    <h1>ユーザー{{$message}}</h1>
+    <h1>ユーザー{{ $message }}</h1>
     <table>
         <form method="post">
             @csrf
@@ -36,7 +36,7 @@
                 <td>
                     <select name="role_id" value="{{ old('role_id') }}" required>
                         @foreach($roles as $key => $value)
-                            <option value="{{ $key }}" @if( old('role_id', $user->role) == $key ) selected @endif>{{ $value }}</option>
+                            <option value="{{ $key }}" @if( old('role_id', $user->role_id) == $key ) selected @endif>{{ $value }}</option>
                         @endforeach
                     </select>
                 </td>
@@ -61,7 +61,7 @@
             <tr>
                 <th>姓（カナ）</th>
                 <td>
-                    <input type="text" name="last_name_kana" value="{{old('last_name_kana', $user->last_name_kana) }}"><br>
+                    <input type="text" name="last_name_kana" value="{{ old('last_name_kana', $user->last_name_kana) }}"><br>
                     <p1>(カタカナで入力してください。)</p1>
                 </td>
                 <td>
@@ -83,8 +83,7 @@
                 <th>性別</th>
                 <td>
                     @foreach($genders as $key => $gender)
-                        <input type="radio" name="gender_id" value="{{ $key }}" @if (old('gender_id', "$user->gender_id") == $key) checked="checked" @endif>
-                        {{ $gender }}
+                        <input type="radio" name="gender_id" value="{{ $key }}" @if (old('gender_id', "$user->gender_id") == $key) checked="checked" @endif> {{ $gender }}
                     @endforeach
                 </td>
                 <td>

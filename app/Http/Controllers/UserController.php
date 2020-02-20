@@ -36,7 +36,7 @@ class UserController extends Controller
         $genders = GENDER_NAME_LIST;
         $roles = UserService::getScreenRoles();
         $message = '登録';
-        return view('user.insert', compact('genders', 'roles', 'user', 'message'));
+        return view('user.form', compact('user', 'message', 'genders', 'roles'));
     }
 
     /**
@@ -63,7 +63,8 @@ class UserController extends Controller
         $genders = GENDER_NAME_LIST;
         $roles = UserService::getScreenRoles();
         $user = UserService::getUser($userId);
-        return view('user.insert', compact('user', 'genders', 'roles'));
+        $message = '更新';
+        return view('user.form', compact('user', 'message', 'genders', 'roles'));
     }
 
     /**
