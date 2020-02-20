@@ -1,6 +1,6 @@
 @extends('layouts.userBase')
 
-@section('title', 'ユーザー' . $message )
+@section('title', 'ユーザー' . $message)
 
 @section('css', asset('css/user.form.css'))
 
