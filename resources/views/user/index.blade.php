@@ -29,9 +29,11 @@
                 <td>{{ $user->role->name }}</td>
                 <td>{{ $user->full_name }}</td>
                 <td>{{ $user->mail }}</td>
-                <td>{{ $user->created_user->full_name }}</td>
+                <!--TODO操作者不明なので作成者不明のため、nullもいるため-->
+                <td></td>
                 <td>{{ $user->created_at_screen }}</td>
-                <td>{{ $user->updated_user->full_name }}</td>
+                <!--TODO操作者不明なので更新者（$user->updated_user->full_name）不明のため、nullもいるため-->
+                <td></td>
                 <td>{{ $user->updated_at_screen }}</td>
                 <!--TODO操作者不明なので削除者不明のため、nullもいるため-->
                 <td></td>
@@ -43,12 +45,7 @@
                 </td>
                 <td>
                     @if ($user->deleted_at == null)
-                    <script>
-                        function sample() {
-                            window.alert("本当に削除しますか。");
-                        }
-                    </script>
-                    <a href="users/{{ $user->id }}/delete" onclick="sample()">削除</a>
+                    <a href="users/{{ $user->id }}/delete" onclick="return deleatAlert()">削除</a>
                     @endif
                 </td>
             </tr>
