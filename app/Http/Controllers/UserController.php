@@ -78,6 +78,7 @@ class UserController extends Controller
         return view('user.completion', compact('user', 'message'));
     }
 
+
     /**
      * 論理削除処理実行
      * @param  int $userId      ユーザーID
