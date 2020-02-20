@@ -78,7 +78,7 @@ class UserController extends Controller
         $user = DB::transaction(function () use ($request, $userId) {
             return UserService::updateUser($userId, $request->validated());
         });
-        $message = '更新';
+        $message = '更新した';
         return view('user.completion', compact('user', 'message'));
     }
 

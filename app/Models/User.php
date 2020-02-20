@@ -66,7 +66,7 @@ class User extends BaseModel
      */
     public function setPasswordAttribute($password)
     {
-       $this->attributes['password'] = encrypt($password);
+        $this->attributes['password'] = encrypt($password);
     }
 
     /**
