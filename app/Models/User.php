@@ -86,4 +86,15 @@ class User extends BaseModel
         User::findOrFail($userId)->fill($attribute)->save();
         return User::findOrFail($userId);
     }
+
+    /**
+     * ユーザー情報削除
+     * @param int $userId ユーザーID
+     * @return User 削除したユーザーインスタンス
+     */
+    public static function deleteUser(int $userId)
+    {
+        User::find($userId)->delete();
+        return self::orderBy('id', 'asc')->get();
+    }
 }

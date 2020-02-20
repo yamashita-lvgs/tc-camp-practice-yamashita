@@ -59,4 +59,15 @@ class UserService
     {
         return User::updateUser($userId, $attribute);
     }
+
+    /**
+     * ユーザー情報削除
+     * @param $userId ユーザーID
+     * @param $attribute 削除するユーザー情報
+     * @return 削除したユーザーインスタンス
+     */
+    public static function deleteUser(int $userId)
+    {
+        return User::deleteUser($userId);
+    }
 }

@@ -31,6 +31,16 @@ class UserObserver
     }
 
     /**
+     * ユーザーモデル削除イベント後処理
+     * @param User $user 削除されたユーザーインスタンス
+     */
+    public function deleted(User $user)
+    {
+        $attribute= $this->getUserOperationHistoryData($user, OPERATION_TYPE_DELETE);
+        UserOperationHistory::create($attribute);
+    }
+
+    /**
      * ユーザー操作履歴登録用データを取得
      * @param User $user 登録用ユーザーテーブルのカラム
      * @param int $operationId 登録用ユーザー操作履歴テーブルのカラム

@@ -81,4 +81,17 @@ class UserController extends Controller
         $message = '更新';
         return view('user.completion', compact('user', 'message'));
     }
+
+    /**
+     * 論理削除処理実行
+     * @param  int $userId      ユーザーID
+     * @return ユーザー一覧画面リダイレクト
+     */
+    public function delete(int $userId)
+    {
+        DB::transaction(function () use ($userId) {
+            return UserService::deleteUser($userId);
+        });
+        return redirect("/users");
+    }
 }
