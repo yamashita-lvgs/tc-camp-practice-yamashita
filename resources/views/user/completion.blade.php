@@ -1,10 +1,10 @@
 @extends('layouts.userBase')
 
-@section('title', $message )
+@section('title', 'ユーザー'.$message.'完了' )
 
 @section('content')
 
-    <h1>{{ $message }}</h1>
+    <h1>ユーザー{{ $message }}完了</h1>
     <table>
         <tr>
             <th>ユーザーID</th>

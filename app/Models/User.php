@@ -47,6 +47,7 @@ class User extends BaseModel
     {
         return "{$this->last_name} {$this->first_name}";
     }
+
     /**
      * フルネーム（カナ）のアトリビュート定義
      * @return string フルネーム（カナ）
@@ -54,6 +55,15 @@ class User extends BaseModel
     public function getFullNameKanaAttribute(): string
     {
         return "{$this->last_name_kana} {$this->first_name_kana}" ;
+    }
+
+    /**
+     * パスワード暗号化のアトリビュート定義
+     * @param string $password パスワード
+     */
+    public function setPasswordAttribute($password)
+    {
+       $this->attributes['password'] = encrypt($password);
     }
 
     /**
