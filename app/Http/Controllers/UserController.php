@@ -85,13 +85,14 @@ class UserController extends Controller
     /**
      * 論理削除処理実行
      * @param int $userId ユーザーID
-     * @return ユーザー一覧画面リダイレクト
+     * @return 論理削除処理実行完了画面
      */
-    public function delete(int $userId)
+    public function postDelete(int $userId)
     {
-        DB::transaction(function () use ($userId) {
+        $user = DB::transaction(function () use ($userId) {
             return UserService::deleteUser($userId);
         });
-        return redirect("/users");
+        $message = '削除';
+        return view('user.completion', compact('user', 'message'));
     }
 }

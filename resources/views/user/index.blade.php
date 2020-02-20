@@ -18,6 +18,8 @@
             <th>登録日時</th>
             <th>更新者</th>
             <th>更新日時</th>
+            <th>削除者</th>
+            <th>削除日時</th>
             <th></th>
             <th></th>
         </tr>
@@ -31,8 +33,24 @@
                 <td>{{ $user->created_at_screen }}</td>
                 <td>{{ $user->updated_user->full_name }}</td>
                 <td>{{ $user->updated_at_screen }}</td>
-                <td><a href="users/{{ $user->id }}/update">更新</a></td>
-                <td><a href="users/{{ $user->id }}/delete">削除</a></td>
+                <!--TODO操作者不明なので削除者不明のため、nullもいるため-->
+                <td></td>
+                <td>{{ $user->deleted_at_screen }}</td>
+                <td>
+                    @if ($user->deleted_at == null)
+                        <a href="users/{{ $user->id }}/update">更新</a>
+                    @endif
+                </td>
+                <td>
+                    @if ($user->deleted_at == null)
+                    <script>
+                        function sample() {
+                            window.alert("本当に削除しますか。");
+                        }
+                    </script>
+                    <a href="users/{{ $user->id }}/delete" onclick="sample()">削除</a>
+                    @endif
+                </td>
             </tr>
         @endforeach
     </table>

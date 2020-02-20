@@ -17,7 +17,7 @@ class UserService
      */
     public static function getUsers(): Collection
     {
-        return User::getUsers();
+        return User::getUsersWithTrashed();
     }
 
     /**
@@ -51,22 +51,24 @@ class UserService
 
     /**
      * ユーザー情報更新
-     * @param $userId ユーザーID
-     * @param $attribute 更新するユーザー情報
+     * @param int $userId ユーザーID
+     * @param array $attribute 更新するユーザー情報
      * @return User 更新したユーザーインスタンス
      */
-    public static function updateUser($userId, $attribute): User
+    public static function updateUser(int $userId, array $attribute): User
     {
-        return User::updateUser($userId, $attribute);
+        User::findOrFail($userId)->fill($attribute)->save();
+        return User::findOrFail($userId);
     }
 
     /**
-     * ユーザー情報削除
-     * @param $userId ユーザーID
+     * ユーザー情報論理削除
+     * @param int $userId ユーザーID
      * @return User 削除したユーザーインスタンス
      */
     public static function deleteUser(int $userId): User
     {
-        return User::deleteUser($userId);
+        User::findOrFail($userId)->delete();
+        return User::getByIdUsersWithTrashed($userId);
     }
 }

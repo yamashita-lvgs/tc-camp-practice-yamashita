@@ -22,4 +22,5 @@ Route::get('users/{id}/update', 'UserController@getUpdate'); // 初期表示
 Route::post('users/{id}/update', 'UserController@postUpdate'); // 登録実行
 
 // ユーザー削除
-Route::get('users/{id}/delete/', 'UserController@delete'); // 削除実行
+Route::get('users/{id}/delete', 'UserController@getDelete'); // 初期表示
+Route::get('users/{id}/delete/', 'UserController@postDelete'); // 削除実行
