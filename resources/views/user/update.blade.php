@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <h1>ユーザー更新</h1>
+    <h1>ユーザー更新
     <table>
         <form method="post">
             @csrf
