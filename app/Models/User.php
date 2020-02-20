@@ -4,6 +4,7 @@ namespace App\Models;
 use App\Traits\ScreenDateTimeFormat;
 use App\Traits\UserObservable;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * ユーザーテーブルのモデルクラス
@@ -14,6 +15,8 @@ class User extends BaseModel
     use ScreenDateTimeFormat;
 
     use UserObservable;
+
+    use SoftDeletes;
 
     public function role()
     {
