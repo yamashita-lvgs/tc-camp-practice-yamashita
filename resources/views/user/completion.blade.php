@@ -1,6 +1,6 @@
 @extends('layouts.userBase')
 
-@section('title', 'ユーザー'.$message.'完了' )
+@section('title', 'ユーザー' . $message . '完了' )
 
 @section('content')
 
