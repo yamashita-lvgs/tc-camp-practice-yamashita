@@ -9,7 +9,7 @@
         <link rel="stylesheet" href= @yield('css') >
     </head>
     <body>
-        <script src={{('js/alert.js')}}></script>
+        <script src={{ ('js/alert.js') }}></script>
         @section('sidebar')
         @show
         <div class="container">

@@ -47,12 +47,10 @@ class UserObserver
      * @return array ユーザー操作履歴情報
      */
     // TODO 機能開発優先のため、'operating_user_id'=> 1にしてるが正しくは「'operating_user_id'=> $user->created_user_id」
-    // TODO 機能開発優先のため、'暫定的値入れています。
     private function getUserOperationHistoryData(User $user, int $operationId) :array
     {
-        return [
+        $insertList = [
             'operated_user_id' => $user->id,
-            'operating_user_id'=> 1,
             'operation_id' => $operationId,
             'operated_at' => now(),
             'created_user_id' => $user->id,
@@ -62,5 +60,13 @@ class UserObserver
             'deleted_user_id' => $user->id,
             'deleted_at'  => now(),
         ];
+        if ($operationId === 1) {
+            $insertList['operating_user_id'] = $user->created_user_id;
+        } else if ($operationId === 2) {
+            $insertList['operating_user_id'] = $user->updated_user_id;
+        } else if ($operationId === 3) {
+            $insertList['operating_user_id'] = $user->deleted_user_id;
+        }
+        return $insertList;
     }
 }

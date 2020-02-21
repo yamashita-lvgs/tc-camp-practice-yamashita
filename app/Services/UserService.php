@@ -62,7 +62,7 @@ class UserService
     }
 
     /**
-     * ユーザー情報論理削除
+     * ユーザー情報削除
      * @param int $userId ユーザーID
      * @return User 削除したユーザーインスタンス
      */

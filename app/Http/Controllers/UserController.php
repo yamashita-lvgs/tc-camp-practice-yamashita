@@ -83,9 +83,9 @@ class UserController extends Controller
     }
 
     /**
-     * 論理削除処理実行
+     * 削除処理実行
      * @param int $userId ユーザーID
-     * @return  ユーザー論理削除完了画面
+     * @return  ユーザー削除完了画面
      */
     public function postDelete(int $userId)
     {

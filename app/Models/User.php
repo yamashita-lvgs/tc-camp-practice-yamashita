@@ -21,17 +21,17 @@ class User extends BaseModel
 
     public function created_user()
     {
-        return $this->belongsTo(User::class, 'created_user_id');
+        return $this->belongsTo(User::class, 'created_user_id')->withTrashed();
     }
 
     public function updated_user()
     {
-        return $this->belongsTo(User::class, 'updated_user_id');
+        return $this->belongsTo(User::class, 'updated_user_id')->withTrashed();
     }
 
     public function deleted_user()
     {
-        return $this->belongsTo(User::class, 'deleted_user_id');
+        return $this->belongsTo(User::class, 'deleted_user_id')->withTrashed();
     }
 
     /**
