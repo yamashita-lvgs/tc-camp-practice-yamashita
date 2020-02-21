@@ -36,10 +36,9 @@
                     <td>{{ $user->updated_user->full_name }}</td>
                     <td>{{ $user->updated_at_screen }}</td>
                     <td>
-                        @empty ($user->deleted_at)
-                        @else
+                        @isset ($user->deleted_at)
                             {{ $user->deleted_user->full_name }}
-                        @endempty
+                        @endisset
                     </td>
                     <td>{{ $user->deleted_at_screen }}</td>
                     <td>

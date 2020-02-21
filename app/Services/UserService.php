@@ -69,6 +69,6 @@ class UserService
     public static function deleteUser(int $userId): User
     {
         User::findOrFail($userId)->delete();
-        return User::getByIdUsersWithTrashed($userId);
+        return User::getByIdWithTrashed($userId);
     }
 }

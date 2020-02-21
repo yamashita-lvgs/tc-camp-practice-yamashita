@@ -46,26 +46,23 @@ class UserObserver
      * @param int $operationId 登録用ユーザー操作履歴テーブルのカラム
      * @return array ユーザー操作履歴情報
      */
-    // TODO 機能開発優先のため、'operating_user_id'=> 1にしてるが正しくは「'operating_user_id'=> $user->created_user_id」
     private function getUserOperationHistoryData(User $user, int $operationId) :array
     {
         $insertList = [
             'operated_user_id' => $user->id,
             'operation_id' => $operationId,
             'operated_at' => now(),
-            'created_user_id' => $user->id,
-            'created_at' => $user->created_at,
-            'updated_user_id' => $user->id,
-            'updated_at' => $user->updated_at,
-            'deleted_user_id' => $user->id,
-            'deleted_at'  => now(),
         ];
-        if ($operationId === 1) {
-            $insertList['operating_user_id'] = $user->created_user_id;
-        } else if ($operationId === 2) {
-            $insertList['operating_user_id'] = $user->updated_user_id;
-        } else if ($operationId === 3) {
-            $insertList['operating_user_id'] = $user->deleted_user_id;
+        switch ($operationId){
+            case OPERATION_TYPE_CREATE:
+                $insertList['operating_user_id'] = $user->created_user_id;
+                $insertList['operated_at'] = $user->created_at;
+            case OPERATION_TYPE_UPDATE:
+                $insertList ['operating_user_id'] = $user->updated_user_id;
+                $insertList ['operated_at'] =$user->updated_at;
+            case OPERATION_TYPE_DELETE:
+                $insertList ['operating_user_id'] = $user->deleted_user_id;
+                $insertList ['operated_at']=$user->deleted_at;
         }
         return $insertList;
     }

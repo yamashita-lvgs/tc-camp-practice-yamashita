@@ -84,7 +84,7 @@ class User extends BaseModel
      * @param int $userId ユーザーID
      * @return User 論理削除されたユーザー情報を含む指定されたIDのユーザーインスタンス
      */
-    public static function getByIdUsersWithTrashed(int $userId): User
+    public static function getByIdWithTrashed(int $userId): User
     {
         return self::withTrashed()->findOrFail($userId);
     }
