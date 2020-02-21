@@ -29,14 +29,15 @@
                 <td>{{ $user->role->name }}</td>
                 <td>{{ $user->full_name }}</td>
                 <td>{{ $user->mail }}</td>
-                <!--TODO操作者不明なので作成者不明のため、nullもいるため-->
-                <td></td>
+                <td>{{ $user->created_user->full_name }}</td>
                 <td>{{ $user->created_at_screen }}</td>
-                <!--TODO操作者不明なので更新者（$user->updated_user->full_name）不明のため、nullもいるため-->
-                <td></td>
+                <td>{{ $user->updated_user->full_name }}</td>
                 <td>{{ $user->updated_at_screen }}</td>
-                <!--TODO操作者不明なので削除者不明のため、nullもいるため-->
-                <td></td>
+                <td>
+                    @if ($user->deleted_at != null)
+                        {{ $user->deleted_user->full_name }}
+                    @endif
+                </td>
                 <td>{{ $user->deleted_at_screen }}</td>
                 <td>
                     @if ($user->deleted_at == null)
