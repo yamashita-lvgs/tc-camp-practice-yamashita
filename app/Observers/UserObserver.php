@@ -36,7 +36,7 @@ class UserObserver
      */
     public function deleted(User $user)
     {
-        $attribute= $this->getUserOperationHistoryData($user, OPERATION_TYPE_DELETE);
+        $attribute = $this->getUserOperationHistoryData($user, OPERATION_TYPE_DELETE);
         UserOperationHistory::create($attribute);
     }
 
