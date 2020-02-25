@@ -3,9 +3,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\User;
 use App\Services\UserOperationHistoryService;
 use App\Services\UserService;
-use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -79,6 +79,20 @@ class UserController extends Controller
             return UserService::updateUser($userId, $request->validated());
         });
         $message = '更新';
+        return view('user.completion', compact('user', 'message'));
+    }
+
+    /**
+     * 削除処理実行
+     * @param int $userId ユーザーID
+     * @return  ユーザー削除完了画面
+     */
+    public function postDelete(int $userId)
+    {
+        $user = DB::transaction(function () use ($userId) {
+            return UserService::deleteUser($userId);
+        });
+        $message = '削除';
         return view('user.completion', compact('user', 'message'));
     }
 }

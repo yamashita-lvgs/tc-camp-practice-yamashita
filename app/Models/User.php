@@ -4,6 +4,7 @@ namespace App\Models;
 use App\Traits\ScreenDateTimeFormat;
 use App\Traits\UserObservable;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * ユーザーテーブルのモデルクラス
@@ -11,9 +12,7 @@ use Illuminate\Database\Eloquent\Collection;
  */
 class User extends BaseModel
 {
-    use ScreenDateTimeFormat;
-
-    use UserObservable;
+    use ScreenDateTimeFormat, UserObservable, SoftDeletes;
 
     public function role()
     {
@@ -22,12 +21,17 @@ class User extends BaseModel
 
     public function created_user()
     {
-        return $this->belongsTo(User::class, 'created_user_id');
+        return $this->belongsTo(User::class, 'created_user_id')->withTrashed();
     }
 
     public function updated_user()
     {
-        return $this->belongsTo(User::class, 'updated_user_id');
+        return $this->belongsTo(User::class, 'updated_user_id')->withTrashed();
+    }
+
+    public function deleted_user()
+    {
+        return $this->belongsTo(User::class, 'deleted_user_id')->withTrashed();
     }
 
     /**
@@ -63,27 +67,25 @@ class User extends BaseModel
      */
     public function setPasswordAttribute($password)
     {
-       $this->attributes['password'] = encrypt($password);
+        $this->attributes['password'] = encrypt($password);
     }
 
     /**
-     * 全ユーザー情報取得
-     * @return Collection 全ユーザー情報
+     * 論理削除されたユーザー情報を含む全ユーザー情報取得
+     * @return Collection 論理削除されたユーザー情報を含む全ユーザー情報
      */
-    public static function getUsers(): Collection
+    public static function getUsersWithTrashed(): Collection
     {
-        return self::orderBy('id', 'asc')->get();
+        return self::withTrashed()->orderBy('id', 'asc')->get();
     }
 
     /**
-     * ユーザー情報更新
+     * 論理削除されたユーザー情報を含む指定されたIDのユーザー情報取得
      * @param int $userId ユーザーID
-     * @param array $attribute 更新するユーザー情報
-     * @return User 更新したユーザーインスタンス
+     * @return User 論理削除されたユーザー情報を含む指定されたIDのユーザーインスタンス
      */
-    public static function updateUser(int $userId, array $attribute): User
+    public static function getByIdWithTrashed(int $userId): User
     {
-        User::findOrFail($userId)->fill($attribute)->save();
-        return User::findOrFail($userId);
+        return self::withTrashed()->findOrFail($userId);
     }
 }

@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('created_at')->comment("作成日時");
             $table->unsignedInteger('updated_user_id')->default(1)->comment("最終更新ユーザーID");
             $table->timestamp('updated_at')->comment("更新日時");
-            $table->unsignedInteger('deleted_user_id')->nullable()->comment("削除ユーザーID");
+            $table->unsignedInteger('deleted_user_id')->default(1)->nullable()->comment("削除ユーザーID");
             $table->timestamp('deleted_at')->nullable()->comment("削除日時");
         });
         DB::statement("ALTER TABLE users COMMENT 'ユーザー'");

@@ -21,12 +21,12 @@ class UserOperationHistory extends BaseModel
 
     public function operated_user()
     {
-        return $this->belongsTo(User::class, 'operated_user_id');
+        return $this->belongsTo(User::class, 'operated_user_id')->withTrashed();
     }
 
     public function operating_user()
     {
-        return $this->belongsTo(User::class, 'operating_user_id');
+        return $this->belongsTo(User::class, 'operating_user_id')->withTrashed();
     }
 
     /**

@@ -23,4 +23,13 @@ trait ScreenDateTimeFormat
     {
         return $this->updated_at->format(SCREEN_DATE_TIME_FORMAT);
     }
+
+    /**
+     * 画面表示用削除日時のアトリビュート定義
+     * @return 画面表示用削除日時
+     */
+    public function getDeletedAtScreenAttribute()
+    {
+        return isset($this->deleted_at) ? $this->deleted_at->format(SCREEN_DATE_TIME_FORMAT) : '';
+    }
 }
