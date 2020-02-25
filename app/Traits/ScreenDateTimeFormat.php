@@ -30,6 +30,6 @@ trait ScreenDateTimeFormat
      */
     public function getDeletedAtScreenAttribute()
     {
-            return isset($this->deleted_at) ? $this->deleted_at->format(SCREEN_DATE_TIME_FORMAT) : '';
+        return isset($this->deleted_at) ? $this->deleted_at->format(SCREEN_DATE_TIME_FORMAT) : '';
     }
 }
