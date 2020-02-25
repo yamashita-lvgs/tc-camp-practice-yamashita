@@ -51,9 +51,9 @@ class UserObserver
         $insertList = [
             'operated_user_id' => $user->id,
             'operation_id' => $operationId,
-            'operated_at' => now(),
         ];
-        switch ($operationId){
+
+        switch ($operationId) {
             case OPERATION_TYPE_CREATE:
                 $insertList['operating_user_id'] = $user->created_user_id;
                 $insertList['operated_at'] = $user->created_at;
@@ -64,6 +64,7 @@ class UserObserver
                 $insertList ['operating_user_id'] = $user->deleted_user_id;
                 $insertList ['operated_at']=$user->deleted_at;
         }
+
         return $insertList;
     }
 }
