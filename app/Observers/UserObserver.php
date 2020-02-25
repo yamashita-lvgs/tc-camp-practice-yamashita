@@ -36,7 +36,7 @@ class UserObserver
      */
     public function deleted(User $user)
     {
-        $attribute = $this->getUserOperationHistoryData($user, OPERATION_TYPE_DELETE);
+        $attribute= $this->getUserOperationHistoryData($user, OPERATION_TYPE_DELETE);
         UserOperationHistory::create($attribute);
     }
 
@@ -57,14 +57,16 @@ class UserObserver
             case OPERATION_TYPE_CREATE:
                 $insertList['operating_user_id'] = $user->created_user_id;
                 $insertList['operated_at'] = $user->created_at;
+                break;
             case OPERATION_TYPE_UPDATE:
                 $insertList ['operating_user_id'] = $user->updated_user_id;
                 $insertList ['operated_at'] =$user->updated_at;
+                break;
             case OPERATION_TYPE_DELETE:
                 $insertList ['operating_user_id'] = $user->deleted_user_id;
                 $insertList ['operated_at']=$user->deleted_at;
+                break;
         }
-
         return $insertList;
     }
 }

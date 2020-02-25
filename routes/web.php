@@ -23,3 +23,11 @@ Route::post('users/{id}/update', 'UserController@postUpdate'); // 登録実行
 
 // ユーザー削除
 Route::post('users/{id}/delete', 'UserController@postDelete'); // 削除実行
+
+// ユーザーログイン画面
+Route::get('login', 'AuthController@getLogin'); // 初期表示
+
+Route::post('login',['uses' => 'AuthController@postLogin']);
+
+// トップ画面
+Route::get('/', 'TopController@getTop'); // 初期表示
