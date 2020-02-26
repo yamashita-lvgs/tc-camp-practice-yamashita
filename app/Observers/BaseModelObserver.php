@@ -2,9 +2,6 @@
 namespace App\Observers;
 
 use App\Models\BaseModel;
-use App\Models\User;
-
-//TODO 操作ユーザー情報取得できたらこのファイル削除
 /**
  * ユーザーモデル用のオブザーバークラス
  * @package App\Observers
@@ -17,7 +14,8 @@ class BaseModelObserver
      */
     public function creating(BaseModel $model)
     {
-        $model->created_user_id = 999;
+        //TODO 操作ユーザー情報取得できたらこのファイルの整数値の値正しいものに
+        $model->created_user_id = 1;
         $model->updated_user_id = 2;
     }
 
@@ -27,6 +25,7 @@ class BaseModelObserver
      */
     public function updating(BaseModel $model)
     {
+        //TODO 操作ユーザー情報取得できたらこのファイルの整数値の値正しいものに
         $model->updated_user_id = 3;
     }
 
@@ -36,7 +35,7 @@ class BaseModelObserver
      */
     public function deleting(BaseModel $model)
     {
-        $model = User::where('id', $model->id)->first();
+        //TODO 操作ユーザー情報取得できたらこのファイルの整数値の値正しいものに
         $model->deleted_user_id = 4;
         $model->save();
     }

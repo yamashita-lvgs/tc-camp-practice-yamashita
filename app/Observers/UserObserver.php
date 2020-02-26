@@ -67,6 +67,7 @@ class UserObserver
                 $insertList ['operated_at']=$user->deleted_at;
                 break;
         }
+
         return $insertList;
     }
 }

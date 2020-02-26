@@ -1,10 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Services\UserLoginHistoryService;
+use App\Services\LoginHistoryService;
 use App\Services\UserService;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 
 /**
  * トップページに関するコントローラークラス
@@ -14,14 +12,13 @@ class TopController extends Controller
 {
     /**
      * トップページ画面表示
-     * @return ユーザーログイン画面
+     * @return トップページ画面
      */
-
     public function getTop()
     {
         $users = UserService::getUsers();
-        $userLoginHistories = UserLoginHistoryService::getScreenLatestUserLoginHistories();
+        $loginHistories = LoginHistoryService::getScreenLatestLoginHistories();
         $historyCount = config('const.HISTORY_COUNT');
-        return view('top.index', compact('userLoginHistories', 'historyCount'));
+        return view('top.index', compact('loginHistories', 'historyCount'));
     }
 }

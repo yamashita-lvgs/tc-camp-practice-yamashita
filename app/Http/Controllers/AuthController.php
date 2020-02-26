@@ -1,9 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Http\Requests\LoginRequest;
+use App\Http\Requests\AuthRequest;
+use App\Models\LoginHistory;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 
 /**
  * 認証に関するコントローラークラス
@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     /**
-     * ユーザーログイン画面表示
-     * @return ユーザーログイン画面
+     * ログイン画面表示
+     * @return ログイン画面
      */
     public function getLogin()
     {
@@ -21,18 +21,27 @@ class AuthController extends Controller
     }
 
     /**
-     * ユーザーログイン認証
+     * ログイン認証
      * @param $request 入力された値
-     * @return ユーザーログイン画面|一覧画面
+     * @return トップ画面
      */
-    public function postLogin(LoginRequest $request)
+    public function postLogin(AuthRequest $request)
     {
-        $credentials = $request->validated('login_id', 'password');
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('/');
-        } else {
-            $message = 'ログインID・パスワードが一致しません。';
-            return view('auth.login', compact('message'));
-        }
+        DB::transaction(function () {
+            return LoginHistory::insertLoginHistory(LOGIN_STATUS_LOGIN);
+        });
+        return redirect()->intended('/');
+    }
+
+    /**
+     * ログアウト処理
+     * @return ログイン画面
+     */
+    public function postLogout()
+    {
+        DB::transaction(function () {
+            return LoginHistory::insertLoginHistory(LOGIN_STATUS_LOGOUT);
+        });
+        return redirect('login');
     }
 }

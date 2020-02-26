@@ -1,11 +1,11 @@
 <?php
 /** ログイン */
-const LOGIN_STATUS_ON = 1;
+const LOGIN_STATUS_LOGIN = 1;
 /** ログアウト */
-const LOGIN_STATUS_OFF = 0;
+const LOGIN_STATUS_LOGOUT = 0;
 
-/** 性別名リスト */
+/** ログイン状態名リスト */
 const LOGIN_STATUS_LIST = [
-    LOGIN_STATUS_ON => "ログイン",
-    LOGIN_STATUS_OFF => "ログオフ",
+    LOGIN_STATUS_LOGIN => "ログイン",
+    LOGIN_STATUS_LOGOUT => "ログアウト",
 ];

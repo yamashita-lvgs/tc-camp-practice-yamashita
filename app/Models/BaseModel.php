@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 abstract class BaseModel extends Model
 {
-    //TODO 操作ユーザー情報取得できたら下記use削除
     use  BaseModelObservable;
 
     protected $dates = [
