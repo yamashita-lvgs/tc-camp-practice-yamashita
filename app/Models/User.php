@@ -88,27 +88,4 @@ class User extends BaseModel
     {
         return self::withTrashed()->findOrFail($userId);
     }
-
-    /**
-     * 論理削除されたユーザー情報を含む指定されたIDのユーザー情報取得
-     * @param string $inputLoginId 入力されたログインID
-     * @param string $inputPassword 入力されたパスワード
-     * @return bool 入力されたログインIDとパスワードが登録されている（true：検証OK、false：検証NG）
-     */
-    public static function searchUser (?string $inputLoginId,?string $inputPassword): bool
-    {
-        $findUser = self::where('login_id',$inputLoginId)->get()->first();
-
-        if ($findUser == null) {
-            return false;
-        }else{
-            $findUserPassword = decrypt($findUser->password);
-        }
-
-        if ($findUserPassword == $inputPassword) {
-            return true;
-        }else{
-            return false;
-        }
-    }
 }

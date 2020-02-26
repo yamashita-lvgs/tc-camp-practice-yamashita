@@ -33,5 +33,3 @@ Route::post('users/{id}/update', 'UserController@postUpdate'); // 登録実行
 
 // ユーザー削除
 Route::post('users/{id}/delete', 'UserController@postDelete'); // 削除実行
-
-
