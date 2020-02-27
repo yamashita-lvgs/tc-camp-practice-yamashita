@@ -17,7 +17,7 @@ class CreateLoginHistoriesTable extends Migration
             $table->increments('id')->comment("ID");
             $table->unsignedInteger('user_id')->comment("ユーザーID");
             $table->unsignedInteger('status_id')->comment("ログイン状態");
-            $table->timestamp('status_changed_at')->comment("ログイン状態変更日時");
+            $table->timestamp('status_changed_at')->comment("状態変更日時");
             $table->unsignedInteger('created_user_id')->comment("作成ユーザーID");
             $table->timestamp('created_at')->comment("作成日時");
             $table->unsignedInteger('updated_user_id')->comment("最終更新ユーザーID");
