@@ -10,7 +10,6 @@ use App\Services\UserService;
  */
 class TopController extends Controller
 {
-
     /**
      * トップ画面表示
      * @return トップ画面
