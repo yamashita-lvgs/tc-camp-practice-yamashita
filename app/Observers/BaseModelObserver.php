@@ -31,7 +31,7 @@ class BaseModelObserver
     }
 
     /**
-     * ユーザーモデル削除イベント前処理
+     * モデル削除イベント前処理
      * @param BaseModel $model 削除されるモデルインスタンス
      */
     public function deleting(BaseModel $model)
