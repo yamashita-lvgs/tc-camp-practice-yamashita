@@ -4,7 +4,7 @@ namespace App\Observers;
 use App\Models\BaseModel;
 
 /**
- * ユーザーモデル用のオブザーバークラス
+ * ベースモデル用のオブザーバークラス
  * @package App\Observers
  */
 class BaseModelObserver
