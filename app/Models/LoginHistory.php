@@ -51,7 +51,7 @@ class LoginHistory extends BaseModel
      * @param $loginHistory 登録するログイン履歴
      */
     //TODO user_id,created_user_id,updated_user_idは機能開発中のためどのユーザーが操作したかわかるまで1そ暫定的に入れています。;
-    public static function insertLoginHistory(int $loginStatus)
+    public static function insertHistory(int $loginStatus)
     {
         $loginHistory = new LoginHistory;
         $loginHistory->user_id = 2;
