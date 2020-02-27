@@ -1,7 +1,6 @@
 <?php
 namespace App\Models;
 
-use App\Traits\LoginHistoryObservable;
 use App\Traits\UserObservable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -94,18 +93,25 @@ class User extends BaseModel
      * @param string $password パスワード
      * @return bool 入力されたログインIDが登録済で、その該当ユーザーの登録済パスワードが入力されたものと一致（true：検証OK、false：検証NG）
      */
-    public static function searchUser (?string $inputLoginId,?string $inputPassword): bool
+    public static function authUser (?string $inputLoginId,?string $inputPassword): bool
     {
-        $findUser = self::where('login_id',$inputLoginId)->get()->first();
-        if ($findUser == null) {
+        $findUser = self::where('login_id',$inputLoginId)->get();
+
+        if (count($findUser) == 0) {
             return false;
+        }else if(count($findUser) == 1) {
+            return true;
         }else{
-            $findUserPassword = decrypt($findUser->password);
+            return view('errors.403');
         }
+
+        $findUserPassword = decrypt($findUser->password);
+
         if ($findUserPassword == $inputPassword) {
             return true;
         }else{
             return false;
         }
+
     }
 }

@@ -34,7 +34,7 @@ class AuthRequest extends FormRequest
         $validator->after(function ($validator) {
             $inputLoginId = $validator->getData()['login_id'];
             $inputPassword = $validator->getData()['password'];
-            if (!User::searchUser($inputLoginId, $inputPassword)) {
+            if (!User::authUser($inputLoginId, $inputPassword)) {
                 return $validator->errors()->add('login', '入力に誤りがあります。');
             }
         });

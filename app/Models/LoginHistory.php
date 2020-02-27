@@ -1,7 +1,6 @@
 <?php
 namespace App\Models;
 
-use App\Traits\BaseModelObservable;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -10,8 +9,6 @@ use Illuminate\Database\Eloquent\Collection;
  */
 class LoginHistory extends BaseModel
 {
-    use BaseModelObservable;
-
     protected $dates = [
         'created_at',
         'updated_at',

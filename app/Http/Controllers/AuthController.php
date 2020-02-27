@@ -28,7 +28,7 @@ class AuthController extends Controller
     public function postLogin(AuthRequest $request)
     {
         DB::transaction(function () {
-            return LoginHistoryService::insertLoginHistory(LOGIN_STATUS_LOGIN);
+            return LoginHistoryService::insertLoginHistory();
         });
         return redirect('/');
     }
@@ -40,7 +40,7 @@ class AuthController extends Controller
     public function postLogout()
     {
         DB::transaction(function () {
-            return LoginHistoryService::insertLogoutHistory(LOGIN_STATUS_LOGOUT);
+            return LoginHistoryService::insertLogoutHistory();
         });
         return redirect('login');
     }
