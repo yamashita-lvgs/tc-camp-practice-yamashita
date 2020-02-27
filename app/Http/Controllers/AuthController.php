@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthRequest;
-use App\Models\LoginHistory;
+use App\Services\LoginHistoryService;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -28,9 +28,9 @@ class AuthController extends Controller
     public function postLogin(AuthRequest $request)
     {
         DB::transaction(function () {
-            return LoginHistory::insertLoginHistory(LOGIN_STATUS_LOGIN);
+            return LoginHistoryService::insertLoginHistory(LOGIN_STATUS_LOGIN);
         });
-        return redirect()->intended('/');
+        return redirect('/');
     }
 
     /**
@@ -40,7 +40,7 @@ class AuthController extends Controller
     public function postLogout()
     {
         DB::transaction(function () {
-            return LoginHistory::insertLoginHistory(LOGIN_STATUS_LOGOUT);
+            return LoginHistoryService::insertLogoutHistory(LOGIN_STATUS_LOGOUT);
         });
         return redirect('login');
     }

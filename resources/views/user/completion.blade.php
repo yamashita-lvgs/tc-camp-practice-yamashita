@@ -1,4 +1,4 @@
-@extends('layouts.userBase')
+@extends('layouts.base')
 
 @section('title', 'ユーザー' . $message . '完了')
 

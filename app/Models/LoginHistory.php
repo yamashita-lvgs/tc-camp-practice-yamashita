@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-use App\Traits\ScreenDateTimeFormat;
+use App\Traits\BaseModelObservable;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
  */
 class LoginHistory extends BaseModel
 {
-    use ScreenDateTimeFormat;
+    use BaseModelObservable;
 
     protected $dates = [
         'created_at',
@@ -49,16 +49,14 @@ class LoginHistory extends BaseModel
     /**
      * ログイン履歴登録
      * @param int $loginHistory 登録するログイン履歴
+     * @param int $loginHistory 登録するユーザーID
      */
-    //TODO user_id,created_user_id,updated_user_idは機能開発中のためどのユーザーが操作したかわかるまで1そ暫定的に入れています。;
-    public static function insertHistory(int $loginStatus)
+    public static function insertHistory(int $loginStatus, int $userId)
     {
         $loginHistory = new LoginHistory;
-        $loginHistory->user_id = 2;
+        $loginHistory->user_id = $userId;
         $loginHistory->status_id = $loginStatus;
         $loginHistory->status_changed_at = now();
-        $loginHistory->created_user_id = 2;
-        $loginHistory->updated_user_id = 2;
         $loginHistory->save();
     }
 }

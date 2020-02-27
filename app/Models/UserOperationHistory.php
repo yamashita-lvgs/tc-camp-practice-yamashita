@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use App\Traits\ScreenDateTimeFormat;
+use App\Traits\LoginHistoryObservable;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
  */
 class UserOperationHistory extends BaseModel
 {
-    use ScreenDateTimeFormat;
+    use LoginHistoryObservable;
 
     protected $dates = [
         'created_at',

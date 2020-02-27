@@ -1,4 +1,4 @@
-@extends('layouts.all')
+@extends('layouts.base')
 
 @section('title', 'ログイン')
 

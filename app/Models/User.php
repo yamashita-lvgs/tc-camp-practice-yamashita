@@ -1,8 +1,7 @@
 <?php
 namespace App\Models;
 
-use App\Traits\ScreenDateTimeFormat;
-use App\Traits\UserObservable;
+use App\Traits\LoginHistoryObservable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -12,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class User extends BaseModel
 {
-    use ScreenDateTimeFormat, UserObservable, SoftDeletes;
+    use LoginHistoryObservable, SoftDeletes;
 
     public function role()
     {
@@ -87,5 +86,25 @@ class User extends BaseModel
     public static function getByIdWithTrashed(int $userId): User
     {
         return self::withTrashed()->findOrFail($userId);
+    }
+    /**
+     * ユーザーログインIDとパスワード検索
+     * @param string $inputLoginId 入力されたログインID
+     * @param string $inputPassword 入力されたパスワード
+     * @return bool 入力されたログインIDが登録済で、その該当ユーザーの登録済パスワードが入力されたものと一致（true：検証OK、false：検証NG）
+     */
+    public static function searchUser (?string $inputLoginId,?string $inputPassword): bool
+    {
+        $findUser = self::where('login_id',$inputLoginId)->get()->first();
+        if ($findUser == null) {
+            return false;
+        }else{
+            $findUserPassword = decrypt($findUser->password);
+        }
+        if ($findUserPassword == $inputPassword) {
+            return true;
+        }else{
+            return false;
+        }
     }
 }

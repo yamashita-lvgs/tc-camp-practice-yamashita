@@ -21,11 +21,23 @@ class LoginHistoryService
 
     /**
      * ログイン履歴登録
-     * @param int $loginStatus 登録するログイン状態の種別番号
      * @return LoginHistory 登録したログイン履歴インスタンス
      */
-    public static function insertLoginHistory(int $loginStatus): LoginHistory
+    //TODO ログインしたユーザーIDはあとで正式なものをいれる
+    public static function insertLoginHistory()
     {
-        return LoginHistory::insertLoginHistory($loginStatus);
+        $userId = 2;
+        LoginHistory::insertHistory(LOGIN_STATUS_LOGIN, $userId);
+    }
+
+    /**
+     * ログアウト履歴登録
+     * @return LoginHistory 登録したログイン履歴インスタンス
+     */
+    //TODO ログアウトしたユーザーIDはあとで正式なものをいれる
+    public static function insertLogoutHistory()
+    {
+        $userId = 3;
+        LoginHistory::insertHistory(LOGIN_STATUS_LOGOUT, $userId);
     }
 }

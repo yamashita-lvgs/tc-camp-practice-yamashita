@@ -2,6 +2,7 @@
 namespace App\Observers;
 
 use App\Models\BaseModel;
+
 /**
  * ユーザーモデル用のオブザーバークラス
  * @package App\Observers

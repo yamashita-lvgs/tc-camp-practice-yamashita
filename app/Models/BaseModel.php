@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use App\Traits\BaseModelObservable;
+use App\Traits\ScreenDateTimeFormat;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 abstract class BaseModel extends Model
 {
-    use  BaseModelObservable;
+    use  BaseModelObservable, ScreenDateTimeFormat;
 
     protected $dates = [
         'created_at',

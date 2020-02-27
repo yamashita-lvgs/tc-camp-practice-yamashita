@@ -5,14 +5,14 @@ use App\Services\LoginHistoryService;
 use App\Services\UserService;
 
 /**
- * トップページに関するコントローラークラス
+ * トップ画面に関するコントローラークラス
  * @package App\Http\Controllers
  */
 class TopController extends Controller
 {
     /**
-     * トップページ画面表示
-     * @return トップページ画面
+     * トップ画面表示
+     * @return トップ画面
      */
     public function getTop()
     {
