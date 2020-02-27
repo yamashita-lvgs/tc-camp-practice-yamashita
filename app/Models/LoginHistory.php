@@ -5,7 +5,7 @@ use App\Traits\ScreenDateTimeFormat;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
- * ログインテーブルのモデルクラス
+ * ログイン履歴テーブルのモデルクラス
  * @package App\Models
  */
 class LoginHistory extends BaseModel
