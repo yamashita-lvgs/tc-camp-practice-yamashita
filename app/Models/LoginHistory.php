@@ -45,8 +45,8 @@ class LoginHistory extends BaseModel
 
     /**
      * ログイン履歴登録
-     * @param int $loginHistory 登録するログイン履歴
-     * @param int $loginHistory 登録するユーザーID
+     * @param int $loginStatus ログイン状態
+     * @param int $userId ユーザーID
      */
     public static function insertHistory(int $loginStatus, int $userId)
     {

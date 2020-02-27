@@ -96,22 +96,23 @@ class User extends BaseModel
     public static function authUser (?string $inputLoginId,?string $inputPassword): bool
     {
         $findUser = self::where('login_id',$inputLoginId)->get();
-
-        if (count($findUser) == 0) {
-            return false;
-        }else if(count($findUser) == 1) {
-            return true;
-        }else{
-            return view('errors.403');
+        switch (count($findUser)) {
+            case 0:
+                return false;
+                break;
+            case 1:
+                $user = $findUser->first();
+                $userPassword = decrypt($user->password);
+                if ($userPassword == $inputPassword) {
+                    return true;
+                }else{
+                    return false;
+                }
+                break;
+            default:
+                Log::error();
+                abort(500);
+                break;
         }
-
-        $findUserPassword = decrypt($findUser->password);
-
-        if ($findUserPassword == $inputPassword) {
-            return true;
-        }else{
-            return false;
-        }
-
     }
 }
