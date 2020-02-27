@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use App\Traits\LoginHistoryObservable;
+use App\Traits\UserObservable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class User extends BaseModel
 {
-    use LoginHistoryObservable, SoftDeletes;
+    use UserObservable, SoftDeletes;
 
     public function role()
     {
