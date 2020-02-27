@@ -90,8 +90,8 @@ class User extends BaseModel
     }
     /**
      * ユーザーログインIDとパスワード検索
-     * @param string $inputLoginId 入力されたログインID
-     * @param string $inputPassword 入力されたパスワード
+     * @param string $loginId ログインID
+     * @param string $password パスワード
      * @return bool 入力されたログインIDが登録済で、その該当ユーザーの登録済パスワードが入力されたものと一致（true：検証OK、false：検証NG）
      */
     public static function searchUser (?string $inputLoginId,?string $inputPassword): bool
