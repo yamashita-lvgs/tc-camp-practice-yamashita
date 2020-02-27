@@ -22,7 +22,7 @@ class AuthController extends Controller
 
     /**
      * ログイン認証
-     * @param $request 入力された値
+     * @param $request リクエスト情報
      * @return トップ画面
      */
     public function postLogin(AuthRequest $request)
