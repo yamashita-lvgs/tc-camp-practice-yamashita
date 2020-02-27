@@ -16,7 +16,7 @@ class CreateLoginHistoriesTable extends Migration
         Schema::create('login_histories', function (Blueprint $table) {
             $table->increments('id')->comment("ID");
             $table->unsignedInteger('user_id')->comment("ユーザーID");
-            $table->unsignedInteger('status_id')->comment("ログイン状態");
+            $table->unsignedInteger('status_id')->comment("状態ID");
             $table->timestamp('status_changed_at')->comment("状態変更日時");
             $table->unsignedInteger('created_user_id')->comment("作成ユーザーID");
             $table->timestamp('created_at')->comment("作成日時");
