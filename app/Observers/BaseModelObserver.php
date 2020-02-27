@@ -10,7 +10,7 @@ use App\Models\BaseModel;
 class BaseModelObserver
 {
     /**
-     * ユーザーモデル登録イベント前処理
+     * モデル登録イベント前処理
      * @param BaseModel $model 登録されたユーザーインスタンス
      */
     public function creating(BaseModel $model)
