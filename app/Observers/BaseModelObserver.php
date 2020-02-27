@@ -11,7 +11,7 @@ class BaseModelObserver
 {
     /**
      * モデル登録イベント前処理
-     * @param BaseModel $model 登録されたユーザーインスタンス
+     * @param BaseModel $model 登録されるモデルインスタンス
      */
     public function creating(BaseModel $model)
     {
