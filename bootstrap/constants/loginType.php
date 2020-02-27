@@ -1,5 +1,5 @@
 <?php
-/** ログイン */
+/** ログイン状態：ログイン */
 const LOGIN_STATUS_LOGIN = 1;
 /** ログアウト */
 const LOGIN_STATUS_LOGOUT = 0;
