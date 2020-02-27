@@ -22,7 +22,7 @@ class BaseModelObserver
 
     /**
      * ユーザーモデル更新イベント前処理
-     * @param BaseModel $model 更新されたユーザーインスタンス
+     * @param BaseModel $model 更新されるモデルインスタンス
      */
     public function updating(BaseModel $model)
     {
