@@ -12,7 +12,7 @@
         <script src={{ ('js/alert.js') }}></script>
         <div class="header">
             <form>
-                {{ csrf_field() }}
+                @csrf
                 <button formmethod="POST" formaction="/logout">ログアウト</button>
             </form>
         </div>
