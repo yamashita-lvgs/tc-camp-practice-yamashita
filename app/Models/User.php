@@ -4,7 +4,7 @@ namespace App\Models;
 use App\Traits\UserObservable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 /**
  * ユーザーテーブルのモデルクラス
@@ -97,7 +97,8 @@ class User extends BaseModel
     public static function authUser (string $loginId, string $password): bool
     {
         $findUser = self::where('login_id', $loginId)->get();
-        switch (count($findUser)) {
+        $countFindUser = count($findUser);
+        switch ($countFindUser) {
             case 0:
                 return false;
             case 1:
@@ -105,7 +106,7 @@ class User extends BaseModel
                 $userPassword = decrypt($user->password);
                 return $userPassword == $password;
             default:
-                Log::error("不整合データが存在します。[table:,login_id:{$loginId},row_count:{count($findUser)}]");
+                Log::error("不整合データが存在します。[table:,login_id:{$loginId},row_count:{$countFindUser}]");
                 abort(500);
         }
     }

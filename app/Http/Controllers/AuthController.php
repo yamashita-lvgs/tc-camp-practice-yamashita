@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthRequest;
+use App\Services\AuthService;
 use App\Services\LoginHistoryService;
 use Illuminate\Support\Facades\DB;
 
@@ -27,8 +28,9 @@ class AuthController extends Controller
      */
     public function postLogin(AuthRequest $request)
     {
-        DB::transaction(function () {
-            return LoginHistoryService::insertLoginHistory();
+        DB::transaction(function ($request) {
+            AuthService::insertLoginUser($request->input('login_id'));
+            LoginHistoryService::insertLoginHistory();
         });
         return redirect('/');
     }
@@ -40,7 +42,7 @@ class AuthController extends Controller
     public function postLogout()
     {
         DB::transaction(function () {
-            return LoginHistoryService::insertLogoutHistory();
+            LoginHistoryService::insertLogoutHistory();
         });
         return redirect('login');
     }
