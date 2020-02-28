@@ -10,6 +10,12 @@
     </head>
     <body>
         <script src={{ ('js/alert.js') }}></script>
+        <div class="header">
+            <form>
+                @csrf
+                <button formmethod="POST" formaction="/logout">ログアウト</button>
+            </form>
+        </div>
         @section('sidebar')
         @show
         <div class="container">

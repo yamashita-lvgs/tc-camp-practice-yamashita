@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolesTable extends Migration
+class CreateLoginHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('login_histories', function (Blueprint $table) {
             $table->increments('id')->comment("ID");
-            $table->string('name',255)->comment("役割");
-            $table->unsignedInteger('sort')->comment("ソート");
+            $table->unsignedInteger('user_id')->comment("ユーザーID");
+            $table->unsignedInteger('status_id')->comment("状態ID");
+            $table->timestamp('status_changed_at')->comment("状態変更日時");
             $table->unsignedInteger('created_user_id')->comment("作成ユーザーID");
             $table->timestamp('created_at')->comment("作成日時");
             $table->unsignedInteger('updated_user_id')->comment("最終更新ユーザーID");
@@ -24,6 +25,7 @@ class CreateRolesTable extends Migration
             $table->unsignedInteger('deleted_user_id')->nullable()->comment("削除ユーザーID");
             $table->timestamp('deleted_at')->nullable()->comment("削除日時");
         });
+        DB::statement("ALTER TABLE login_histories COMMENT 'ログイン履歴'");
     }
 
     /**
@@ -33,6 +35,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('login_histories');
     }
 }

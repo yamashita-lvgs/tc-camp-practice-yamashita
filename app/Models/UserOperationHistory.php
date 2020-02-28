@@ -10,8 +10,6 @@ use Illuminate\Database\Eloquent\Collection;
  */
 class UserOperationHistory extends BaseModel
 {
-    use ScreenDateTimeFormat;
-
     protected $dates = [
         'created_at',
         'updated_at',

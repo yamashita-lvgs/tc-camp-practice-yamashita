@@ -22,7 +22,7 @@ class CreateUserOperationHistoriesTable extends Migration
             $table->unsignedInteger('created_user_id')->comment("作成ユーザーID");
             $table->timestamp('created_at')->comment("作成日時");
             $table->unsignedInteger('updated_user_id')->comment("最終更新ユーザーID");
-            $table->timestamp('updated_at')->comment("更新日時");
+            $table->timestamp('updated_at')->comment("最終更新日時");
             $table->unsignedInteger('deleted_user_id')->nullable()->comment("削除ユーザーID");
             $table->timestamp('deleted_at')->nullable()->comment("削除日時");
         });

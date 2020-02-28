@@ -10,6 +10,16 @@
 |
 */
 
+// ログイン画面
+Route::get('login', 'AuthController@getLogin'); // 初期表示
+Route::post('login', 'AuthController@postLogin'); // ログイン実行
+
+// ログアウト処理
+Route::post('logout', 'AuthController@postLogout'); // ログアウト実行
+
+// トップ画面
+Route::get('/', 'TopController@getTop'); // 初期表示
+
 // ユーザー一覧画面
 Route::get('users', 'UserController@index'); // 初期表示
 

@@ -1,10 +1,10 @@
 <?php
 namespace App\Models;
 
-use App\Traits\ScreenDateTimeFormat;
 use App\Traits\UserObservable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Log;
 
 /**
  * ユーザーテーブルのモデルクラス
@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class User extends BaseModel
 {
-    use ScreenDateTimeFormat, UserObservable, SoftDeletes;
+    use UserObservable, SoftDeletes;
 
     public function role()
     {
@@ -87,5 +87,26 @@ class User extends BaseModel
     public static function getByIdWithTrashed(int $userId): User
     {
         return self::withTrashed()->findOrFail($userId);
+    }
+    /**
+     * ユーザー認証を行う
+     * @param string $loginId ログインID
+     * @param string $password パスワード
+     * @return bool 認証結果（true：認証OK、false：認証NG）
+     */
+    public static function authUser (string $loginId, string $password): bool
+    {
+        $findUser = self::where('login_id', $loginId)->get();
+        switch (count($findUser)) {
+            case 0:
+                return false;
+            case 1:
+                $user = $findUser->first();
+                $userPassword = decrypt($user->password);
+                return $userPassword == $password;
+            default:
+                Log::error("不整合データが存在します。[table:,login_id:{$loginId},row_count:{count($findUser)}]");
+                abort(500);
+        }
     }
 }

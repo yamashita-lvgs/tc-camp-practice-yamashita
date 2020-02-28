@@ -1,4 +1,4 @@
-@extends('layouts.userBase')
+@extends('layouts.base')
 
 @section('title', 'ユーザー一覧')
 
@@ -70,7 +70,6 @@
                 <td>{{ $userOperationHistory->operation_type_name }}</td>
                 <td>{{ $userOperationHistory->operated_user->full_name }}</td>
                 <td>{{ $userOperationHistory->operating_user->full_name }}</td>
-
             </tr>
         @endforeach
     </table>

@@ -11,7 +11,6 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
-    // TODO 機能開発優先のため、マイグレーションファイルは後で修正を行う。（作成ユーザーID、最終更新ユーザーID）
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
@@ -26,11 +25,11 @@ class CreateUsersTable extends Migration
             $table->string('first_name_kana',255)->comment("メイ");
             $table->unsignedInteger('gender_id')->comment("性別ID");
             $table->string('mail', 255)->comment("メールアドレス");
-            $table->unsignedInteger('created_user_id')->default(1)->comment("作成ユーザーID");
+            $table->unsignedInteger('created_user_id')->comment("作成ユーザーID");
             $table->timestamp('created_at')->comment("作成日時");
-            $table->unsignedInteger('updated_user_id')->default(1)->comment("最終更新ユーザーID");
-            $table->timestamp('updated_at')->comment("更新日時");
-            $table->unsignedInteger('deleted_user_id')->default(1)->nullable()->comment("削除ユーザーID");
+            $table->unsignedInteger('updated_user_id')->comment("最終更新ユーザーID");
+            $table->timestamp('updated_at')->comment("最終更新日時");
+            $table->unsignedInteger('deleted_user_id')->nullable()->comment("削除ユーザーID");
             $table->timestamp('deleted_at')->nullable()->comment("削除日時");
         });
         DB::statement("ALTER TABLE users COMMENT 'ユーザー'");
