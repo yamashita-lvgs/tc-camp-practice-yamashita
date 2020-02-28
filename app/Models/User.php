@@ -4,6 +4,7 @@ namespace App\Models;
 use App\Traits\UserObservable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Log;
 
 /**
  * ユーザーテーブルのモデルクラス
@@ -95,7 +96,7 @@ class User extends BaseModel
      */
     public static function authUser (string $loginId, string $password): bool
     {
-        $findUser = self::where('login_id',$loginId)->get();
+        $findUser = self::where('login_id', $loginId)->get();
         switch (count($findUser)) {
             case 0:
                 return false;
