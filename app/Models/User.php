@@ -88,31 +88,24 @@ class User extends BaseModel
         return self::withTrashed()->findOrFail($userId);
     }
     /**
-     * ユーザーログインIDとパスワード検索
+     * ユーザー認証を行う
      * @param string $loginId ログインID
      * @param string $password パスワード
-     * @return bool 入力されたログインIDが登録済で、その該当ユーザーの登録済パスワードが入力されたものと一致（true：検証OK、false：検証NG）
+     * @return bool 認証結果（true：認証OK、false：認証NG）
      */
-    public static function authUser (?string $inputLoginId,?string $inputPassword): bool
+    public static function authUser (string $loginId, string $password): bool
     {
-        $findUser = self::where('login_id',$inputLoginId)->get();
+        $findUser = self::where('login_id',$loginId)->get();
         switch (count($findUser)) {
             case 0:
                 return false;
-                break;
             case 1:
                 $user = $findUser->first();
                 $userPassword = decrypt($user->password);
-                if ($userPassword == $inputPassword) {
-                    return true;
-                }else{
-                    return false;
-                }
-                break;
+                return $userPassword == $password;
             default:
-                Log::error();
+                Log::error("不整合データが存在します。[table:,login_id:{$loginId},row_count:{count($findUser)}]");
                 abort(500);
-                break;
         }
     }
 }
