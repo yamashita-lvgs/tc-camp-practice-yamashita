@@ -10,9 +10,14 @@ use Illuminate\Database\Eloquent\Collection;
  */
 class AuthService
 {
-    public static function insertLoginUser(int $loginId)
+    public static function insertLoginUser(string $loginId)
     {
         $userId = User::where('login_id', $loginId)->get()->first()->id;
         session(['user_id' => $userId]);
+    }
+
+    public static function ejectLogoutUser()
+    {
+        session()->flush();
     }
 }

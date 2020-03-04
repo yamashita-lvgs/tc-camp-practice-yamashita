@@ -28,8 +28,10 @@ class AuthController extends Controller
      */
     public function postLogin(AuthRequest $request)
     {
-        DB::transaction(function ($request) {
-            AuthService::insertLoginUser($request->input('login_id'));
+        $validated = $request->validated();
+        $inputLoginId = $validated['login_id'];
+        DB::transaction(function () use ($inputLoginId) {
+            AuthService::insertLoginUser($inputLoginId);
             LoginHistoryService::insertLoginHistory();
         });
         return redirect('/');
@@ -42,6 +44,7 @@ class AuthController extends Controller
     public function postLogout()
     {
         DB::transaction(function () {
+            AuthService::ejectLogoutUser();
             LoginHistoryService::insertLogoutHistory();
         });
         return redirect('login');

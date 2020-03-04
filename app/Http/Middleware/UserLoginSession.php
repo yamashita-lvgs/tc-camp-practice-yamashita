@@ -7,10 +7,10 @@ class UserLoginSession
 {
     public function handle($request, Closure $next)
     {
-//        if (!session()->has('user_id')) {
-//            redirect('/login');
-//        }
-        
+        if ( !session()->has('user_id') ) {
+            return redirect('login');
+        }
+
         return $next($request);
     }
 }
