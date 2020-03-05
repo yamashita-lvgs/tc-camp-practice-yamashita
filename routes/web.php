@@ -17,6 +17,7 @@
 // ログアウト処理
     Route::post('logout', 'AuthController@postLogout'); // ログアウト実行
 
+// ユーザーログイン判定
 Route::group(['middleware' => ['user.login.session']], function () {
     // トップ画面
     Route::get('/', 'TopController@getTop'); // 初期表示
