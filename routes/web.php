@@ -12,10 +12,10 @@
 
 
 // ログイン画面
-    Route::get('login', 'AuthController@getLogin'); // 初期表示
-    Route::post('login', 'AuthController@postLogin'); // ログイン実行
+Route::get('login', 'AuthController@getLogin'); // 初期表示
+Route::post('login', 'AuthController@postLogin'); // ログイン実行
 // ログアウト処理
-    Route::post('logout', 'AuthController@postLogout'); // ログアウト実行
+Route::post('logout', 'AuthController@postLogout'); // ログアウト実行
 
 // ユーザーログイン判定
 Route::group(['middleware' => ['user.login.session']], function () {

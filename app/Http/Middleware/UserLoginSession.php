@@ -11,14 +11,10 @@ class UserLoginSession
 {
     /**
      * ログイン済みのユーザーか判定
-     * @return 認証結果（true：入力されたURLの画面、false：ログイン画面）
+     * @return 認証結果（ログイン済みのユーザー：入力されたURLの画面、ログインしていないユーザー：ログイン画面）
      */
     public function handle($request, Closure $next)
     {
-        if (!session()->has('user_id')) {
-            return redirect('login');
-        }
-
-        return $next($request);
+        return (session()->has('user_id') ? $next($request) : redirect('login'));
     }
 }

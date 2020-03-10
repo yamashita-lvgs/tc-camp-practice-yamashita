@@ -16,6 +16,7 @@ class AuthService
      */
     public static function insertLoginUser(string $loginId)
     {
+        User::insertLoginUser($loginId);
         $userId = User::where('login_id', $loginId)->get()->first()->id;
         session(['user_id' => $userId]);
     }

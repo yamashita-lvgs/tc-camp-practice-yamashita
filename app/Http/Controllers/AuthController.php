@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthRequest;
 use App\Services\AuthService;
+use App\Services\LoginHistoryService;
+use Illuminate\Support\Facades\DB;
 
 /**
  * 認証に関するコントローラークラス
@@ -42,8 +44,8 @@ class AuthController extends Controller
     public function postLogout()
     {
         DB::transaction(function () {
-            AuthService::ejectLogoutUser();
             LoginHistoryService::insertLogoutHistory();
+            AuthService::ejectLogoutUser();
         });
         return redirect('login');
     }
