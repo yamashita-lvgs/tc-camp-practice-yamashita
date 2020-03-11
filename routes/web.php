@@ -10,7 +10,6 @@
 |
 */
 
-
 // ログイン画面
 Route::get('login', 'AuthController@getLogin'); // 初期表示
 Route::post('login', 'AuthController@postLogin'); // ログイン実行

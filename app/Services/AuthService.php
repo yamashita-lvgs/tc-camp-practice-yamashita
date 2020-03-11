@@ -14,18 +14,18 @@ class AuthService
      * ログインしたユーザーのセッション登録
      * @param string $loginId セッション登録するログインID
      */
-    public static function insertLoginUser(string $loginId)
+    public static function insertLoginUserSession(string $loginId)
     {
-        User::insertLoginUser($loginId);
-        $userId = User::where('login_id', $loginId)->get()->first()->id;
+        $userId = User::insertLoginUserSession($loginId);
         session(['user_id' => $userId]);
     }
 
     /**
      * ログアウトしたユーザーのセッション削除
+     * @param int $loginId セッション削除するユーザーID
      */
-    public static function ejectLogoutUser()
+    public static function ejectLogoutUserSession(int $userId)
     {
-        session()->flush();
+        session()->forget(['user_id' => $userId]);
     }
 }

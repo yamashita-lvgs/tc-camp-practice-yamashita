@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AuthRequest;
 use App\Services\AuthService;
 use App\Services\LoginHistoryService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
 
 /**
  * 認証に関するコントローラークラス
@@ -31,7 +33,7 @@ class AuthController extends Controller
         $validated = $request->validated();
         $inputLoginId = $validated['login_id'];
         DB::transaction(function () use ($inputLoginId) {
-            AuthService::insertLoginUser($inputLoginId);
+            AuthService::insertLoginUserSession($inputLoginId);
             LoginHistoryService::insertLoginHistory();
         });
         return redirect('/');
@@ -44,8 +46,11 @@ class AuthController extends Controller
     public function postLogout()
     {
         DB::transaction(function () {
+
+            $userId = session('user_id');
+            //ログアウトしたユーザーが特定できるように、履歴登録してからセッション消す
             LoginHistoryService::insertLogoutHistory();
-            AuthService::ejectLogoutUser();
+            AuthService::ejectLogoutUserSession($userId);
         });
         return redirect('login');
     }
