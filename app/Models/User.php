@@ -113,12 +113,12 @@ class User extends BaseModel
     }
 
     /**
-     * ログインしたユーザーのセッション登録
-     * @param string $loginId セッション登録するログインID
-     * @return int $userId ログインしたユーザーのID
+     * ログインIDに紐づくユーザー情報を取得する
+     * @param string $loginId ログインID
+     * @return User ログインIDに紐づくユーザーインスタンス
      */
-    public static function insertLoginUserSession(string $loginId): int
+    public static function insertLoginUserSession(string $loginId): User
     {
-        return User::where('login_id', $loginId)->get()->first()->id;
+        return User::where('login_id', $loginId)->get()->first();
     }
 }
