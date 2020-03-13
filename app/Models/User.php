@@ -117,7 +117,7 @@ class User extends BaseModel
      * @param string $loginId ログインID
      * @return User ログインIDに紐づくユーザーインスタンス
      */
-    public static function insertLoginUserSession(string $loginId): User
+    public static function getUserByLoginId(string $loginId): User
     {
         return User::where('login_id', $loginId)->get()->first();
     }
