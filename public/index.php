@@ -35,6 +35,13 @@ require __DIR__.'/../vendor/autoload.php';
 |
 */
 
+$fileList = glob(__DIR__.'/../bootstrap/constants/*.php');
+foreach ($fileList as $file) {
+    if (is_file($file)) {
+        require_once $file;
+    }
+}
+
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
 /*
