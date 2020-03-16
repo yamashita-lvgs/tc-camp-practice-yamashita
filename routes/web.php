@@ -18,12 +18,18 @@ Route::post('logout', 'AuthController@postLogout'); // ログアウト実行
 
 // ユーザーログイン判定
 Route::group(['middleware' => ['user.login.session']], function () {
-    // トップ画面
-    Route::get('/', 'TopController@getTop'); // 初期表示
+    //　全ユーザー
+    Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
+        // トップ画面
+        Route::get('/', 'TopController@getTop'); // 初期表示
+    });
 
+    Route::group(['middleware' => ['auth', 'can:admin-higher']], function () {
     // ユーザー一覧画面
     Route::get('users', 'UserController@index'); // 初期表示
+    });
 
+    Route::group(['middleware' => ['auth', 'can:system-only']], function () {
     // ユーザー登録画面
     Route::get('users/create', 'UserController@getCreate'); // 初期表示
     Route::post('users/create', 'UserController@postCreate'); // 登録実行
@@ -34,4 +40,5 @@ Route::group(['middleware' => ['user.login.session']], function () {
 
     // ユーザー削除
     Route::post('users/{id}/delete', 'UserController@postDelete'); // 削除実行
+    });
 });
