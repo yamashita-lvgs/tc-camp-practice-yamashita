@@ -42,3 +42,4 @@ Route::group(['middleware' => ['user.login.session']], function () {
     Route::post('users/{id}/delete', 'UserController@postDelete'); // 削除実行
     });
 });
+
