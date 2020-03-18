@@ -19,7 +19,6 @@ Route::post('logout', 'AuthController@postLogout'); // ログアウト実行
 // ユーザーログイン判定
 Route::group(['middleware' => ['user.login.session']], function () {
     //　全ユーザー
-    Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
         // トップ画面
         Route::get('/', 'TopController@getTop'); // 初期表示
     });
@@ -40,6 +39,6 @@ Route::group(['middleware' => ['user.login.session']], function () {
 
     // ユーザー削除
     Route::post('users/{id}/delete', 'UserController@postDelete'); // 削除実行
-    });
 });
+
 
