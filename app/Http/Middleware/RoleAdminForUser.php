@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Middleware;
 
+use App\Models\User;
+use Auth;
 use Closure;
 
 /**
@@ -11,6 +13,8 @@ class RoleAdminForUser
 {
     public function handle($request, Closure $next)
     {
-        return ($request->role == 1) ? $next($request) : redirect('login');
+        $loginId = session()->get('user_id');
+        $user = User::getUserByLoginId($loginId);
+        return ($user->role == 1) ? $next($request) : redirect('login');
     }
 }
