@@ -5,7 +5,7 @@ use App\Models\User;
 use Closure;
 
 /**
- * ユーザーのログインセッションに関するミドルウェア
+ * 副管理者のロールに関するミドルウェア
  * @package App\Http\Controllers
  */
 class RoleDeputyAdminForUser

@@ -2,11 +2,10 @@
 namespace App\Http\Middleware;
 
 use App\Models\User;
-use Auth;
 use Closure;
 
 /**
- * ユーザーのログインセッションに関するミドルウェア
+ * 副管理者のロールに関するミドルウェア
  * @package App\Http\Controllers
  */
 class RoleAdminForUser
