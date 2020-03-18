@@ -62,6 +62,8 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'user.login.session' => \App\Http\Middleware\UserLoginSession::class,
+        'role.deputy.admin.for.user' => \App\Http\Middleware\RoleDeputyAdminForUser::class,
+        'role.admin.for.user' => \App\Http\Middleware\RoleAdminForUser::class,
     ];
 
     /**

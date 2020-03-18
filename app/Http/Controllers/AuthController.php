@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AuthRequest;
 use App\Services\AuthService;
 use App\Services\LoginHistoryService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
 
 
 /**
@@ -35,6 +37,7 @@ class AuthController extends Controller
             AuthService::insertLoginUserSession($inputLoginId);
             LoginHistoryService::insertLoginHistory();
         });
+
         return redirect('/');
     }
 

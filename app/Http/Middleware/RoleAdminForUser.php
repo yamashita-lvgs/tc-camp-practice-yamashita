@@ -13,8 +13,15 @@ class RoleAdminForUser
 {
     public function handle($request, Closure $next)
     {
-        $loginId = session()->get('user_id');
-        $user = User::getUserByLoginId($loginId);
-        return ($user->role == 1) ? $next($request) : redirect('login');
+        $userId = session()->get('user_id');
+        $user = User::getUserByUserId($userId);
+
+        if ($user->role->sort <= 10) {
+            return $next($request);
+        } elseif ($user->role->sort <= 20) {
+            return redirect('users');
+        } else {
+            return redirect('/');
+        }
     }
 }

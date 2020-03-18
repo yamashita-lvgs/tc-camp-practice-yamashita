@@ -121,4 +121,14 @@ class User extends BaseModel
     {
         return User::where('login_id', $loginId)->get()->first();
     }
+
+    /**
+     * ユーザーIDに紐づくユーザー情報を取得する
+     * @param string $userId ユーザーID
+     * @return User ログインIDに紐づくユーザーインスタンス
+     */
+    public static function getUserByUserId(string $userId): User
+    {
+        return User::where('id', $userId)->get()->first();
+    }
 }

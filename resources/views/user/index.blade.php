@@ -5,9 +5,10 @@
 @section('css', asset('css/user.index.css'))
 
 @section('content')
-
     <h1>ユーザー一覧</h1>
-    <a href="users/create">新規ユーザー登録</a>
+    @if ($authUser->role->sort <= 10)
+        <a href="users/create">新規ユーザー登録</a>
+    @endif
     <form>
         @csrf
         <table>
@@ -22,8 +23,10 @@
                 <th>更新日時</th>
                 <th>削除者</th>
                 <th>削除日時</th>
-                <th></th>
-                <th></th>
+                @if ($authUser->role->sort <= 10)
+                    <th></th>
+                    <th></th>
+                @endif
             </tr>
             @foreach($users as $user)
                 <tr>
@@ -41,16 +44,18 @@
                         @endisset
                     </td>
                     <td>{{ $user->deleted_at_screen }}</td>
-                    <td>
-                        @empty ($user->deleted_at)
-                            <button formmethod="GET" formaction ="users/{{ $user->id }}/update" >更新</button>
-                        @endempty
-                    </td>
-                    <td>
-                        @empty ($user->deleted_at)
-                            <button formmethod="POST" formaction ="users/{{ $user->id }}/delete" onclick="return deleatAlert()">削除</button>
-                        @endempty
-                    </td>
+                    @if ($authUser->role->sort <= 10)
+                        <td>
+                            @empty ($user->deleted_at)
+                                <button formmethod="GET" formaction ="users/{{ $user->id }}/update" >更新</button>
+                            @endempty
+                        </td>
+                        <td>
+                            @empty ($user->deleted_at)
+                                <button formmethod="POST" formaction ="users/{{ $user->id }}/delete" onclick="return deleatAlert()">削除</button>
+                            @endempty
+                        </td>
+                    @endif
                 </tr>
             @endforeach
         </table>
