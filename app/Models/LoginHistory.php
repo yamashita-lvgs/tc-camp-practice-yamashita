@@ -56,4 +56,15 @@ class LoginHistory extends BaseModel
         $loginHistory->status_changed_at = now();
         $loginHistory->save();
     }
+
+    /**
+     * ログイン履歴削除
+     * @param int $deleteLoginHistoryCount 削除期間の定数
+     * @return LoginHistory 削除したログイン履歴インスタンス
+     */
+    public static function deleteLoginHistory(int $deleteLoginHistoryCount): User
+    {
+        $deleteLoginHistoryPriod = date("Y-m-d H:i:s",strtotime($deleteLoginHistoryCount.'day'));
+        return User::where($deleteLoginHistoryPriod)->delete();
+    }
 }

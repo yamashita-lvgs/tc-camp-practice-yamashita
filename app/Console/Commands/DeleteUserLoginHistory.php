@@ -1,6 +1,7 @@
 <?php
 namespace App\Console\Commands;
 
+use App\Services\LoginHistoryService;
 use Illuminate\Console\Command;
 
 class DeleteUserLoginHistory extends Command
@@ -36,6 +37,7 @@ class DeleteUserLoginHistory extends Command
      */
     public function handle()
     {
-        //
+        $deleteLoginHistoryCount = config('const.DELETE_LOGIN_HISTORY_COUNT');
+        LoginHistoryService::deleteLoginHistory($deleteLoginHistoryCount);
     }
 }

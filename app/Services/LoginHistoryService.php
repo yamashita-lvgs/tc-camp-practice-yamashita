@@ -40,4 +40,14 @@ class LoginHistoryService
         $userId = 3;
         LoginHistory::insertHistory(LOGIN_STATUS_LOGOUT, $userId);
     }
+
+    /**
+     * ログイン履歴削除
+     * @param int $deleteLoginHistoryCount 削除期間の定数
+     * @return LoginHistory 削除したログイン履歴インスタンス
+     */
+    public static function deleteLoginHistory(int $deleteLoginHistoryCount): User
+    {
+        return LoginHistory::deleteLoginHistory($deleteLoginHistoryCount);
+    }
 }

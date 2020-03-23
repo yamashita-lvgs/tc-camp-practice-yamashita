@@ -26,7 +26,6 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        $schedule->command('hoge')-> everythirtydays();  // 30日ごとに実行
     }
 
     /**
