@@ -22,13 +22,13 @@ Route::group(['middleware' => ['user.login.session']], function () {
     Route::get('/', 'TopController@getTop'); // 初期表示
 
     // ユーザー副管理者判定
-    Route::group(['middleware' => ['role.deputy.admin.for.user']], function () {
+    Route::group(['middleware' => ['role.deputy.admin.user']], function () {
         // ユーザー一覧画面
         Route::get('users', 'UserController@index'); // 初期表示
     });
 
     // ユーザー管理者判定
-    Route::group(['middleware' => ['role.admin.for.user']], function () {
+    Route::group(['middleware' => ['role.admin.user']], function () {
         // ユーザー登録画面
         Route::get('users/create', 'UserController@getCreate'); // 初期表示
         Route::post('users/create', 'UserController@postCreate'); // 登録実行
@@ -41,5 +41,3 @@ Route::group(['middleware' => ['user.login.session']], function () {
         Route::post('users/{id}/delete', 'UserController@postDelete'); // 削除実行
     });
 });
-
-

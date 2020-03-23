@@ -123,12 +123,12 @@ class User extends BaseModel
     }
 
     /**
-     * ユーザーIDに紐づくユーザー情報を取得する
-     * @param string $userId ユーザーID
-     * @return User ログインIDに紐づくユーザーインスタンス
+     * ユーザーセッション情報取得
+     * @param int $userId ユーザーID
+     * @return String ユーザーのセッション情報
      */
-    public static function getUserByUserId(string $userId): User
+    public static function UserSession(): String
     {
-        return User::where('id', $userId)->get()->first();
+        return session()->get('user_id');
     }
 }

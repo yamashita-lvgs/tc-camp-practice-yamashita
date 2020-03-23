@@ -7,7 +7,7 @@
 @section('content')
 
     <h1>トップ画面</h1>
-    @if ($authUser->role->sort <= 20)
+    @if ($authUser->role_id <= 2)
         <a href="users">ユーザー一覧</a>
     @endif
     <p>ログイン履歴</p>

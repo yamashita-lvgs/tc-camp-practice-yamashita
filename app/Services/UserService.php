@@ -71,4 +71,14 @@ class UserService
         User::findOrFail($userId)->delete();
         return User::getByIdWithTrashed($userId);
     }
+
+    /**
+     * ユーザーセッション情報取得
+     * @param int $userId ユーザーID
+     * @return String ユーザーのセッション情報
+     */
+    public static function UserSession(): String
+    {
+        return User::UserSession();
+    }
 }

@@ -23,7 +23,8 @@ class UserController extends Controller
         $users = UserService::getUsers();
         $userOperationHistories = UserOperationHistoryService::getScreenLatestUserOperationHistories();
         $historyCount = config('const.HISTORY_COUNT');
-        $authUser = UserService::getUser(session('user_id'));
+        $userId = UserService::UserSession();
+        $authUser = UserService::getUser($userId);
         return view('user.index', compact('users', 'userOperationHistories', 'historyCount', 'authUser'));
     }
 

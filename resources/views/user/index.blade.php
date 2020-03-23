@@ -23,7 +23,7 @@
                 <th>更新日時</th>
                 <th>削除者</th>
                 <th>削除日時</th>
-                @if ($authUser->role->sort <= 10)
+                @if ($authUser->role_id <= 1)
                     <th></th>
                     <th></th>
                 @endif
@@ -44,7 +44,7 @@
                         @endisset
                     </td>
                     <td>{{ $user->deleted_at_screen }}</td>
-                    @if ($authUser->role->sort <= 10)
+                    @if ($authUser->role_id <= 1)
                         <td>
                             @empty ($user->deleted_at)
                                 <button formmethod="GET" formaction ="users/{{ $user->id }}/update" >更新</button>
