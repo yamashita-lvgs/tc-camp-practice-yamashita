@@ -3,7 +3,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class deleteUserLoginHistory extends Command
+class DeleteUserLoginHistory extends Command
 {
     /**
      * The name and signature of the console command.
