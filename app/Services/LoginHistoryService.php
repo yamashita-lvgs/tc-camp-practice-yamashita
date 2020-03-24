@@ -42,12 +42,12 @@ class LoginHistoryService
     }
 
     /**
-     * ログイン履歴削除
+     * ログイン履歴物理削除
      * @param int $deleteLoginHistoryCount 削除期間の定数
      * @return LoginHistory 削除したログイン履歴インスタンス
      */
-    public static function deleteLoginHistory(int $deleteLoginHistoryCount): User
+    public static function physicalDeleteDaysExceededLoginHistory(): User
     {
-        return LoginHistory::deleteLoginHistory($deleteLoginHistoryCount);
+        return LoginHistory::physicalDeleteDaysExceededLoginHistory();
     }
 }
