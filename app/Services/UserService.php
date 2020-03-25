@@ -73,12 +73,12 @@ class UserService
     }
 
     /**
-     * ユーザーセッション情報取得
-     * @param int $userId ユーザーID
-     * @return String ユーザーのセッション情報
+     * ログインしているユーザーの情報を取得する
+     * @return User ユーザーインスタンス
      */
-    public static function UserSession(): String
+    public static function getUserByUserSession(): User
     {
-        return User::UserSession();
+        $authUserId = session()->get('user_id');
+        return User::findOrFail($authUserId);
     }
 }

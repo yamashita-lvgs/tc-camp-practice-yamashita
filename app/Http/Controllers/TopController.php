@@ -19,8 +19,7 @@ class TopController extends Controller
         $users = UserService::getUsers();
         $loginHistories = LoginHistoryService::getScreenLatestLoginHistories();
         $historyCount = config('const.HISTORY_COUNT');
-        $userId = UserService::UserSession();
-        $authUser = UserService::getUser($userId);
+        $authUser = UserService::getUserByUserSession();
         return view('top.index', compact('loginHistories', 'historyCount', 'authUser'));
     }
 }
