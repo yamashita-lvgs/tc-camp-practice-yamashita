@@ -8,7 +8,7 @@ use Illuminate\Console\Command;
  * ユーザーログイン履歴削除に関するコマンドクラス
  * @package App\Console\Commands
  */
-class DeleteUserLoginHistory extends Command
+class DeleteUserLoginHistoryCommand extends Command
 {
     protected $signature = 'delete_user_loginh_history';
 
