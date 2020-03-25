@@ -58,11 +58,9 @@ class LoginHistory extends BaseModel
     }
 
     /**
-     * ログイン履歴物理削除
-     * @param int $deleteLoginHistoryCount 削除期間の定数
-     * @return LoginHistory 削除したログイン履歴インスタンス
+     * 保存期間超過のログを物理削除
      */
-    public static function physicalDeleteDaysExceededLoginHistory(int $deleteLoginHistoryCount): User
+    public static function physicalDeletePeriodExceededLogs()
     {
         $deleteLoginHistoryCount = config('const.DELETE_LOGIN_HISTORY_COUNT');
         $deleteLoginHistoryPriod = date("Y-m-d H:i:s",strtotime($deleteLoginHistoryCount.'day'));
