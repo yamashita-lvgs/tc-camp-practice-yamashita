@@ -63,7 +63,7 @@ class LoginHistory extends BaseModel
     public static function physicalDeletePeriodExceededLogs()
     {
         $deleteLoginHistoryCount = config('const.DELETE_LOGIN_HISTORY_COUNT');
-        $deleteLoginHistoryPriod = date("Y-m-d H:i:s",strtotime($deleteLoginHistoryCount.'day'));
+        $deleteLoginHistoryPriod = date("Y-m-d H:i:s", strtotime($deleteLoginHistoryCount.'day'));
         User::where($deleteLoginHistoryPriod)->forceDelete();
     }
 }
