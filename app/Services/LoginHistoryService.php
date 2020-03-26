@@ -44,7 +44,7 @@ class LoginHistoryService
     /**
      * 保存期間超過のログを物理削除
      */
-    public static function physicalDeletePeriodExceededLogs(): User
+    public static function physicalDeletePeriodExceededLogs()
     {
         LoginHistory::physicalDeletePeriodExceededLogs();
     }
