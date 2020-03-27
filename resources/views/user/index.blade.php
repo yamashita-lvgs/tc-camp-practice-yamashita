@@ -49,7 +49,7 @@
                             @endempty
                         </td>
                         <td>
-                            @empty ($user->deleted_at)
+                            @empty($user->deleted_at)
                                 <button formmethod="POST" formaction ="users/{{ $user->id }}/delete" onclick="return deleatAlert()">削除</button>
                             @endempty
                         </td>
