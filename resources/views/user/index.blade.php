@@ -21,7 +21,7 @@
                 <th>更新日時</th>
                 <th>削除者</th>
                 <th>削除日時</th>
-                @if($authUser->judgment_role_admin)
+                @if($authUser->role->judgment_role_admin)
                     <th></th>
                     <th></th>
                 @endif
