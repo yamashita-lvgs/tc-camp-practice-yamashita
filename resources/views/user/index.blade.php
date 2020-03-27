@@ -42,7 +42,7 @@
                         @endisset
                     </td>
                     <td>{{ $user->deleted_at_screen }}</td>
-                    @if($authUser->judgment_role_admin)
+                    @if($authUser->role->judgment_role_admin)
                         <td>
                             @empty ($user->deleted_at)
                                 <button formmethod="GET" formaction ="users/{{ $user->id }}/update" >更新</button>
