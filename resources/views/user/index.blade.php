@@ -5,8 +5,9 @@
 @section('css', asset('css/user.index.css'))
 
 @section('content')
+
     <h1>ユーザー一覧</h1>
-        <a href="users/create">新規ユーザー登録</a>
+    <a href="users/create">新規ユーザー登録</a>
     <form>
         @csrf
         <table>
