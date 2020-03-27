@@ -64,8 +64,6 @@ class LoginHistory extends BaseModel
     {
         $deleteLoginHistoryCount = config('const.DELETE_LOGIN_HISTORY_COUNT');
         $deleteLoginHistoryPriod = date("Y-m-d H:i:s", strtotime($deleteLoginHistoryCount.'day'));
-        //TODO 下記どちらかみたいな実装で物理削除したいがcreated_atと$deleteLoginHistoryPriodの比較ができない。
-        User::where('created_at' < $deleteLoginHistoryPriod)->forceDelete();
-        User::where(strtotime('created_at') < strtotime($deleteLoginHistoryPriod))->forceDelete();
+        User::where(‘created_at’, ‘<’,  $deleteLoginHistoryPriod)->forceDelete();
     }
 }
