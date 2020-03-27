@@ -71,4 +71,14 @@ class UserService
         User::findOrFail($userId)->delete();
         return User::getByIdWithTrashed($userId);
     }
+
+    /**
+     * ログインしているユーザーの情報を取得する
+     * @return User ユーザーインスタンス
+     */
+    public static function getUserByUserSession(): User
+    {
+        $authUserId = session()->get('user_id');
+        return User::findOrFail($authUserId);
+    }
 }
