@@ -2,4 +2,5 @@
 
 return [
     'HISTORY_COUNT' => env('HISTORY_COUNT'),
+    'DELETE_LOGIN_HISTORY_COUNT' => env('DELETE_LOGIN_HISTORY_COUNT'),
 ];
