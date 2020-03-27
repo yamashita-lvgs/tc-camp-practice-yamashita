@@ -16,7 +16,7 @@ class Role extends BaseModel
     public function getJudgmentRoleAdminAttribute(): bool
     {
         switch ($this->id) {
-            case JUDGMENT_ROLE_ADMIN:
+            case ROLE_ID_ADMIN:
                 return true;
             default:
                 return false;
@@ -30,8 +30,8 @@ class Role extends BaseModel
     public function getJudgmentRoleDeputyAdminAttribute(): bool
     {
         switch ($this->id) {
-            case JUDGMENT_ROLE_ADMIN:
-            case JUDGMENT_ROLE_ADMIN_DEPUTY:
+            case ROLE_ID_ADMIN:
+            case ROLE_ID_DEPUTY_ADMIN:
                 return true;
             default:
                 return false;
