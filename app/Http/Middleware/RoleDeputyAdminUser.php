@@ -14,7 +14,7 @@ class RoleDeputyAdminUser
     {
         $user = UserService::getUserByUserSession();
 
-        if ($user->role_id <= 2){
+        if ($user->role->judgment_role_deputy_admin <= JUDGMENT_ROLE_ADMIN_DEPUTY){
             return $next($request);
         } else {
             abort('403', '権限がありません。');
