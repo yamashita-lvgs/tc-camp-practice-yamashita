@@ -1,5 +1,5 @@
 <?php
-/** 管理者 */
-const JUDGMENT_ROLE_ADMIN = 1;
-/** 副管理者 */
-const JUDGMENT_ROLE_ADMIN_DEPUTY = 2;
+/** ロールID：管理者 */
+const ROLE_ID_ADMIN = 1;
+/** ロールID：副管理者 */
+const ROLE_ID_DEPUTY_ADMIN = 2;
