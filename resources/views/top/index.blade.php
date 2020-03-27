@@ -7,7 +7,7 @@
 @section('content')
 
     <h1>トップ画面</h1>
-    @if($authUser->role->judgment_role_admin)
+    @if($authUser->role->judgment_role_deputy_admin)
         <a href="users">ユーザー一覧</a>
     @endif
     <p>ログイン履歴</p>
