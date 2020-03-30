@@ -64,6 +64,6 @@ class LoginHistory extends BaseModel
     {
         $deleteLoginHistoryCount = config('const.LOGIN_HISTORY_RETENTION_PERIOD');
         $deleteLoginHistoryPriod = date("Y-m-d H:i:s", strtotime($deleteLoginHistoryCount.'day'));
-        LoginHistory::where('created_at', '<',  $deleteLoginHistoryPriod)->forceDelete();
+        self::where('created_at', '<',  $deleteLoginHistoryPriod)->forceDelete();
     }
 }
