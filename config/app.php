@@ -173,7 +173,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        App\Providers\PostServiceProvider::class,
+        // App\Providers\PostServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\ValidatorServiceProvider::class,
     ],
