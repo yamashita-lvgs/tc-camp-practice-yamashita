@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -62,8 +63,8 @@ class LoginHistory extends BaseModel
      */
     public static function physicalDeletePeriodExceededLogs()
     {
-        $deleteLoginHistoryCount = config('const.LOGIN_HISTORY_RETENTION_PERIOD');
-        $deleteLoginHistoryPriod = date("Y-m-d H:i:s", strtotime(-$deleteLoginHistoryCount.'day'));
+        $deleteLoginHistoryCount = subDay(config('const.LOGIN_HISTORY_RETENTION_PERIOD'));
+        $deleteLoginHistoryPriod = date("Y-m-d H:i:s", strtotime($deleteLoginHistoryCount.'day'));
         self::where('created_at', '<',  $deleteLoginHistoryPriod)->forceDelete();
     }
 }
