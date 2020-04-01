@@ -7,7 +7,9 @@
 @section('content')
 
     <h1>トップ画面</h1>
-    <a href="users">ユーザー一覧</a>
+    @if($authUser->role->judgment_role_deputy_admin)
+        <a href="users">ユーザー一覧</a>
+    @endif
     <p>ログイン履歴</p>
     <p>最新のログイン履歴{{ $historyCount }}件まで表示します。</p>
     <table>

@@ -22,8 +22,10 @@
                 <th>更新日時</th>
                 <th>削除者</th>
                 <th>削除日時</th>
-                <th></th>
-                <th></th>
+                @if($authUser->role->judgment_role_admin)
+                    <th></th>
+                    <th></th>
+                @endif
             </tr>
             @foreach($users as $user)
                 <tr>
@@ -41,16 +43,18 @@
                         @endisset
                     </td>
                     <td>{{ $user->deleted_at_screen }}</td>
-                    <td>
-                        @empty ($user->deleted_at)
-                            <button formmethod="GET" formaction ="users/{{ $user->id }}/update" >更新</button>
-                        @endempty
-                    </td>
-                    <td>
-                        @empty ($user->deleted_at)
-                            <button formmethod="POST" formaction ="users/{{ $user->id }}/delete" onclick="return deleatAlert()">削除</button>
-                        @endempty
-                    </td>
+                    @if($authUser->role->judgment_role_admin)
+                        <td>
+                            @empty($user->deleted_at)
+                                <button formmethod="GET" formaction ="users/{{ $user->id }}/update" >更新</button>
+                            @endempty
+                        </td>
+                        <td>
+                            @empty($user->deleted_at)
+                                <button formmethod="POST" formaction ="users/{{ $user->id }}/delete" onclick="return deleatAlert()">削除</button>
+                            @endempty
+                        </td>
+                    @endif
                 </tr>
             @endforeach
         </table>

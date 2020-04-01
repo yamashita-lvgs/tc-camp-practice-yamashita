@@ -6,7 +6,6 @@ use App\Services\AuthService;
 use App\Services\LoginHistoryService;
 use Illuminate\Support\Facades\DB;
 
-
 /**
  * 認証に関するコントローラークラス
  * @package App\Http\Controllers
