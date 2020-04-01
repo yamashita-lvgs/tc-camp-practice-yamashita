@@ -64,7 +64,7 @@ class LoginHistory extends BaseModel
     public static function physicalDeletePeriodExceededLogs()
     {
         $deleteLoginHistoryCount = config('const.LOGIN_HISTORY_RETENTION_PERIOD');
-        $deleteLoginHistoryPriod = Carbon::now()->subDay($deleteLoginHistoryCount) . "";
+        $deleteLoginHistoryPriod = Carbon::now()->subDay($deleteLoginHistoryCount);
         self::where('created_at', '<',  $deleteLoginHistoryPriod)->forceDelete();
     }
 }
