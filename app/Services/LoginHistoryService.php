@@ -23,10 +23,8 @@ class LoginHistoryService
      * ログイン履歴登録
      * @return LoginHistory 登録したログイン履歴インスタンス
      */
-    //TODO ログインしたユーザーIDはあとで正式なものをいれる
-    public static function insertLoginHistory()
+    public static function insertLoginHistory(int $userId)
     {
-        $userId = 2;
         LoginHistory::insertHistory(LOGIN_STATUS_LOGIN, $userId);
     }
 
@@ -34,10 +32,8 @@ class LoginHistoryService
      * ログアウト履歴登録
      * @return LoginHistory 登録したログイン履歴インスタンス
      */
-    //TODO ログアウトしたユーザーIDはあとで正式なものをいれる
-    public static function insertLogoutHistory()
+    public static function insertLogoutHistory(int $userId)
     {
-        $userId = 3;
         LoginHistory::insertHistory(LOGIN_STATUS_LOGOUT, $userId);
     }
 }

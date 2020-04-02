@@ -13,11 +13,13 @@ class AuthService
     /**
      * ログインしたユーザーのセッション登録
      * @param string $loginId セッション登録するログインID
+     * return int $userId ユーザーID
      */
-    public static function insertLoginUserSession(string $loginId)
+    public static function insertLoginUserSession(string $loginId): int
     {
         $userId = User::getUserByLoginId($loginId)->id;
         session(['user_id' => $userId]);
+        return $userId;
     }
 
     /**

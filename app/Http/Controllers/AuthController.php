@@ -31,8 +31,9 @@ class AuthController extends Controller
         $validated = $request->validated();
         $inputLoginId = $validated['login_id'];
         DB::transaction(function () use ($inputLoginId) {
-            AuthService::insertLoginUserSession($inputLoginId);
-            LoginHistoryService::insertLoginHistory();
+            $userId = AuthService::insertLoginUserSession($inputLoginId);
+            LoginHistoryService::insertLoginHistory($userId);
+
         });
         return redirect('/');
     }
@@ -44,10 +45,9 @@ class AuthController extends Controller
     public function postLogout()
     {
         DB::transaction(function () {
-
             $userId = session('user_id');
             //ログアウトしたユーザーが特定できるように、履歴登録してからセッション消す
-            LoginHistoryService::insertLogoutHistory();
+            LoginHistoryService::insertLogoutHistory($userId);
             AuthService::ejectLogoutUserSession($userId);
         });
         return redirect('login');
