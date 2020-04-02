@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -55,5 +56,15 @@ class LoginHistory extends BaseModel
         $loginHistory->status_id = $loginStatus;
         $loginHistory->status_changed_at = now();
         $loginHistory->save();
+    }
+
+    /**
+     * 保存期間超過のログを物理削除
+     */
+    public static function physicalDeletePeriodExceededLogs()
+    {
+        $deleteLoginHistoryCount = config('const.LOGIN_HISTORY_RETENTION_PERIOD');
+        $deleteLoginHistoryPriod = Carbon::now()->subDay($deleteLoginHistoryCount);
+        self::where('created_at', '<',  $deleteLoginHistoryPriod)->forceDelete();
     }
 }

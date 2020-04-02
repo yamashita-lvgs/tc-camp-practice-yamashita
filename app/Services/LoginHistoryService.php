@@ -36,4 +36,12 @@ class LoginHistoryService
     {
         LoginHistory::insertHistory(LOGIN_STATUS_LOGOUT, $userId);
     }
+
+    /**
+     * 保存期間超過のログを物理削除
+     */
+    public static function physicalDeletePeriodExceededLogs()
+    {
+        LoginHistory::physicalDeletePeriodExceededLogs();
+    }
 }
